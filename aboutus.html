@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Growwpark Body Art Studio</title>
+  <link rel="icon" type="image/jpeg" href="assets/growwpark_logo.jpg" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            blackMain: '#0B0B0B',
+            whiteMain: '#F5F5F5',
+            deepBurgundy: '#4A0E1A', 
+            antiqueGold: '#C6A75E',
+          },
+          fontFamily: {
+            'display': ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    #mobileMenu { transition: all 0.3s ease-in-out; }
+    [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0B0B0B; }
+    ::-webkit-scrollbar-thumb { background: #4A0E1A; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C6A75E; }
+
+    .stat-card:hover .stat-line { width: 100%; }
+    .founder-image { filter: grayscale(100%); transition: all 0.7s ease; }
+    .founder-card:hover .founder-image { filter: grayscale(0%); transform: scale(1.05); }
+  </style>
+</head>
+<body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
+
+  <!-- ============ HEADER ============ -->
+  <nav id="navbar" class="sticky top-0 z-50 transition-colors duration-300 bg-whiteMain/90 text-blackMain border-b border-gray-200 dark:bg-blackMain/90 dark:text-whiteMain dark:border-antiqueGold/20 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+      
+      <a href="index.html" class="flex items-center gap-2 shrink-0 group">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold shadow-lg group-hover:scale-110 transition-transform border border-antiqueGold/30">
+         <i class="fas fa-pen-nib text-lg"></i>
+        </span>
+        <div class="leading-tight">
+          <span class="block text-xl font-bold tracking-tight text-antiqueGold dark:text-antiqueGold">Groww</span>
+          <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>     
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <ul class="flex items-center gap-1 text-sm font-semibold">
+          <li class="relative group">
+            <button class="home-trigger flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Home</span>
+              <i class="fas fa-chevron-down text-[10px]"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-48 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="index.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 1</a></li>
+              <li><a href="homepage2.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="piercing.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Piercing</a></li>
+          <li><a href="aftercare.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Aftercare</a></li>
+          <!-- ACTIVE STATE -->
+          <li><a href="aboutus.html" class="block rounded-md px-4 py-2 bg-deepBurgundy text-whiteMain font-bold shadow-md transition-colors border border-antiqueGold/20">About</a></li>
+          <li><a href="contact.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Contact</a></li>
+          <li class="relative group">
+            <button class="flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Dashboard</span>
+              <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-56 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="admin.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Admin Panel</a></li>
+              <li><a href="user.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">User Dashboard</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="ml-4 flex items-center gap-3 border-l border-gray-200 dark:border-whiteMain/10 pl-4">
+          <button id="themeToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button id="rtlToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+          <a href="login.html" class="ml-2 inline-flex items-center gap-2 rounded-md bg-antiqueGold px-5 py-2 text-sm font-bold text-whiteMain hover:bg-deepBurgundy transition-transform active:scale-95 shadow-lg shadow-antiqueGold/20">
+            <i class="fas fa-user-plus text-xs"></i>
+            <span>Register</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 lg:hidden">
+        <button id="themeToggleMobile" class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="hamburger" class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-md bg-deepBurgundy/10 dark:bg-whiteMain/5" aria-label="Toggle Menu">
+          <span id="line1" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line2" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line3" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- FULL MOBILE MENU -->
+    <div id="mobileMenu" class="hidden border-t border-gray-100 bg-whiteMain dark:bg-blackMain dark:border-antiqueGold/10 lg:hidden overflow-hidden transition-all duration-300">
+      <div class="flex flex-col gap-1 p-4">
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-home w-6"></i>
+              <span>Home</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+            <a href="index.html" class="py-2 hover:translate-x-2 transition-transform">Home 1</a>
+            <a href="homepage2.html" class="py-2 hover:translate-x-2 transition-transform">Home 2</a>
+          </div>
+        </details>
+        
+        <a href="piercing.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-ring text-deepBurgundy dark:text-antiqueGold w-6"></i> Piercing
+        </a>
+        <a href="aftercare.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-hand-holding-medical text-deepBurgundy dark:text-antiqueGold w-6"></i> Aftercare
+        </a>
+        <!-- ACTIVE STATE MOBILE -->
+        <a href="aboutus.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-bold bg-deepBurgundy text-whiteMain shadow-md border border-antiqueGold/30">
+          <i class="fas fa-info-circle text-antiqueGold w-6"></i> About
+        </a>
+        <a href="contact.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-envelope text-deepBurgundy dark:text-antiqueGold w-6"></i> Contact
+        </a>
+
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-gauge text-deepBurgundy dark:text-antiqueGold w-6"></i>
+              <span>Dashboard</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+            <a href="admin.html" class="py-2 hover:translate-x-2 transition-transform">Admin Panel</a>
+            <a href="user.html" class="py-2 hover:translate-x-2 transition-transform">User Dashboard</a>
+          </div>
+        </details>
+
+        <div class="mt-4 pt-4 border-t border-gray-100 dark:border-whiteMain/10">
+          <button id="rtlToggleMobile" class="flex w-full items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <i class="fas fa-exchange-alt text-deepBurgundy dark:text-antiqueGold w-6"></i> Switch Direction (RTL)
+          </button>
+          <a href="login.html" class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-deepBurgundy py-4 text-center text-lg font-bold text-whiteMain active:scale-95 transition-transform border border-antiqueGold">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- SECTION 1: HERO (THE ATELIER VISION) -->
+   
+      <section class="relative h-[60vh] flex items-center justify-center overflow-hidden bg-blackMain">
+      <div class="absolute inset-0 z-0">
+        <img src="/assets//banner.jpg" class="w-full h-full object-cover opacity-50 brightness-75" alt="Piercing Studio">
+      </div>
+      <div class="relative z-10 text-center px-4">
+        <span class="inline-block text-antiqueGold font-bold tracking-[0.4em] uppercase text-xs mb-4">Est. Manhattan 2008</span>
+        <h1 class="text-5xl md:text-7xl font-black text-whiteMain mb-6 tracking-tighter">The Groww <span class="text-antiqueGold italic font-serif">Atelier</span></h1>
+        <p class="text-whiteMain/70 max-w-2xl mx-auto text-lg md:text-xl">A sanctuary where high-fashion aesthetics meets clinical discipline. We don't just decorate skin; we architect identity.</p>
+        <div class="mt-10">
+          <a href="#pricing" class="px-10 py-4 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm hover:bg-whiteMain transition-all shadow-2xl">View Price List</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: OUR HERITAGE (CHRONICLE) -->
+    <section class="py-32 bg-whiteMain dark:bg-blackMain transition-colors duration-300">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+          <div>
+            <h2 class="text-antiqueGold font-black uppercase tracking-widest text-sm mb-6">The Chronicle</h2>
+            <h3 class="text-4xl md:text-6xl font-black mb-10 tracking-tighter leading-tight">Decades of <br> <span class="text-deepBurgundy dark:text-antiqueGold italic font-serif">Technical Purity</span></h3>
+            <p class="text-lg opacity-60 leading-relaxed mb-10">
+              Founded in 2008 by a collective of master tattooers and medical-grade piercers, Growwpark was born from a singular obsession: to strip away the "back-alley" stigma of body art and replace it with a world-class atelier experience.
+            </p>
+            <div class="grid grid-cols-2 gap-8">
+               <div class="stat-card">
+                  <div class="text-3xl font-black text-antiqueGold mb-2">15+</div>
+                  <p class="text-xs font-bold uppercase tracking-widest opacity-40">Years Excellence</p>
+                  <div class="stat-line h-px w-8 bg-antiqueGold mt-4 transition-all duration-500"></div>
+               </div>
+               <div class="stat-card">
+                  <div class="text-3xl font-black text-antiqueGold mb-2">12k+</div>
+                  <p class="text-xs font-bold uppercase tracking-widest opacity-40">Masterpieces</p>
+                  <div class="stat-line h-px w-8 bg-antiqueGold mt-4 transition-all duration-500"></div>
+               </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="aspect-square bg-gray-100 dark:bg-whiteMain/5 rounded-3xl overflow-hidden border border-antiqueGold/20">
+               <img src="/assets/Beauty is temporar.jpg" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute -bottom-10 -left-10 p-12 bg-deepBurgundy text-whiteMain rounded-3xl shadow-2xl hidden md:block border border-antiqueGold/20">
+               <i class="fas fa-quote-left text-antiqueGold text-4xl mb-6"></i>
+               <p class="text-xl font-medium leading-relaxed italic">"Beauty is temporary. <br> Art is forever."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE ATELIER ETHOS (PHILOSOPHY) -->
+    <section class="py-32 bg-gray-50 dark:bg-deepBurgundy/[0.03] border-y border-gray-200 dark:border-whiteMain/5">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center">
+        <div class="max-w-3xl mx-auto mb-20">
+          <h2 class="text-antiqueGold font-bold tracking-widest uppercase text-xs mb-6">The Ethos</h2>
+          <h3 class="text-4xl md:text-5xl font-black mb-8 tracking-tighter leading-none">Anatomical <span class="text-deepBurgundy dark:text-antiqueGold">Precision</span></h3>
+          <p class="text-lg opacity-60">We view the human body as a living canvas. Every needle stroke and jewelry placement is calculated to complement your natural anatomy, movement, and aging process.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-12 text-left">
+          <div class="group">
+             <div class="h-1 w-0 bg-antiqueGold transition-all duration-700 group-hover:w-full mb-8"></div>
+             <h4 class="text-xl font-bold mb-4 uppercase tracking-tighter">Clinical Integrity</h4>
+             <p class="opacity-60 text-sm leading-relaxed">Beyond basic compliance, we maintain hospital-grade sterilization cycles and exclusively use single-use disposables for every procedural step.</p>
+          </div>
+          <div class="group">
+             <div class="h-1 w-0 bg-antiqueGold transition-all duration-700 group-hover:w-full mb-8"></div>
+             <h4 class="text-xl font-bold mb-4 uppercase tracking-tighter">Vegan Artistry</h4>
+             <p class="opacity-60 text-sm leading-relaxed">Our inks are 100% cruelty-free and vegan, ensuring high pigment saturation without ethical compromise or harsh chemicals.</p>
+          </div>
+          <div class="group">
+             <div class="h-1 w-0 bg-antiqueGold transition-all duration-700 group-hover:w-full mb-8"></div>
+             <h4 class="text-xl font-bold mb-4 uppercase tracking-tighter">Luxury Metals</h4>
+             <p class="opacity-60 text-sm leading-relaxed">We source only implant-grade titanium and 14k/18k solid gold, hand-curated from the world's most prestigious jewelry designers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE EXPERIENCE -->
+<section class="py-32 bg-whiteMain dark:bg-blackMain transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 lg:px-8">
+
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+      <div class="max-w-xl">
+        <h2 class="text-antiqueGold font-black uppercase tracking-widest text-xs mb-4">
+          Our Studio Experience
+        </h2>
+        <h3 class="text-4xl md:text-5xl font-black tracking-tighter">
+          Where Art Meets <span class="italic font-serif text-antiqueGold">Precision</span>
+        </h3>
+      </div>
+      <a href="contact.html"
+         class="text-sm font-black uppercase tracking-widest border-b border-antiqueGold pb-2 hover:text-antiqueGold transition-all">
+        Schedule Visit
+      </a>
+    </div>
+
+    <!-- Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-[700px]">
+
+      <!-- Large Image -->
+      <div class="md:col-span-8 rounded-3xl overflow-hidden border border-antiqueGold/10 group relative">
+        <img src="/assets/Creative Chambersd.jpg"
+             class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+
+        <div class="absolute inset-0 bg-gradient-to-t from-blackMain/80 to-transparent 
+                    flex flex-col justify-end p-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <h5 class="text-whiteMain font-bold text-2xl mb-2">Creative Chambers</h5>
+          <p class="text-whiteMain/60">
+            Sound-treated private rooms designed for immersive artistic focus.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="md:col-span-4 grid grid-rows-2 gap-6">
+
+        <!-- Small Image -->
+        <div class="rounded-3xl overflow-hidden border border-antiqueGold/10 group relative">
+          <img src="/assets/Creative Chambers.jpg"
+               class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+        </div>
+
+        <!-- Feature Box -->
+        <div class="rounded-3xl overflow-hidden border border-antiqueGold/10 
+                    bg-deepBurgundy flex items-center justify-center text-center p-8">
+
+          <div>
+            <i class="fas fa-shield-alt text-antiqueGold text-4xl mb-6"></i>
+            <h5 class="text-whiteMain font-bold text-xl mb-4 uppercase tracking-tighter">
+              Sterile Protocol
+            </h5>
+            <p class="text-whiteMain/50 text-xs uppercase tracking-widest">
+              Hospital-grade sterilization & single-use equipment.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: THE ARTISTS (Fully Responsive) -->
+<section class="py-20 md:py-28 lg:py-32 bg-whiteMain dark:bg-blackMain transition-colors duration-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="mb-16 md:mb-20 lg:mb-24 max-w-3xl">
+      <h2 class="text-antiqueGold font-black uppercase tracking-[0.3em] text-xs mb-4">
+        The Collective
+      </h2>
+
+      <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight">
+        Crafted by Visionaries
+      </h3>
+
+      <p class="mt-4 md:mt-6 text-gray-500 dark:text-whiteMain/60 text-base md:text-lg">
+        Each artist brings a distinct philosophy, technique, and precision to every piece created within our studio.
+      </p>
+    </div>
+
+    <!-- Responsive Layout Wrapper -->
+    <div class="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-20">
+
+      <!-- ================= FEATURED ARTIST ================= -->
+      <div class="group">
+
+        <div class="relative overflow-hidden rounded-3xl">
+          <img src="/assets/gp3.jpg"
+               class="w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[600px] object-cover transition duration-700 group-hover:scale-105">
+
+          <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-10 lg:p-12 
+                      bg-gradient-to-t from-black/80 to-transparent">
+            <h4 class="text-whiteMain text-2xl sm:text-3xl md:text-4xl font-black mb-2 md:mb-3">
+              Arin Valen
+            </h4>
+            <p class="text-antiqueGold uppercase tracking-[0.3em] text-[10px] sm:text-xs">
+              Fine Line & Micro Realism
+            </p>
+          </div>
+        </div>
+
+        <p class="mt-6 md:mt-8 text-gray-600 dark:text-whiteMain/60 max-w-xl text-sm md:text-base leading-relaxed">
+          Known for precision and minimalist storytelling, Arin crafts ultra-fine linework tattoos
+          that blend subtle elegance with timeless detail.
+        </p>
+      </div>
+
+
+      <!-- ================= OTHER ARTISTS ================= -->
+      <div class="flex flex-col gap-10 md:gap-14 lg:gap-16">
+
+        <!-- Artist 2 -->
+        <div class="group flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+
+          <div class="w-full sm:w-1/2 overflow-hidden rounded-2xl">
+            <img src="/assets/gp4.jpg"
+                 class="w-full h-[250px] sm:h-[280px] md:h-[300px] object-cover transition duration-700 group-hover:scale-105">
+          </div>
+
+          <div class="sm:w-1/2">
+            <h4 class="text-xl md:text-2xl font-black tracking-tight mb-2 md:mb-3">
+              Nova Reyes
+            </h4>
+
+            <p class="text-antiqueGold text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-3 md:mb-4">
+              Blackwork & Geometry
+            </p>
+
+            <p class="text-gray-600 dark:text-whiteMain/60 text-sm md:text-base leading-relaxed">
+              Bold compositions rooted in symmetry and sacred geometry,
+              executed with powerful contrast and precision.
+            </p>
+          </div>
+
+        </div>
+
+
+        <!-- Artist 3 -->
+        <div class="group flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+
+          <div class="w-full sm:w-1/2 overflow-hidden rounded-2xl">
+            <img src="/assets/gp.jpg"
+                 class="w-full h-[250px] sm:h-[280px] md:h-[300px] object-cover transition duration-700 group-hover:scale-105">
+          </div>
+
+          <div class="sm:w-1/2">
+            <h4 class="text-xl md:text-2xl font-black tracking-tight mb-2 md:mb-3">
+              Kael Moreno
+            </h4>
+
+            <p class="text-antiqueGold text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-3 md:mb-4">
+              Portrait & Realism Expert
+            </p>
+
+            <p class="text-gray-600 dark:text-whiteMain/60 text-sm md:text-base leading-relaxed">
+              Hyper-realistic portrait tattoos capturing depth,
+              emotion, and cinematic intensity.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+    <!-- SECTION 6: THE COMMITMENT (CTA) -->
+    <section class="py-40 bg-blackMain relative overflow-hidden text-center">
+       <div class="absolute inset-0 z-0">
+          <div class="absolute inset-0 bg-deepBurgundy mix-blend-multiply opacity-40"></div>
+          <img src="/assets/por.avif" class="w-full h-full object-cover opacity-20">
+       </div>
+       <div class="relative z-10 max-w-4xl mx-auto px-4">
+          <h2 class="text-antiqueGold font-black uppercase tracking-[0.4em] text-[10px] mb-10">Start Your Journey</h2>
+          <h3 class="text-4xl md:text-7xl font-black text-whiteMain leading-tight mb-12 tracking-tighter">Become part of our <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-antiqueGold via-whiteMain to-antiqueGold">Living Portfolio</span></h3>
+          <div class="flex flex-col sm:flex-row justify-center gap-6">
+             <a href="contact.html" class="px-12 py-5 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm rounded-sm hover:bg-whiteMain transition-all shadow-2xl">Book Consultation</a>
+             <a href="index.html" class="px-12 py-5 border border-whiteMain/30 text-whiteMain font-bold uppercase tracking-widest text-sm rounded-sm hover:bg-whiteMain hover:text-blackMain transition-all">View Our Work</a>
+          </div>
+       </div>
+       <!-- Background Text Overlay -->
+       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20rem] font-black text-whiteMain/[0.02] select-none pointer-events-none">ATELIER</div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-blackMain pt-20 pb-10 text-whiteMain border-t border-antiqueGold/20">
+    <div class="mx-auto max-w-7xl px-4 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-whiteMain/10 pb-16">
+        <div>
+          <a href="#" class="flex items-center gap-3 mb-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold border border-antiqueGold/30">
+                <i class="fas fa-pen-nib text-lg"></i>
+            </span>
+            <div class="leading-tight">
+              <span class="block text-xl font-bold tracking-tight text-antiqueGold">Groww</span>
+              <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>
+            </div>
+          </a>
+          <p class="text-whiteMain/70 mb-6">Creating timeless art with precision, integrity, and innovation since 2008.</p>
+          <div class="flex gap-3">
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-antiqueGold font-bold mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="index.html" class="block hover:text-antiqueGold transition-colors">Home</a></li>
+            <li><a href="piercing.html" class="block hover:text-antiqueGold transition-colors">Piercing</a></li>
+            <li><a href="aftercare.html" class="block hover:text-antiqueGold transition-colors">Aftercare</a></li>
+            <li><a href="aboutus.html" class="block hover:text-antiqueGold transition-colors font-bold">About Us</a></li>
+            <li><a href="contact.html" class="block hover:text-antiqueGold transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Contact Us</h4>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70 leading-relaxed">
+                123 Art Avenue, Suite 100<br>
+                New York, NY 10001
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-phone text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70">+1 (555) 123-4567</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-envelope text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70">studio@growwpark.com</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Stay Updated</h4>
+          <p class="text-whiteMain/70 mb-4">Subscribe for art drops and studio updates.</p>
+          <form class="space-y-4" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Email address" class="w-full px-4 py-3 rounded-lg bg-deepBurgundy/20 border border-antiqueGold/20 focus:border-antiqueGold focus:outline-none text-whiteMain placeholder:text-whiteMain/40 transition-colors">
+            <button type="submit" class="w-full bg-antiqueGold text-blackMain font-bold py-3 rounded-lg hover:bg-deepBurgundy hover:text-whiteMain transition-all shadow-lg shadow-antiqueGold/10">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-whiteMain/40 text-sm">
+        <div>© 2026 Growwpark Body Art Group. All rights reserved.</div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-antiqueGold transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-antiqueGold transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    hamburger.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      const l1 = document.getElementById('line1');
+      const l2 = document.getElementById('line2');
+      const l3 = document.getElementById('line3');
+      
+      if (!isHidden) {
+        l1.style.transform = 'translateY(8px) rotate(45deg)';
+        l2.style.opacity = '0';
+        l3.style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+        l1.style.transform = 'none';
+        l2.style.opacity = '1';
+        l3.style.transform = 'none';
+      }
+    });
+
+    const themeBtns = [document.getElementById('themeToggleDesktop'), document.getElementById('themeToggleMobile')];
+    function setTheme(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-sun"></i>'; });
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-moon"></i>'; });
+      }
+    }
+    themeBtns.forEach(btn => btn && btn.addEventListener('click', () => setTheme(!htmlEl.classList.contains('dark'))));
+    const savedTheme = localStorage.getItem('theme');
+    setTheme(savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches));
+
+    const rtlBtns = [document.getElementById('rtlToggleDesktop'), document.getElementById('rtlToggleMobile')];
+    rtlBtns.forEach(btn => btn && btn.addEventListener('click', () => {
+      const currentDir = bodyEl.getAttribute('dir') || 'ltr';
+      const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+      bodyEl.setAttribute('dir', newDir);
+    }));
+  </script>
+</body>
+</html>

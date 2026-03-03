@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Piercing | Growwpark Body Art Studio</title>
+  <link rel="icon" type="image/jpeg" href="assets/growwpark_logo.jpg" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            blackMain: '#0B0B0B',
+            whiteMain: '#F5F5F5',
+            deepBurgundy: '#4A0E1A', 
+            antiqueGold: '#C6A75E',
+          },
+          fontFamily: {
+            'display': ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    #mobileMenu { transition: all 0.3s ease-in-out; }
+    [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0B0B0B; }
+    ::-webkit-scrollbar-thumb { background: #4A0E1A; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C6A75E; }
+
+    .jewelry-card:hover .jewelry-overlay { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
+
+  <!-- ============ HEADER (CONSISTENT WITH HOMEPAGE) ============ -->
+  <nav id="navbar" class="sticky top-0 z-50 transition-colors duration-300 bg-whiteMain/90 text-blackMain border-b border-gray-200 dark:bg-blackMain/90 dark:text-whiteMain dark:border-antiqueGold/20 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+      
+      <a href="index.html" class="flex items-center gap-2 shrink-0 group">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold shadow-lg group-hover:scale-110 transition-transform border border-antiqueGold/30">
+         <i class="fas fa-pen-nib text-lg"></i>
+        </span>
+        <div class="leading-tight">
+          <span class="block text-xl font-bold tracking-tight text-antiqueGold dark:text-antiqueGold">Groww</span>
+          <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>     
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <ul class="flex items-center gap-1 text-sm font-semibold">
+          <li class="relative group">
+            <button class="home-trigger flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Home</span>
+              <i class="fas fa-chevron-down text-[10px]"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-48 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="index.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 1</a></li>
+              <li><a href="homepage2.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="piercing.html" class="block rounded-md px-4 py-2 bg-deepBurgundy text-whiteMain font-bold shadow-md transition-colors border border-antiqueGold/20">Piercing</a></li>
+          <li><a href="aftercare.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Aftercare</a></li>
+          <li><a href="aboutus.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">About</a></li>
+          <li><a href="contact.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Contact</a></li>
+          <li class="relative group">
+            <button class="flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Dashboard</span>
+              <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-56 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="admin.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Admin Panel</a></li>
+              <li><a href="user.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">User Dashboard</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="ml-4 flex items-center gap-3 border-l border-gray-200 dark:border-whiteMain/10 pl-4">
+          <button id="themeToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button id="rtlToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+          <a href="login.html" class="ml-2 inline-flex items-center gap-2 rounded-md bg-antiqueGold px-5 py-2 text-sm font-bold text-whiteMain hover:bg-deepBurgundy transition-transform active:scale-95 shadow-lg shadow-antiqueGold/20">
+            <i class="fas fa-user-plus text-xs"></i>
+            <span>Register</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 lg:hidden">
+        <button id="themeToggleMobile" class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="hamburger" class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-md bg-deepBurgundy/10 dark:bg-whiteMain/5" aria-label="Toggle Menu">
+          <span id="line1" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line2" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line3" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+       <div id="mobileMenu" class="hidden border-t border-gray-100 bg-whiteMain dark:bg-blackMain dark:border-antiqueGold/10 lg:hidden overflow-hidden transition-all duration-300">
+      <div class="flex flex-col gap-1 p-4">
+        <details class="group">
+<summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">            <div class="flex items-center gap-4">
+              <i class="fas fa-home w-6"></i>
+              <span>Home</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+            <a href="index.html" class="py-2 hover:translate-x-2 transition-transform">Home 1</a>
+            <a href="homepage2.html" class="py-2 hover:translate-x-2 transition-transform">Home 2</a>
+          </div>
+        </details>
+        
+        <a href="piercing.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-bold bg-deepBurgundy text-whiteMain shadow-md border border-antiqueGold/30">
+  <i class="fas fa-ring text-antiqueGold w-6"></i> Piercing
+</a>
+        <a href="aftercare.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-hand-holding-medical text-deepBurgundy dark:text-antiqueGold w-6"></i> Aftercare
+        </a>
+        <a href="aboutus.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-info-circle text-deepBurgundy dark:text-antiqueGold w-6"></i> About
+        </a>
+        <a href="contact.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-envelope text-deepBurgundy dark:text-antiqueGold w-6"></i> Contact
+        </a>
+         <details class="group">
+  <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+    
+    <div class="flex items-center gap-4">
+      <i class="fas fa-gauge text-deepBurgundy dark:text-antiqueGold w-6"></i>
+      <span>Dashboard</span>
+    </div>
+
+    <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+  </summary>
+
+  <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+    <a href="admin.html" class="py-2 hover:translate-x-2 transition-transform">
+      Admin panel
+    </a>
+    <a href="user.html" class="py-2 hover:translate-x-2 transition-transform">
+      User Dashboard
+    </a>
+  </div>
+</details>
+        <div class="mt-4 pt-4 border-t border-gray-100 dark:border-whiteMain/10">
+          <button id="rtlToggleMobile" class="flex w-full items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <i class="fas fa-exchange-alt text-deepBurgundy dark:text-antiqueGold w-6"></i> Switch Direction (RTL)
+          </button>
+          <a href="login.html" class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-deepBurgundy py-4 text-center text-lg font-bold text-whiteMain active:scale-95 transition-transform border border-antiqueGold">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- SECTION 1: HERO BANNER -->
+    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden bg-blackMain">
+      <div class="absolute inset-0 z-0">
+        <img src="/assets/banner.jpg" class="w-full h-full object-cover opacity-50 brightness-75" alt="Piercing Studio">
+      </div>
+      <div class="relative z-10 text-center px-4">
+        <span class="inline-block text-antiqueGold font-bold tracking-[0.4em] uppercase text-xs mb-4">Precision & Elegance</span>
+        <h1 class="text-5xl md:text-7xl font-black text-whiteMain mb-6 tracking-tighter">The Art of the <span class="text-antiqueGold italic font-serif">Pierce</span></h1>
+        <p class="text-whiteMain/70 max-w-2xl mx-auto text-lg md:text-xl">Curated ear styling, facial accents, and luxury body jewelry in a clinical-grade environment.</p>
+        <div class="mt-10">
+          <a href="#pricing" class="px-10 py-4 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm hover:bg-whiteMain transition-all shadow-2xl">View Price List</a>
+        </div>
+      </div>
+    </section>
+<!-- ========================= -->
+<!-- PIERCING TYPES SECTION -->
+<!-- ========================= -->
+
+  <section class="py-24 bg-whiteMain dark:bg-blackMain transition-colors duration-300" id="piercing-categories">
+  <div class="max-w-7xl mx-auto px-4 lg:px-8">
+
+    <!-- SECTION HEADING -->
+    <div class="text-center mb-16">
+      <span class="text-antiqueGold font-bold tracking-[0.3em] uppercase text-xs mb-4 block">
+        curate your style
+      </span>
+      <h2 class="text-4xl md:text-5xl font-black mb-4">
+        piercing <span class="text-antiqueGold">collections</span>
+      </h2>
+      <p class="opacity-60 max-w-2xl mx-auto">
+        four distinct families — each designed to enhance your natural anatomy with precision jewelry.
+      </p>
+    </div>
+
+    <div class="space-y-20">
+
+      <!-- ================= 1️⃣ EAR ================= -->
+      <div>
+        <div class="flex items-baseline border-b border-antiqueGold/20 pb-4 mb-10">
+          <h3 class="text-3xl font-black flex items-center gap-3">
+            <span class="w-8 h-8 bg-deepBurgundy rounded-full flex items-center justify-center text-antiqueGold text-sm">①</span>
+            Ear <span class="text-antiqueGold">Piercings</span>
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+
+          <!-- LOBE -->
+          <div class="category-card bg-gray-50 dark:bg-whiteMain/5 rounded-3xl border border-black/5 dark:border-white/10 overflow-hidden hover:border-antiqueGold/50 transition flex flex-col h-full">
+            <div class="h-48 overflow-hidden">
+              <img src="/assets/lobe1.jpg"
+                   loading="lazy" class="w-full h-full object-cover" alt="Lobe">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h4 class="text-2xl font-black">Lobe</h4>
+              <p class="text-sm opacity-70 mt-3">
+                Classic foundation piercing. Quick heaeling and versatile styling.
+              </p>
+              <div class="mt-auto pt-6 flex justify-between items-center">
+                <span class="text-xl font-black text-antiqueGold">$40</span>
+<a href="piercing-details.html?id=lobe" class="text-sm font-bold hover:underline">details →</a>              </div>
+            </div>
+          </div>
+
+          <!-- HELIX -->
+          <div class="category-card bg-gray-50 dark:bg-whiteMain/5 rounded-3xl border border-black/5 dark:border-white/10 overflow-hidden hover:border-antiqueGold/50 transition flex flex-col h-full">
+            <div class="h-48 overflow-hidden">
+              <img src="/assets/Upper cartilage.jpg"
+                   loading="lazy" class="w-full h-full object-cover" alt="Helix">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h4 class="text-2xl font-black">Helix</h4>
+              <p class="text-sm opacity-70 mt-3">
+                Upper cartilage piercing perfect for hoops or studs.
+              </p>
+              <div class="mt-auto pt-6 flex justify-between items-center">
+                <span class="text-xl font-black text-antiqueGold">$50</span>
+<a href="piercing-details.html?id=helix" class="text-sm font-bold hover:underline">details →</a>              </div>
+            </div>
+          </div>
+
+          <!-- CARTILAGE -->
+          <div class="category-card bg-gray-50 dark:bg-whiteMain/5 rounded-3xl border border-black/5 dark:border-white/10 overflow-hidden hover:border-antiqueGold/50 transition flex flex-col h-full">
+            <div class="h-48 overflow-hidden">
+              <img src="/assets/Forward.jpg"
+                   loading="lazy" class="w-full h-full object-cover" alt="Cartilage">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h4 class="text-2xl font-black">Curated Cartilage</h4>
+              <p class="text-sm opacity-70 mt-3">
+                Forward helix, tragus, conch, daith, rook & more.
+              </p>
+              <div class="mt-auto pt-6 flex justify-between items-center">
+                <span class="text-xl font-black text-antiqueGold">$55</span>
+<a href="piercing-details.html?id=cartilage" class="text-sm font-bold hover:underline">details →</a>              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= 2️⃣ NOSE ================= -->
+      <div>
+        <div class="flex items-baseline border-b border-antiqueGold/20 pb-4 mb-10">
+          <h3 class="text-3xl font-black flex items-center gap-3">
+            <span class="w-8 h-8 bg-deepBurgundy rounded-full flex items-center justify-center text-antiqueGold text-sm">②</span>
+            Nose <span class="text-antiqueGold">Piercings</span>
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+
+          <!-- NOSTRIL -->
+          <div class="category-card bg-gray-50 dark:bg-whiteMain/5 rounded-3xl border overflow-hidden hover:border-antiqueGold/50 transition flex flex-col h-full">
+            <div class="h-48 overflow-hidden">
+              <img src="/assets/Nostril NosePiercing.jpg "
+                   loading="lazy" class="w-full h-full object-cover" alt="Nostril">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h4 class="text-2xl font-black">Nostril</h4>
+              <p class="text-sm opacity-70 mt-3">
+                Timeless facial accent — subtle studs or elegant hoops.
+              </p>
+              <div class="mt-auto pt-6 flex justify-between items-center">
+                <span class="text-xl font-black text-antiqueGold">$45</span>
+<a href="piercing-details.html?id=nostril" class="text-sm font-bold hover:underline">details →</a>              </div>
+            </div>
+          </div>
+
+          <!-- SEPTUM -->
+          <div class="category-card bg-gray-50 dark:bg-whiteMain/5 rounded-3xl border overflow-hidden hover:border-antiqueGold/50 transition flex flex-col h-full">
+            <div class="h-48 overflow-hidden">
+              <img src="/assets/Septum.png"
+                   loading="lazy" class="w-full h-full object-cover" alt="Septum">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h4 class="text-2xl font-black">Septum</h4>
+              <p class="text-sm opacity-70 mt-3">
+                Bold yet versatile. Hide or showcase with statement clickers.
+              </p>
+              <div class="mt-auto pt-6 flex justify-between items-center">
+                <span class="text-xl font-black text-antiqueGold">$60</span>
+<a href="piercing-details.html?id=septum" class="text-sm font-bold hover:underline">details →</a>              </div>
+            </div>
+          </div>
+
+          <!-- BRIDGE -->
+          <div class="category-card bg-gray-50 dark:bg-whiteMain/5 rounded-3xl border overflow-hidden hover:border-antiqueGold/50 transition flex flex-col h-full">
+            <div class="h-48 overflow-hidden">
+              <img src="/assets/Bridge.jpg"
+                   loading="lazy" class="w-full h-full object-cover" alt="Bridge">
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h4 class="text-2xl font-black">Bridge</h4>
+              <p class="text-sm opacity-70 mt-3">
+                Architectural placement for bold facial symmetry.
+              </p>
+              <div class="mt-auto pt-6 flex justify-between items-center">
+                <span class="text-xl font-black text-antiqueGold">$70</span>
+<a href="piercing-details.html?id=bridge" class="text-sm font-bold hover:underline">details →</a>              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    
+    
+    </div>
+
+    <div class="text-center mt-20 opacity-40 text-xs uppercase tracking-widest border-t border-black/5 dark:border-white/10 pt-8">
+      all procedures include implant-grade titanium initial jewelry · consultation always free
+    </div>
+
+  </div>
+</section>
+    <!-- SECTION 3: PIERCING TYPES (CATEGORIZED) -->
+    <section id="types" class="py-24 bg-gray-50 dark:bg-whiteMain/5 transition-colors duration-300">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-5xl font-black mb-4">Service <span class="text-antiqueGold">Menu</span></h2>
+          <p class="opacity-60 max-w-xl mx-auto">Explore our wide range of professional piercing services performed by master practitioners.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Category 1: Ear -->
+          <div class="bg-whiteMain dark:bg-blackMain p-8 rounded-3xl border border-black/5 dark:border-white/10 shadow-xl group hover:border-antiqueGold transition-all">
+            <div class="h-14 w-14 rounded-2xl bg-deepBurgundy/5 dark:bg-antiqueGold/10 flex items-center justify-center text-antiqueGold text-2xl mb-6 group-hover:bg-antiqueGold group-hover:text-blackMain transition-all">
+              <i class="fas fa-ear-listen"></i>
+            </div>
+            <h4 class="text-2xl font-black mb-4">Ear Curation</h4>
+            <ul class="space-y-3 opacity-70 text-sm">
+              <li>• Lobe & Upper Lobe</li>
+              <li>• Helix & Forward Helix</li>
+              <li>• Tragus & Antitragus</li>
+              <li>• Daith & Rook</li>
+              <li>• Industrial & Conch</li>
+            </ul>
+          </div>
+          <!-- Category 2: Facial -->
+          <div class="bg-whiteMain dark:bg-blackMain p-8 rounded-3xl border border-black/5 dark:border-white/10 shadow-xl group hover:border-antiqueGold transition-all">
+            <div class="h-14 w-14 rounded-2xl bg-deepBurgundy/5 dark:bg-antiqueGold/10 flex items-center justify-center text-antiqueGold text-2xl mb-6 group-hover:bg-antiqueGold group-hover:text-blackMain transition-all">
+              <i class="fas fa-user"></i>
+            </div>
+            <h4 class="text-2xl font-black mb-4">Facial Accents</h4>
+            <ul class="space-y-3 opacity-70 text-sm">
+              <li>• Nostril & Septum</li>
+              <li>• Eyebrow (Vertical/Horiz)</li>
+              <li>• Bridge (Erl)</li>
+              <li>• Lip (Labret, Medusa, Monroe)</li>
+              <li>• Tongue & Smiley</li>
+            </ul>
+          </div>
+          <!-- Category 3: Body -->
+          <div class="bg-whiteMain dark:bg-blackMain p-8 rounded-3xl border border-black/5 dark:border-white/10 shadow-xl group hover:border-antiqueGold transition-all">
+            <div class="h-14 w-14 rounded-2xl bg-deepBurgundy/5 dark:bg-antiqueGold/10 flex items-center justify-center text-antiqueGold text-2xl mb-6 group-hover:bg-antiqueGold group-hover:text-blackMain transition-all">
+              <i class="fas fa-venus-mars"></i>
+            </div>
+            <h4 class="text-2xl font-black mb-4">Body & Surface</h4>
+            <ul class="space-y-3 opacity-70 text-sm">
+              <li>• Navel (Standard/Floating)</li>
+              <li>• Nipple Piercings</li>
+              <li>• Dermal Anchors</li>
+              <li>• Surface Bars</li>
+              <li>• Genital (Consult required)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: JEWELRY COLLECTION (VAULT) -->
+    <section class="py-24 bg-whiteMain dark:bg-blackMain transition-colors duration-300">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div class="max-w-xl">
+            <h2 class="text-antiqueGold font-bold tracking-widest text-xs uppercase mb-4">The Jewelry Vault</h2>
+            <h3 class="text-4xl font-black">Luxury Metals & <span class="italic font-serif text-antiqueGold">Fine Gems</span></h3>
+          </div>
+          <button class="px-8 py-3 bg-blackMain dark:bg-whiteMain text-whiteMain dark:text-blackMain font-black text-xs uppercase tracking-widest hover:bg-antiqueGold transition-all">Request Custom Order</button>
+        </div>
+        
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Item 1 -->
+          <div class="jewelry-card relative group aspect-square rounded-2xl overflow-hidden bg-gray-100 dark:bg-whiteMain/5">
+            <img src="/assets/h1.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Jewelry">
+            <div class="jewelry-overlay absolute inset-0 bg-deepBurgundy/90 flex flex-col items-center justify-center p-6 opacity-0 translate-y-4 transition-all duration-300">
+              <h5 class="text-whiteMain font-bold text-center mb-2">14k Gold Marquise Solitaire</h5>
+              <span class="text-antiqueGold font-black text-sm">$280</span>
+            </div>
+          </div>
+          <!-- Item 2 -->
+          <div class="jewelry-card relative group aspect-square rounded-2xl overflow-hidden bg-gray-100 dark:bg-whiteMain/5">
+            <img src="/assets/Titanium Pave Clicker.webp" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Jewelry">
+            <div class="jewelry-overlay absolute inset-0 bg-deepBurgundy/90 flex flex-col items-center justify-center p-6 opacity-0 translate-y-4 transition-all duration-300">
+              <h5 class="text-whiteMain font-bold text-center mb-2">Titanium Pave Clicker</h5>
+              <span class="text-antiqueGold font-black text-sm">$120</span>
+            </div>
+          </div>
+          <!-- Item 3 -->
+          <div class="jewelry-card relative group aspect-square rounded-2xl overflow-hidden bg-gray-100 dark:bg-whiteMain/5">
+            <img src="/assets/hhq.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Jewelry">
+            <div class="jewelry-overlay absolute inset-0 bg-deepBurgundy/90 flex flex-col items-center justify-center p-6 opacity-0 translate-y-4 transition-all duration-300">
+              <h5 class="text-whiteMain font-bold text-center mb-2">Opal Teardrop Stud</h5>
+              <span class="text-antiqueGold font-black text-sm">$95</span>
+            </div>
+          </div>
+          <!-- Item 4 -->
+          <div class="jewelry-card relative group aspect-square rounded-2xl overflow-hidden bg-gray-100 dark:bg-whiteMain/5">
+            <img src="/assets/ha.avif" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Jewelry">
+            <div class="jewelry-overlay absolute inset-0 bg-deepBurgundy/90 flex flex-col items-center justify-center p-6 opacity-0 translate-y-4 transition-all duration-300">
+              <h5 class="text-whiteMain font-bold text-center mb-2">Solid 18k Flat Disk</h5>
+              <span class="text-antiqueGold font-black text-sm">$150</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: STERILE STANDARDS (DETAIL) -->
+    <section class="py-24 bg-deepBurgundy text-whiteMain">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <h2 class="text-antiqueGold font-black uppercase tracking-[0.3em] text-xs mb-8">Clinical Integrity</h2>
+        <h3 class="text-4xl md:text-6xl font-black mb-12 leading-tight">Your Health is our <br> <span class="text-antiqueGold italic">Masterpiece</span></h3>
+        <div class="grid md:grid-cols-3 gap-12 text-left">
+          <div class="space-y-4">
+            <div class="h-px w-12 bg-antiqueGold"></div>
+            <h4 class="font-bold uppercase tracking-widest text-sm">Disposable Tools</h4>
+            <p class="text-sm opacity-60 leading-relaxed">We utilize single-use, medical-grade needles for every procedure. Nothing that touches your skin is ever reused.</p>
+          </div>
+          <div class="space-y-4">
+            <div class="h-px w-12 bg-antiqueGold"></div>
+            <h4 class="font-bold uppercase tracking-widest text-sm">Ultrasonic Prep</h4>
+            <p class="text-sm opacity-60 leading-relaxed">Our multi-stage cleaning process includes ultrasonic vibration to remove microscopic contaminants before autoclaving.</p>
+          </div>
+          <div class="space-y-4">
+            <div class="h-px w-12 bg-antiqueGold"></div>
+            <h4 class="font-bold uppercase tracking-widest text-sm">Biocompatibility</h4>
+            <p class="text-sm opacity-60 leading-relaxed">Only APP-approved materials are used for initial piercings to prevent nickel allergies and ensure swift healing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: PRICING TABLE -->
+    <section id="pricing" class="py-24 bg-whiteMain dark:bg-blackMain transition-colors duration-300">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-5xl font-black mb-4">Service <span class="text-antiqueGold">Investment</span></h2>
+          <p class="opacity-60 italic">Note: Prices cover procedure fee only. Jewelry is selected and priced separately based on material choice.</p>
+        </div>
+        
+        <div class="space-y-4">
+          <!-- Item -->
+          <div class="flex justify-between items-center p-6 border-b border-black/10 dark:border-white/10 group hover:bg-deepBurgundy/5 transition-all">
+            <div>
+              <h5 class="font-bold text-lg">Single Ear Lobe</h5>
+              <p class="text-xs opacity-50 uppercase tracking-widest">15 Minute Session</p>
+            </div>
+            <span class="text-xl font-black text-antiqueGold">$40</span>
+          </div>
+          <!-- Item -->
+          <div class="flex justify-between items-center p-6 border-b border-black/10 dark:border-white/10 group hover:bg-deepBurgundy/5 transition-all">
+            <div>
+              <h5 class="font-bold text-lg">Double Lobe (Pair)</h5>
+              <p class="text-xs opacity-50 uppercase tracking-widest">30 Minute Session</p>
+            </div>
+            <span class="text-xl font-black text-antiqueGold">$70</span>
+          </div>
+          <!-- Item -->
+          <div class="flex justify-between items-center p-6 border-b border-black/10 dark:border-white/10 group hover:bg-deepBurgundy/5 transition-all">
+            <div>
+              <h5 class="font-bold text-lg">Cartilage / Helix / Tragus</h5>
+              <p class="text-xs opacity-50 uppercase tracking-widest">Professional placement</p>
+            </div>
+            <span class="text-xl font-black text-antiqueGold">$50</span>
+          </div>
+          <!-- Item -->
+          <div class="flex justify-between items-center p-6 border-b border-black/10 dark:border-white/10 group hover:bg-deepBurgundy/5 transition-all">
+            <div>
+              <h5 class="font-bold text-lg">Facial (Nostril, Septum, Lip)</h5>
+              <p class="text-xs opacity-50 uppercase tracking-widest">Precision anatomical alignment</p>
+            </div>
+            <span class="text-xl font-black text-antiqueGold">$60</span>
+          </div>
+          <!-- Item -->
+          <div class="flex justify-between items-center p-6 border-b border-black/10 dark:border-white/10 group hover:bg-deepBurgundy/5 transition-all">
+            <div>
+              <h5 class="font-bold text-lg">Advanced (Daith, Industrial, Bridge)</h5>
+              <p class="text-xs opacity-50 uppercase tracking-widest">Technical Master-level procedure</p>
+            </div>
+            <span class="text-xl font-black text-antiqueGold">$75</span>
+          </div>
+        </div>
+
+        <div class="mt-16 p-10 bg-gray-50 dark:bg-whiteMain/5 rounded-3xl border border-antiqueGold/20 text-center">
+          <h4 class="text-2xl font-bold mb-4">Ready to start your curation?</h4>
+          <p class="opacity-60 mb-8">Walk-ins are welcome for jewelry changes, but we highly recommend booking for new procedures.</p>
+          <a href="contact.html" class="inline-block px-12 py-5 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm shadow-xl hover:bg-deepBurgundy hover:text-whiteMain transition-all">Book Appointment</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER (EXACTLY AS PROVIDED) ============ -->
+  <footer class="bg-blackMain pt-20 pb-10 text-whiteMain border-t border-antiqueGold/20">
+    <div class="mx-auto max-w-7xl px-4 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-whiteMain/10 pb-16">
+        <div>
+          <a href="#" class="flex items-center gap-3 mb-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold border border-antiqueGold/30">
+                <i class="fas fa-pen-nib text-lg"></i>
+            </span>
+            <div class="leading-tight">
+              <span class="block text-xl font-bold tracking-tight text-antiqueGold">Groww</span>
+              <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>
+            </div>
+          </a>
+          <p class="text-whiteMain/70 mb-6">Building the future with precision, integrity, and innovation since 2008.</p>
+          <div class="flex gap-3">
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-antiqueGold font-bold mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="index.html" class="block hover:text-antiqueGold transition-colors">Home</a></li>
+            <li><a href="piercing.html" class="block hover:text-antiqueGold transition-colors">Piercing</a></li>
+            <li><a href="aftercare.html" class="block hover:text-antiqueGold transition-colors">AfterCare</a></li>
+            <li><a href="aboutus.html" class="block hover:text-antiqueGold transition-colors">About Us</a></li>
+            <li><a href="contact.html" class="block hover:text-antiqueGold transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+       <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Contact Us</h4>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70 leading-relaxed">
+                123 Art Avenue, Suite 100<br>
+                New York, NY 10001
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-phone text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70">+1 (555) 123-4567</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-envelope text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70">studio@growwpark.com</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Stay Updated</h4>
+          <p class="text-whiteMain/70 mb-4">Subscribe for art drops and studio updates.</p>
+          <form class="space-y-4" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Email address" class="w-full px-4 py-3 rounded-lg bg-deepBurgundy/20 border border-antiqueGold/20 focus:border-antiqueGold focus:outline-none text-whiteMain placeholder:text-whiteMain/40 transition-colors">
+            <button type="submit" class="w-full bg-antiqueGold text-blackMain font-bold py-3 rounded-lg hover:bg-deepBurgundy hover:text-whiteMain transition-all shadow-lg shadow-antiqueGold/10">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-whiteMain/40 text-sm">
+        <div>© 2026 Growwpark Body Art Group. All rights reserved.</div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-antiqueGold transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-antiqueGold transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    const themeBtns = [document.getElementById('themeToggleDesktop'), document.getElementById('themeToggleMobile')];
+    function setTheme(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-sun"></i>'; });
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-moon"></i>'; });
+      }
+    }
+    themeBtns.forEach(btn => btn && btn.addEventListener('click', () => setTheme(!htmlEl.classList.contains('dark'))));
+    const savedTheme = localStorage.getItem('theme');
+    setTheme(savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches));
+
+    const rtlBtns = [document.getElementById('rtlToggleDesktop'), document.getElementById('rtlToggleMobile')];
+    rtlBtns.forEach(btn => btn && btn.addEventListener('click', () => {
+      const currentDir = bodyEl.getAttribute('dir') || 'ltr';
+      const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+      bodyEl.setAttribute('dir', newDir);
+    }));
+  </script>
+</body>
+</html>

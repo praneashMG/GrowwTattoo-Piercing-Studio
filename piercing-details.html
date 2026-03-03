@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Piercing Details | Growwpark Body Art Studio</title>
+  <link rel="icon" type="image/jpeg" href="assets/growwpark_logo.jpg" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            blackMain: '#0B0B0B',
+            whiteMain: '#F5F5F5',
+            deepBurgundy: '#4A0E1A', 
+            antiqueGold: '#C6A75E',
+          },
+          fontFamily: {
+            'display': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'fadeIn': 'fadeIn 0.5s ease-in-out',
+            'slideUp': 'slideUp 0.6s ease-out',
+            'pulse-slow': 'pulse 3s infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    #mobileMenu { transition: all 0.3s ease-in-out; }
+    [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0B0B0B; }
+    ::-webkit-scrollbar-thumb { background: #4A0E1A; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C6A75E; }
+
+    .pain-bar {
+      height: 6px;
+      width: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 100px;
+      transition: all 0.3s ease;
+    }
+    .pain-bar.active {
+      background: #C6A75E;
+    }
+    .dark .pain-bar {
+      background: rgba(255,255,255,0.1);
+    }
+    .dark .pain-bar.active {
+      background: #C6A75E;
+    }
+
+    /* Age Verification Popup */
+    .age-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 11, 11, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    .age-popup.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .age-popup-content {
+      max-width: 500px;
+      width: 90%;
+      background: #0B0B0B;
+      border: 1px solid rgba(198, 167, 94, 0.3);
+      border-radius: 32px;
+      padding: 40px;
+      text-align: center;
+      animation: slideUp 0.6s ease-out;
+    }
+
+    /* Artist Portfolio Cards */
+    .artist-card {
+      transition: all 0.3s ease;
+    }
+    .artist-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -15px rgba(74, 14, 26, 0.3);
+    }
+    .artist-card:hover .artist-image {
+      transform: scale(1.05);
+    }
+    .artist-image {
+      transition: transform 0.5s ease;
+    }
+
+    /* Style Filters */
+    .style-filter {
+      transition: all 0.2s ease;
+    }
+    .style-filter.active {
+      background: #4A0E1A;
+      color: #C6A75E;
+      border-color: #C6A75E;
+    }
+
+    /* Calendar Styles */
+    .calendar-day {
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .calendar-day:hover:not(.unavailable) {
+      background: #4A0E1A;
+      color: #C6A75E;
+    }
+    .calendar-day.selected {
+      background: #C6A75E;
+      color: #0B0B0B;
+    }
+    .calendar-day.unavailable {
+      opacity: 0.3;
+      cursor: not-allowed;
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Portfolio Image Grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .portfolio-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 16px;
+      position: relative;
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .portfolio-item:hover img {
+      transform: scale(1.1);
+    }
+    .portfolio-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(11,11,11,0.9), transparent);
+      padding: 20px;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
+
+  <!-- ============ AGE VERIFICATION POPUP ============ -->
+  <div id="agePopup" class="age-popup">
+    <div class="age-popup-content">
+      <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-deepBurgundy flex items-center justify-center">
+        <i class="fas fa-id-card text-4xl text-antiqueGold"></i>
+      </div>
+      <h2 class="text-3xl font-black mb-4">Age Verification</h2>
+      <p class="opacity-70 mb-8">You must be 18 or older to view piercing galleries and book appointments. Please verify your age to continue.</p>
+      
+      <div class="space-y-4">
+        <button onclick="verifyAge(true)" class="w-full px-8 py-4 bg-antiqueGold text-blackMain font-black uppercase tracking-widest hover:bg-deepBurgundy hover:text-whiteMain transition-all rounded-full">
+          <i class="fas fa-check mr-2"></i> I AM 18 OR OLDER
+        </button>
+        <button onclick="verifyAge(false)" class="w-full px-8 py-4 border-2 border-antiqueGold/30 text-antiqueGold font-black uppercase tracking-widest hover:bg-deepBurgundy/20 transition-all rounded-full">
+          <i class="fas fa-times mr-2"></i> I AM UNDER 18
+        </button>
+      </div>
+      
+      <p class="text-xs opacity-40 mt-6">By entering, you agree to our Terms of Service and Privacy Policy. Parental consent required for minors with valid ID.</p>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <nav id="navbar" class="sticky top-0 z-50 transition-colors duration-300 bg-whiteMain/90 text-blackMain border-b border-gray-200 dark:bg-blackMain/90 dark:text-whiteMain dark:border-antiqueGold/20 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+      
+      <a href="index.html" class="flex items-center gap-2 shrink-0 group">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold shadow-lg group-hover:scale-110 transition-transform border border-antiqueGold/30">
+         <i class="fas fa-pen-nib text-lg"></i>
+        </span>
+        <div class="leading-tight">
+          <span class="block text-xl font-bold tracking-tight text-antiqueGold dark:text-antiqueGold">Groww</span>
+          <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>     
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <ul class="flex items-center gap-1 text-sm font-semibold">
+          <li class="relative group">
+            <button class="home-trigger flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Home</span>
+              <i class="fas fa-chevron-down text-[10px]"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-48 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="index.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 1</a></li>
+              <li><a href="homepage2.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="piercing.html" class="block rounded-md px-4 py-2 bg-deepBurgundy text-whiteMain font-bold shadow-md transition-colors border border-antiqueGold/20">Piercing</a></li>
+          <li><a href="aftercare.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Aftercare</a></li>
+          <li><a href="aboutus.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">About</a></li>
+          <li><a href="contact.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Contact</a></li>
+          <li class="relative group">
+            <button class="flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Dashboard</span>
+              <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-56 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="admin.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Admin Panel</a></li>
+              <li><a href="user.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">User Dashboard</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="ml-4 flex items-center gap-3 border-l border-gray-200 dark:border-whiteMain/10 pl-4">
+          <button id="themeToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button id="rtlToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+          <a href="login.html" class="ml-2 inline-flex items-center gap-2 rounded-md bg-antiqueGold px-5 py-2 text-sm font-bold text-whiteMain hover:bg-deepBurgundy transition-transform active:scale-95 shadow-lg shadow-antiqueGold/20">
+            <i class="fas fa-user-plus text-xs"></i>
+            <span>Register</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 lg:hidden">
+        <button id="themeToggleMobile" class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="hamburger" class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-md bg-deepBurgundy/10 dark:bg-whiteMain/5" aria-label="Toggle Menu">
+          <span id="line1" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line2" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line3" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden border-t border-gray-100 bg-whiteMain dark:bg-blackMain dark:border-antiqueGold/10 lg:hidden overflow-hidden transition-all duration-300">
+      <div class="flex flex-col gap-1 p-4">
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-home w-6"></i>
+              <span>Home</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+            <a href="index.html" class="py-2 hover:translate-x-2 transition-transform">Home 1</a>
+            <a href="homepage2.html" class="py-2 hover:translate-x-2 transition-transform">Home 2</a>
+          </div>
+        </details>
+        
+        <a href="piercing.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-bold bg-deepBurgundy text-whiteMain shadow-md border border-antiqueGold/30">
+          <i class="fas fa-ring text-antiqueGold w-6"></i> Piercing
+        </a>
+        <a href="aftercare.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-hand-holding-medical text-deepBurgundy dark:text-antiqueGold w-6"></i> Aftercare
+        </a>
+        <a href="aboutus.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-info-circle text-deepBurgundy dark:text-antiqueGold w-6"></i> About
+        </a>
+        <a href="contact.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-envelope text-deepBurgundy dark:text-antiqueGold w-6"></i> Contact
+        </a>
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-gauge text-deepBurgundy dark:text-antiqueGold w-6"></i>
+              <span>Dashboard</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+            <a href="admin.html" class="py-2 hover:translate-x-2 transition-transform">Admin panel</a>
+            <a href="user.html" class="py-2 hover:translate-x-2 transition-transform">User Dashboard</a>
+          </div>
+        </details>
+        <div class="mt-4 pt-4 border-t border-gray-100 dark:border-whiteMain/10">
+          <button id="rtlToggleMobile" class="flex w-full items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <i class="fas fa-exchange-alt text-deepBurgundy dark:text-antiqueGold w-6"></i> Switch Direction (RTL)
+          </button>
+          <a href="login.html" class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-deepBurgundy py-4 text-center text-lg font-bold text-whiteMain active:scale-95 transition-transform border border-antiqueGold">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="min-h-screen py-12 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      
+      <!-- Dynamic Content Area -->
+      <div id="content-area"></div>
+
+      <!-- ARTIST PORTFOLIO SECTION (shown after age verification) -->
+      <div id="artistPortfolio" class="mt-24 hidden">
+        <div class="border-t border-antiqueGold/20 pt-16">
+          
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <span class="text-antiqueGold font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Curated by Masters</span>
+            <h2 class="text-4xl md:text-5xl font-black mb-4">
+              Artist <span class="text-antiqueGold">Portfolios</span>
+            </h2>
+            <p class="opacity-60 max-w-2xl mx-auto">Browse work by our resident artists, filtered by their signature styles and specialties.</p>
+          </div>
+
+        
+
+          <!-- Artist Cards Grid -->
+          <div class="grid md:grid-cols-3 gap-8 mb-16">
+            
+            <!-- Artist 1: Elena Voss -->
+            <div class="artist-card bg-gray-50 dark:bg-whiteMain/5 rounded-3xl border border-antiqueGold/10 overflow-hidden">
+              <div class="h-64 overflow-hidden">
+                <img src="/assets/w1.jpg" 
+                     class="artist-image w-full h-full object-cover" alt="Elena Voss">
+              </div>
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 class="text-2xl font-black">Elena Voss</h3>
+                    <p class="text-antiqueGold text-sm font-bold uppercase tracking-wider">Senior Piercer · 12 yrs</p>
+                  </div>
+                  <span class="px-3 py-1 bg-deepBurgundy/20 text-antiqueGold rounded-full text-xs font-bold">Minimal</span>
+                </div>
+                <p class="opacity-60 text-sm mb-4">Specializes in symmetrical ear curation and delicate gemstone placements. APP member since 2016.</p>
+                <div class="flex gap-2 mb-4">
+                  <span class="text-xs px-2 py-1 bg-deepBurgundy/10 dark:bg-whiteMain/5 rounded-full">Lobe</span>
+                  <span class="text-xs px-2 py-1 bg-deepBurgundy/10 dark:bg-whiteMain/5 rounded-full">Helix</span>
+                  <span class="text-xs px-2 py-1 bg-deepBurgundy/10 dark:bg-whiteMain/5 rounded-full">Daith</span>
+                </div>
+                <button onclick="showArtistBooking('Elena Voss')" class="w-full px-4 py-3 bg-antiqueGold text-blackMain font-bold rounded-full hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+                  <i class="far fa-calendar-alt mr-2"></i> Book with Elena
+                </button>
+              </div>
+            </div>
+
+            <!-- Artist 2: Marcus Chen -->
+            <div class="artist-card bg-gray-50 dark:bg-whiteMain/5 rounded-3xl border border-antiqueGold/10 overflow-hidden">
+              <div class="h-64 overflow-hidden">
+                <img src="/assets/w2.1.webp"
+                     class="artist-image w-full h-full object-cover" alt="Marcus Chen">
+              </div>
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 class="text-2xl font-black">Marcus Chen</h3>
+                    <p class="text-antiqueGold text-sm font-bold uppercase tracking-wider">Master Piercer · 15 yrs</p>
+                  </div>
+                  <span class="px-3 py-1 bg-deepBurgundy/20 text-antiqueGold rounded-full text-xs font-bold">Industrial</span>
+                </div>
+                <p class="opacity-60 text-sm mb-4">Known for complex industrials, surface work, and custom jewelry fabrication. International award winner.</p>
+                <div class="flex gap-2 mb-4">
+                  <span class="text-xs px-2 py-1 bg-deepBurgundy/10 dark:bg-whiteMain/5 rounded-full">Industrial</span>
+                  <span class="text-xs px-2 py-1 bg-deepBurgundy/10 dark:bg-whiteMain/5 rounded-full">Bridge</span>
+                  <span class="text-xs px-2 py-1 bg-deepBurgundy/10 dark:bg-whiteMain/5 rounded-full">Surface</span>
+                </div>
+                <button onclick="showArtistBooking('Marcus Chen')" class="w-full px-4 py-3 bg-antiqueGold text-blackMain font-bold rounded-full hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+                  <i class="far fa-calendar-alt mr-2"></i> Book with Marcus
+                </button>
+              </div>
+            </div>
+
+            <!-- Artist 3: Sofia Reyes -->
+            <div class="artist-card bg-gray-50 dark:bg-whiteMain/5 rounded-3xl border border-antiqueGold/10 overflow-hidden">
+              <div class="h-64 overflow-hidden">
+                <img src="/assets/w3.jpg" 
+                     class="artist-image w-full h-full object-cover" alt="Sofia Reyes">
+              </div>
+              <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 class="text-2xl font-black">Sofia Reyes</h3>
+                    <p class="text-antiqueGold text-sm font-bold uppercase tracking-wider">Senior Piercer · 8 yrs</p>
+                  </div>
+                  <span class="px-3 py-1 bg-deepBurgundy/20 text-antiqueGold rounded-full text-xs font-bold">Ornate</span>
+                </div>
+                <p class="opacity-60 text-sm mb-4">Creates story-driven earscapes with vintage and custom-made pieces. Focus on gold and natural gemstones.</p>
+                <div class="flex gap-2 mb-4">
+                  <span class="text-xs px-2 py-1 bg-deepBurgundy/10 dark:bg-whiteMain/5 rounded-full">Rook</span>
+                  <span class="text-xs px-2 py-1 bg-deepBurgundy/10 dark:bg-whiteMain/5 rounded-full">Conch</span>
+                  <span class="text-xs px-2 py-1 bg-deepBurgundy/10 dark:bg-whiteMain/5 rounded-full">Forward Helix</span>
+                </div>
+                <button onclick="showArtistBooking('Sofia Reyes')" class="w-full px-4 py-3 bg-antiqueGold text-blackMain font-bold rounded-full hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+                  <i class="far fa-calendar-alt mr-2"></i> Book with Sofia
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portfolio Gallery Grid -->
+          <h3 class="text-2xl font-black mb-8">Featured <span class="text-antiqueGold">Work</span></h3>
+          <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Portfolio Items (filtered by data-style) -->
+            <div class="portfolio-item" data-style="minimal">
+              <img src="/assets/a1.jpg" alt="Minimal Lobe">
+              <div class="portfolio-overlay">
+                <h4 class="font-bold">Triple Lobe</h4>
+                <p class="text-xs opacity-80">by Elena Voss · 14k gold</p>
+              </div>
+            </div>
+            <div class="portfolio-item" data-style="gemstone">
+              <img src="/assets/a2.jpg" alt="Gemstone Helix">
+              <div class="portfolio-overlay">
+                <h4 class="font-bold">Opal Helix</h4>
+                <p class="text-xs opacity-80">by Sofia Reyes · Australian opal</p>
+              </div>
+            </div>
+            <div class="portfolio-item" data-style="industrial">
+              <img src="/assets/a3.avif" alt="Industrial">
+              <div class="portfolio-overlay">
+                <h4 class="font-bold">Custom Industrial</h4>
+                <p class="text-xs opacity-80">by Marcus Chen · Titanium</p>
+              </div>
+            </div>
+            <div class="portfolio-item" data-style="curated">
+              <img src="/assets/a4.jpg" alt="Curated Ear">
+              <div class="portfolio-overlay">
+                <h4 class="font-bold">Full Ear Curation</h4>
+                <p class="text-xs opacity-80">by Elena Voss · Mixed metals</p>
+              </div>
+            </div>
+            <div class="portfolio-item" data-style="ornate">
+              <img src="/assets/a5.jpg" alt="Ornate Nostril">
+              <div class="portfolio-overlay">
+                <h4 class="font-bold">Vintage Nostril</h4>
+                <p class="text-xs opacity-80">by Sofia Reyes · 18k gold</p>
+              </div>
+            </div>
+            <div class="portfolio-item" data-style="minimal">
+              <img src="/assets/a6.jpg" alt="Minimal Septum">
+              <div class="portfolio-overlay">
+                <h4 class="font-bold">Hidden Septum</h4>
+                <p class="text-xs opacity-80">by Marcus Chen · Titanium retainer</p>
+              </div>
+            </div>
+            <div class="portfolio-item" data-style="gemstone">
+              <img src="/assets/a7.webp" alt="Gemstone Bridge">
+              <div class="portfolio-overlay">
+                <h4 class="font-bold">Diamond Bridge</h4>
+                <p class="text-xs opacity-80">by Elena Voss · Micro-pave</p>
+              </div>
+            </div>
+            <div class="portfolio-item" data-style="curated">
+              <img src="/assets/a8.webp" alt="Curated Cartilage">
+              <div class="portfolio-overlay">
+                <h4 class="font-bold">Constellation Ear</h4>
+                <p class="text-xs opacity-80">by Sofia Reyes · Mixed gems</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Booking Calendar Section -->
+          <div id="bookingCalendar" class="mt-20 hidden">
+            <div class="bg-gray-50 dark:bg-whiteMain/5 rounded-3xl p-8 border border-antiqueGold/20">
+              <h3 class="text-2xl font-black mb-2">Book with <span id="selectedArtist" class="text-antiqueGold">an artist</span></h3>
+              <p class="opacity-60 mb-8">Select an available date for your consultation or procedure.</p>
+              
+              <!-- Calendar Placeholder (dynamic) -->
+              <div class="grid grid-cols-7 gap-2 mb-4">
+                <div class="text-center text-xs font-bold uppercase opacity-40">Su</div>
+                <div class="text-center text-xs font-bold uppercase opacity-40">Mo</div>
+                <div class="text-center text-xs font-bold uppercase opacity-40">Tu</div>
+                <div class="text-center text-xs font-bold uppercase opacity-40">We</div>
+                <div class="text-center text-xs font-bold uppercase opacity-40">Th</div>
+                <div class="text-center text-xs font-bold uppercase opacity-40">Fr</div>
+                <div class="text-center text-xs font-bold uppercase opacity-40">Sa</div>
+              </div>
+              <div class="grid grid-cols-7 gap-2">
+                <!-- Sample Calendar Days -->
+                <div class="calendar-day unavailable p-3 text-center rounded-lg">1</div>
+                <div class="calendar-day unavailable p-3 text-center rounded-lg">2</div>
+                <div class="calendar-day p-3 text-center rounded-lg">3</div>
+                <div class="calendar-day p-3 text-center rounded-lg">4</div>
+                <div class="calendar-day p-3 text-center rounded-lg">5</div>
+                <div class="calendar-day p-3 text-center rounded-lg">6</div>
+                <div class="calendar-day p-3 text-center rounded-lg">7</div>
+                <div class="calendar-day p-3 text-center rounded-lg">8</div>
+                <div class="calendar-day p-3 text-center rounded-lg">9</div>
+                <div class="calendar-day p-3 text-center rounded-lg">10</div>
+                <div class="calendar-day p-3 text-center rounded-lg">11</div>
+                <div class="calendar-day p-3 text-center rounded-lg">12</div>
+                <div class="calendar-day p-3 text-center rounded-lg">13</div>
+                <div class="calendar-day p-3 text-center rounded-lg">14</div>
+                <div class="calendar-day p-3 text-center rounded-lg">15</div>
+                <div class="calendar-day p-3 text-center rounded-lg">16</div>
+                <div class="calendar-day p-3 text-center rounded-lg">17</div>
+                <div class="calendar-day p-3 text-center rounded-lg">18</div>
+                <div class="calendar-day p-3 text-center rounded-lg">19</div>
+                <div class="calendar-day p-3 text-center rounded-lg">20</div>
+                <div class="calendar-day p-3 text-center rounded-lg">21</div>
+                <div class="calendar-day p-3 text-center rounded-lg">22</div>
+                <div class="calendar-day p-3 text-center rounded-lg">23</div>
+                <div class="calendar-day p-3 text-center rounded-lg">24</div>
+                <div class="calendar-day p-3 text-center rounded-lg">25</div>
+                <div class="calendar-day p-3 text-center rounded-lg">26</div>
+                <div class="calendar-day p-3 text-center rounded-lg">27</div>
+                <div class="calendar-day p-3 text-center rounded-lg">28</div>
+                <div class="calendar-day p-3 text-center rounded-lg">29</div>
+                <div class="calendar-day p-3 text-center rounded-lg">30</div>
+                <div class="calendar-day p-3 text-center rounded-lg">31</div>
+              </div>
+              <div class="mt-6 flex justify-end">
+                <button class="px-8 py-3 bg-antiqueGold text-blackMain font-bold rounded-full hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+                  Confirm Selection
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-blackMain pt-20 pb-10 text-whiteMain border-t border-antiqueGold/20">
+    <div class="mx-auto max-w-7xl px-4 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-whiteMain/10 pb-16">
+        <div>
+          <a href="#" class="flex items-center gap-3 mb-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold border border-antiqueGold/30">
+                <i class="fas fa-pen-nib text-lg"></i>
+            </span>
+            <div class="leading-tight">
+              <span class="block text-xl font-bold tracking-tight text-antiqueGold">Groww</span>
+              <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>
+            </div>
+          </a>
+          <p class="text-whiteMain/70 mb-6">Building the future with precision, integrity, and innovation since 2008.</p>
+          <div class="flex gap-3">
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-antiqueGold font-bold mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="index.html" class="block hover:text-antiqueGold transition-colors">Home</a></li>
+            <li><a href="piercing.html" class="block hover:text-antiqueGold transition-colors">Piercing</a></li>
+            <li><a href="aftercare.html" class="block hover:text-antiqueGold transition-colors">AfterCare</a></li>
+            <li><a href="aboutus.html" class="block hover:text-antiqueGold transition-colors">About Us</a></li>
+            <li><a href="contact.html" class="block hover:text-antiqueGold transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+       <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Contact Us</h4>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70 leading-relaxed">
+                123 Art Avenue, Suite 100<br>
+                New York, NY 10001
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-phone text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70">+1 (555) 123-4567</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-envelope text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70">studio@growwpark.com</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Stay Updated</h4>
+          <p class="text-whiteMain/70 mb-4">Subscribe for art drops and studio updates.</p>
+          <form class="space-y-4" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Email address" class="w-full px-4 py-3 rounded-lg bg-deepBurgundy/20 border border-antiqueGold/20 focus:border-antiqueGold focus:outline-none text-whiteMain placeholder:text-whiteMain/40 transition-colors">
+            <button type="submit" class="w-full bg-antiqueGold text-blackMain font-bold py-3 rounded-lg hover:bg-deepBurgundy hover:text-whiteMain transition-all shadow-lg shadow-antiqueGold/10">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-whiteMain/40 text-sm">
+        <div>© 2026 Growwpark Body Art Group. All rights reserved.</div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-antiqueGold transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-antiqueGold transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ========== AGE VERIFICATION ==========
+    function verifyAge(isOver18) {
+      const popup = document.getElementById('agePopup');
+      if (isOver18) {
+        popup.classList.add('hidden');
+        document.getElementById('artistPortfolio').classList.remove('hidden');
+        localStorage.setItem('ageVerified', 'true');
+      } else {
+        window.location.href = 'https://www.google.com'; // Redirect underage users
+      }
+    }
+
+    // Check if already verified
+    if (localStorage.getItem('ageVerified') === 'true') {
+      document.getElementById('agePopup').classList.add('hidden');
+      document.getElementById('artistPortfolio').classList.remove('hidden');
+    }
+
+    // ========== PIERCING DATA ==========
+    const piercingData = {
+      lobe: {
+        title: "Lobe Piercing",
+        image: "/assets/lobe1.jpg",
+        description: "The classic foundation of ear curation. Lobe piercings are the most versatile and fastest-healing option, perfect for building your collection. Our precision placement ensures symmetry and ideal jewelry fit. Available in single, double, or triple configurations to create your perfect stack.",
+        price: "$40",
+        healing: "6–8 weeks",
+        pain: "low",
+        jewelry: "Titanium flatback labret, 14k gold stud, or hoop",
+        aftercare: "Clean twice daily with sterile saline. Avoid sleeping on fresh piercing. Wait 4 weeks before changing jewelry. Initial jewelry should remain in place for minimum 8 weeks."
+      },
+      helix: {
+        title: "Helix Piercing",
+        image: "/assets/Upper cartilage.jpg",
+        description: "Positioned on the upper cartilage, the helix offers a canvas for hoops, studs, or curated stacks. A favorite for those beginning their cartilage journey. Multiple helixes can be stacked vertically for a curated look.",
+        price: "$50",
+        healing: "3–6 months",
+        pain: "medium",
+        jewelry: "Titanium labret, 14k gold hoop, or gem stud",
+        aftercare: "Clean gently with saline. Avoid pressure from headphones. Downsize at 4–6 weeks. Sleep on opposite side to prevent irritation."
+      },
+      cartilage: {
+        title: "Curated Cartilage",
+        image: "/assets/Forward.jpg",
+        description: "A family of placements including forward helix, tragus, conch, daith, rook, and more. Each chosen to complement your anatomy and style. Our artists specialize in creating harmonious earscapes that balance multiple piercings.",
+        price: "$55",
+        healing: "4–9 months",
+        pain: "medium",
+        jewelry: "Curved barbell, captive bead ring, or clicker",
+        aftercare: "Use saline spray. Avoid touching. Sleep on opposite side. Downsize after initial swelling subsides (4-6 weeks)."
+      },
+      nostril: {
+        title: "Nostril Piercing",
+        image: "/assets/Nostril NosePiercing.jpg",
+        description: "A timeless facial accent that frames the nose beautifully. Choose from subtle studs or elegant hoops once healed. Placement is carefully marked to complement your facial symmetry.",
+        price: "$45",
+        healing: "3–4 months",
+        pain: "low",
+        jewelry: "Titanium screw, L-bend, or labret",
+        aftercare: "Clean with saline. Be careful with makeup and towels. Avoid blowing nose forcefully for first 2 weeks."
+      },
+      septum: {
+        title: "Septum Piercing",
+        image: "/assets/Septum.png",
+        description: "Bold yet versatile. Placed in the soft tissue below the nasal cartilage, it can be hidden or showcased with statement clickers. A favorite for those who want the option to conceal their piercing.",
+        price: "$60",
+        healing: "2–3 months",
+        pain: "medium",
+        jewelry: "Titanium retainer, circular barbell, or clicker",
+        aftercare: "Saline rinse. Avoid blowing nose forcefully. Can be flipped up during healing after 2 weeks with proper cleaning."
+      },
+      bridge: {
+        title: "Bridge Piercing",
+        image: "/assets/Bridge.jpg",
+        description: "An architectural surface piercing across the bridge of the nose, creating bold facial symmetry and edgy aesthetic. Requires anatomy assessment for proper placement and longevity.",
+        price: "$70",
+        healing: "2–4 months",
+        pain: "medium",
+        jewelry: "Straight barbell (curved for some anatomies)",
+        aftercare: "Gentle cleaning. Avoid snagging on glasses. Watch for migration signs during healing."
+      },
+      lip: {
+        title: "Lip & Labret",
+        image: "/assets/Lip & Labret.jpeg",
+        description: "Includes labret (below lip), Medusa (above lip), and Monroe placements. Designed to enhance facial balance and draw attention. Each placement is customized to your lip shape and smile.",
+        price: "$55",
+        healing: "2–3 months",
+        pain: "medium",
+        jewelry: "Labret stud with flat back",
+        aftercare: "Saline rinse after eating. Downsize at 4 weeks. Watch for gum recession with long-term wear."
+      },
+      eyebrow: {
+        title: "Eyebrow Piercing",
+        image: "/assets/Eyebrow.webp",
+        description: "Vertical or horizontal styling through the brow ridge, adding sharp definition and expressive edge to your look. Surface anatomy determines optimal angle and placement.",
+        price: "$65",
+        healing: "2–3 months",
+        pain: "low",
+        jewelry: "Curved barbell",
+        aftercare: "Clean carefully around brows. Avoid makeup near piercing. Watch for rejection signs."
+      },
+      tongue: {
+        title: "Tongue Piercing",
+        image: "/assets/Tonguev.webp",
+        description: "Centered placement through the tongue for bold self-expression. Quick healing when proper aftercare is followed. Placement avoids major blood vessels and nerves.",
+        price: "$70",
+        healing: "4–6 weeks",
+        pain: "medium",
+        jewelry: "Straight barbell (titanium initial)",
+        aftercare: "Alcohol-free mouth rinse after meals. Avoid spicy foods. Downsize at 2-3 weeks to prevent tooth damage."
+      },
+      navel: {
+        title: "Navel Piercing",
+        image: "https://images.unsplash.com/photo-1572965347558-5baaab2218b6?q=80&w=1200&auto=format&fit=crop",
+        description: "Standard or floating styling based on your anatomy. A classic choice that celebrates the midriff. Anatomy assessment determines if standard or floating style works best.",
+        price: "$65",
+        healing: "6–12 months",
+        pain: "medium",
+        jewelry: "Curved barbell (titanium initial)",
+        aftercare: "Saline cleaning. Avoid high-waisted pressure. Watch for migration with active lifestyle."
+      },
+      nipple: {
+        title: "Nipple Piercing",
+        image: "https://images.unsplash.com/photo-1609241253092-ae8a1e6dfee2?q=80&w=1200&auto=format&fit=crop",
+        description: "Confident placement with surgical-grade jewelry. Performed in a private, clinical setting with precision alignment. Requires long-term commitment to healing and aftercare.",
+        price: "$80",
+        healing: "9–12 months",
+        pain: "high",
+        jewelry: "Straight barbell (internally threaded)",
+        aftercare: "Saline spray. Wear soft bras. No mouth contact during healing. Watch for snagging."
+      },
+      dermal: {
+        title: "Surface & Dermal",
+        image: "https://images.unsplash.com/photo-1569982175971-d92b01cf8694?q=80&w=1200&auto=format&fit=crop",
+        description: "Microdermals and surface bars for modern styling. Ideal for collarbones, sternum, or cheek accents. Single-point anchors create floating jewelry effects.",
+        price: "$90",
+        healing: "2–4 months",
+        pain: "high",
+        jewelry: "Dermal anchor with threadless top",
+        aftercare: "Gentle cleaning. Avoid snagging on clothing. Watch for rejection signs. Not suitable for all body areas."
+      }
+    };
+
+    // ========== DYNAMIC CONTENT RENDERING ==========
+    function renderContent() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const data = piercingData[id];
+      const contentArea = document.getElementById('content-area');
+
+      if (!data) {
+        contentArea.innerHTML = `
+          <div class="text-center py-20">
+            <h1 class="text-4xl md:text-6xl font-black mb-6">Piercing <span class="text-antiqueGold">Not Found</span></h1>
+            <p class="opacity-60 mb-10 max-w-md mx-auto">The piercing you're looking for doesn't exist or may have been moved.</p>
+            <a href="piercing.html" class="inline-block px-10 py-4 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm hover:bg-deepBurgundy hover:text-whiteMain transition-all rounded-full">← Back to Piercings</a>
+          </div>
+        `;
+        return;
+      }
+
+      // Determine pain level bars (1-3)
+      const painMap = { low: 1, medium: 2, high: 3 };
+      const painLevel = painMap[data.pain] || 1;
+
+      contentArea.innerHTML = `
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          
+          <!-- LEFT: IMAGE -->
+          <div class="relative">
+            <div class="aspect-[4/5] lg:aspect-[3/4] rounded-3xl overflow-hidden bg-gray-100 dark:bg-whiteMain/5 shadow-2xl">
+              <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-antiqueGold/10 rounded-full blur-3xl -z-10"></div>
+          </div>
+
+          <!-- RIGHT: CONTENT -->
+          <div class="space-y-8">
+            
+            <!-- Category & Title -->
+            <div>
+              <span class="text-antiqueGold font-bold tracking-[0.3em] uppercase text-xs mb-3 block">Piercing Detail</span>
+              <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                ${data.title.split(' ')[0]} <span class="text-antiqueGold italic font-serif">${data.title.split(' ').slice(1).join(' ')}</span>
+              </h1>
+            </div>
+
+            <!-- Description -->
+            <p class="opacity-70 text-lg leading-relaxed">${data.description}</p>
+
+            <!-- Info Grid -->
+            <div class="grid grid-cols-2 gap-6 py-6 border-y border-black/10 dark:border-white/10">
+              
+              <!-- Price -->
+              <div>
+                <div class="text-xs uppercase tracking-widest opacity-40 mb-1">Price</div>
+                <div class="text-3xl font-black text-antiqueGold">${data.price}</div>
+                <div class="text-xs opacity-40 mt-1">+ jewelry</div>
+              </div>
+
+              <!-- Healing -->
+              <div>
+                <div class="text-xs uppercase tracking-widest opacity-40 mb-1">Healing</div>
+                <div class="text-2xl font-bold">${data.healing}</div>
+              </div>
+
+              <!-- Pain Level (with visual bars) -->
+              <div>
+                <div class="text-xs uppercase tracking-widest opacity-40 mb-2">Pain Level</div>
+                <div class="flex items-center gap-2">
+                  ${[1,2,3].map(level => `<div class="pain-bar ${level <= painLevel ? 'active' : ''}"></div>`).join('')}
+                  <span class="text-sm capitalize ml-2 opacity-60">${data.pain}</span>
+                </div>
+              </div>
+
+              <!-- Recommended Jewelry -->
+              <div>
+                <div class="text-xs uppercase tracking-widest opacity-40 mb-1">Jewelry</div>
+                <div class="font-semibold">${data.jewelry}</div>
+              </div>
+            </div>
+
+            <!-- Aftercare Section -->
+            <div class="bg-gray-50 dark:bg-whiteMain/5 p-8 rounded-3xl border border-antiqueGold/10">
+              <h3 class="text-sm font-black uppercase tracking-widest text-antiqueGold mb-3">Aftercare Essentials</h3>
+              <p class="opacity-70 leading-relaxed">${data.aftercare}</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+              <a href="contact.html" class="flex-1 text-center px-8 py-5 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm hover:bg-deepBurgundy hover:text-whiteMain transition-all rounded-full shadow-xl shadow-antiqueGold/20">Book Appointment</a>
+              <a href="piercing.html" class="flex-1 text-center px-8 py-5 border-2 border-black/20 dark:border-white/20 font-black uppercase tracking-widest text-sm hover:border-antiqueGold hover:text-antiqueGold transition-all rounded-full">← Back to Piercings</a>
+            </div>
+
+          </div>
+        </div>
+      `;
+    }
+
+    // ========== PORTFOLIO FILTERING ==========
+    function filterPortfolio(style) {
+      // Update active button
+      document.querySelectorAll('.style-filter').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Filter portfolio items
+      const items = document.querySelectorAll('.portfolio-item');
+      items.forEach(item => {
+        if (style === 'all' || item.dataset.style === style) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // ========== ARTIST BOOKING ==========
+    function showArtistBooking(artistName) {
+      document.getElementById('selectedArtist').textContent = artistName;
+      document.getElementById('bookingCalendar').classList.remove('hidden');
+      document.getElementById('bookingCalendar').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ========== CALENDAR SELECTION ==========
+    document.querySelectorAll('.calendar-day:not(.unavailable)').forEach(day => {
+      day.addEventListener('click', function() {
+        document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
+        this.classList.add('selected');
+      });
+    });
+
+    // Run on page load
+    renderContent();
+
+    // ========== THEME & RTL TOGGLES ==========
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+
+    const themeBtns = [document.getElementById('themeToggleDesktop'), document.getElementById('themeToggleMobile')];
+    function setTheme(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-sun"></i>'; });
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-moon"></i>'; });
+      }
+    }
+    themeBtns.forEach(btn => btn && btn.addEventListener('click', () => setTheme(!htmlEl.classList.contains('dark'))));
+    const savedTheme = localStorage.getItem('theme');
+    setTheme(savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches));
+
+    const rtlBtns = [document.getElementById('rtlToggleDesktop'), document.getElementById('rtlToggleMobile')];
+    rtlBtns.forEach(btn => btn && btn.addEventListener('click', () => {
+      const currentDir = bodyEl.getAttribute('dir') || 'ltr';
+      const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+      bodyEl.setAttribute('dir', newDir);
+    }));
+  </script>
+</body>
+</html>

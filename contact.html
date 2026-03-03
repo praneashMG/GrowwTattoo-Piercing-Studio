@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Growwpark Body Art Studio</title>
+  <link rel="icon" type="image/jpeg" href="assets/growwpark_logo.jpg" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            blackMain: '#0B0B0B',
+            whiteMain: '#F5F5F5',
+            deepBurgundy: '#4A0E1A', 
+            antiqueGold: '#C6A75E',
+          },
+          fontFamily: {
+            'display': ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    #mobileMenu { transition: all 0.3s ease-in-out; }
+    [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0B0B0B; }
+    ::-webkit-scrollbar-thumb { background: #4A0E1A; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C6A75E; }
+
+    .form-input {
+      background: transparent;
+      border-bottom: 1px solid rgba(198, 167, 94, 0.3);
+      transition: all 0.4s ease;
+    }
+    .form-input:focus {
+      border-bottom-color: #C6A75E;
+      padding-left: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
+
+  <!-- ============ HEADER ============ -->
+  <nav id="navbar" class="sticky top-0 z-50 transition-colors duration-300 bg-whiteMain/90 text-blackMain border-b border-gray-200 dark:bg-blackMain/90 dark:text-whiteMain dark:border-antiqueGold/20 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+      
+      <a href="index.html" class="flex items-center gap-2 shrink-0 group">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold shadow-lg group-hover:scale-110 transition-transform border border-antiqueGold/30">
+         <i class="fas fa-pen-nib text-lg"></i>
+        </span>
+        <div class="leading-tight">
+          <span class="block text-xl font-bold tracking-tight text-antiqueGold dark:text-antiqueGold">Groww</span>
+          <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>     
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <ul class="flex items-center gap-1 text-sm font-semibold">
+          <li class="relative group">
+            <button class="home-trigger flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Home</span>
+              <i class="fas fa-chevron-down text-[10px]"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-48 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="index.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 1</a></li>
+              <li><a href="homepage2.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="piercing.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Piercing</a></li>
+          <li><a href="aftercare.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Aftercare</a></li>
+          <li><a href="aboutus.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">About</a></li>
+          <!-- ACTIVE STATE -->
+          <li><a href="contact.html" class="block rounded-md px-4 py-2 bg-deepBurgundy text-whiteMain font-bold shadow-md transition-colors border border-antiqueGold/20">Contact</a></li>
+          <li class="relative group">
+            <button class="flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Dashboard</span>
+              <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-56 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="admin.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Admin Panel</a></li>
+              <li><a href="user.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">User Dashboard</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="ml-4 flex items-center gap-3 border-l border-gray-200 dark:border-whiteMain/10 pl-4">
+          <button id="themeToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button id="rtlToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+          <a href="login.html" class="ml-2 inline-flex items-center gap-2 rounded-md bg-antiqueGold px-5 py-2 text-sm font-bold text-whiteMain hover:bg-deepBurgundy transition-transform active:scale-95 shadow-lg shadow-antiqueGold/20">
+            <i class="fas fa-user-plus text-xs"></i>
+            <span>Register</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 lg:hidden">
+        <button id="themeToggleMobile" class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="hamburger" class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-md bg-deepBurgundy/10 dark:bg-whiteMain/5" aria-label="Toggle Menu">
+          <span id="line1" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line2" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line3" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- FULL MOBILE MENU -->
+    <div id="mobileMenu" class="hidden border-t border-gray-100 bg-whiteMain dark:bg-blackMain dark:border-antiqueGold/10 lg:hidden overflow-hidden transition-all duration-300">
+      <div class="flex flex-col gap-1 p-4">
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-home w-6"></i>
+              <span>Home</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+            <a href="index.html" class="py-2 hover:translate-x-2 transition-transform">Home 1</a>
+            <a href="homepage2.html" class="py-2 hover:translate-x-2 transition-transform">Home 2</a>
+          </div>
+        </details>
+        
+        <a href="piercing.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-ring text-deepBurgundy dark:text-antiqueGold w-6"></i> Piercing
+        </a>
+        <a href="aftercare.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-hand-holding-medical text-deepBurgundy dark:text-antiqueGold w-6"></i> Aftercare
+        </a>
+        <a href="aboutus.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-info-circle text-deepBurgundy dark:text-antiqueGold w-6"></i> About
+        </a>
+        <!-- ACTIVE STATE MOBILE -->
+        <a href="contact.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-bold bg-deepBurgundy text-whiteMain shadow-md border border-antiqueGold/30">
+          <i class="fas fa-envelope text-antiqueGold w-6"></i> Contact
+        </a>
+
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-gauge text-deepBurgundy dark:text-antiqueGold w-6"></i>
+              <span>Dashboard</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+            <a href="admin.html" class="py-2 hover:translate-x-2 transition-transform">Admin Panel</a>
+            <a href="user.html" class="py-2 hover:translate-x-2 transition-transform">User Dashboard</a>
+          </div>
+        </details>
+
+        <div class="mt-4 pt-4 border-t border-gray-100 dark:border-whiteMain/10">
+          <button id="rtlToggleMobile" class="flex w-full items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <i class="fas fa-exchange-alt text-deepBurgundy dark:text-antiqueGold w-6"></i> Switch Direction (RTL)
+          </button>
+          <a href="login.html" class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-deepBurgundy py-4 text-center text-lg font-bold text-whiteMain active:scale-95 transition-transform border border-antiqueGold">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- SECTION 1: HERO (THE CONNECTION) -->
+    
+     <section class="relative h-[60vh] flex items-center justify-center overflow-hidden bg-blackMain">
+      <div class="absolute inset-0 z-0">
+        <img src="/assets/banner.jpg" class="w-full h-full object-cover opacity-50 brightness-75" alt="Piercing Studio">
+      </div>
+      <div class="relative z-10 text-center px-4">
+        <span class="inline-block text-antiqueGold font-bold tracking-[0.4em] uppercase text-xs mb-4">Let's Connect</span>
+        <h1 class="text-5xl md:text-7xl font-black text-whiteMain mb-6 tracking-tighter">Start Your <span class="text-antiqueGold italic font-serif">Journey</span></h1>
+        <p class="text-whiteMain/70 max-w-2xl mx-auto text-lg md:text-xl">Whether you're ready for your first piece or looking to curate a full-body project, our concierge is here to guide you.</p>
+        <div class="mt-10">
+          <a href="#pricing" class="px-10 py-4 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm hover:bg-whiteMain transition-all shadow-2xl">Book Appointment</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CONTACT GRID (QUICK ACCESS) -->
+<section class="pt-24 pb-24 bg-whiteMain dark:bg-blackMain transition-colors duration-300">      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-10">
+          <!-- Info Item 1 -->
+          <div class="p-10 rounded-3xl bg-gray-50 dark:bg-whiteMain/5 border border-antiqueGold/10 group transition-all hover:border-antiqueGold shadow-sm">
+             <div class="h-12 w-12 rounded-full bg-whiteMain dark:bg-blackMain shadow-xl flex items-center justify-center text-antiqueGold text-lg mb-8 group-hover:scale-110 transition-transform">
+               <i class="fas fa-phone-alt"></i>
+             </div>
+             <h4 class="text-sm font-black uppercase tracking-widest mb-2 opacity-40">Call Us</h4>
+             <p class="text-xl font-bold">+1 (555) 123-4567</p>
+             <p class="text-xs opacity-50 mt-4 uppercase tracking-tighter">Tue – Sat: 11:00 AM – 8:00 PM</p>
+          </div>
+          <!-- Info Item 2 -->
+          <div class="p-10 rounded-3xl bg-gray-50 dark:bg-whiteMain/5 border border-antiqueGold/10 group transition-all hover:border-antiqueGold shadow-sm">
+             <div class="h-12 w-12 rounded-full bg-whiteMain dark:bg-blackMain shadow-xl flex items-center justify-center text-antiqueGold text-lg mb-8 group-hover:scale-110 transition-transform">
+               <i class="fas fa-envelope"></i>
+             </div>
+             <h4 class="text-sm font-black uppercase tracking-widest mb-2 opacity-40">Email Studio</h4>
+             <p class="text-xl font-bold">concierge@growwpark.com</p>
+             <p class="text-xs opacity-50 mt-4 uppercase tracking-tighter">Response time: within 24 hours</p>
+          </div>
+          <!-- Info Item 3 -->
+          <div class="p-10 rounded-3xl bg-gray-50 dark:bg-whiteMain/5 border border-antiqueGold/10 group transition-all hover:border-antiqueGold shadow-sm">
+             <div class="h-12 w-12 rounded-full bg-whiteMain dark:bg-blackMain shadow-xl flex items-center justify-center text-antiqueGold text-lg mb-8 group-hover:scale-110 transition-transform">
+               <i class="fas fa-location-dot"></i>
+             </div>
+             <h4 class="text-sm font-black uppercase tracking-widest mb-2 opacity-40">Visit Atelier</h4>
+             <p class="text-xl font-bold">123 Art Avenue, NYC</p>
+             <p class="text-xs opacity-50 mt-4 uppercase tracking-tighter">Manhattan | Flatiron District</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE CONSULTATION FORM (FOCUSED) -->
+    <section class="py-32 bg-gray-50 dark:bg-deepBurgundy/[0.03] border-y border-gray-200 dark:border-whiteMain/5">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-20">
+          <div class="lg:col-span-4">
+            <h2 class="text-antiqueGold font-bold tracking-widest uppercase text-xs mb-6">Booking Inquiry</h2>
+            <h3 class="text-4xl font-black mb-8 leading-tight tracking-tighter">The Formal <br> <span class="text-antiqueGold italic font-serif">Application</span></h3>
+            <p class="opacity-60 leading-relaxed mb-10">
+              Please provide as much detail as possible. For tattoo inquiries, describe the concept, placement, and approximate size.
+            </p>
+            <div class="p-8 bg-antiqueGold/10 border border-antiqueGold/20 rounded-2xl">
+               <h5 class="font-bold text-sm mb-2 uppercase tracking-wide">Photo Uploads</h5>
+               <p class="text-xs opacity-60">For cover-ups or specific placements, we recommend sending reference photos directly to our email after submitting this form.</p>
+            </div>
+          </div>
+          
+          <div class="lg:col-span-8">
+            <form id="consultationForm" class="grid md:grid-cols-2 gap-x-12 gap-y-10" onsubmit="event.preventDefault();">
+              <!-- Name -->
+              <div class="flex flex-col">
+                <label class="text-[10px] font-black uppercase tracking-[0.2em] mb-4 opacity-40">Full Name</label>
+                <input type="text" placeholder="John Doe" class="form-input pb-3 outline-none">
+              </div>
+              <!-- Email -->
+              <div class="flex flex-col">
+                <label class="text-[10px] font-black uppercase tracking-[0.2em] mb-4 opacity-40">Email Address</label>
+                <input type="email" placeholder="john@example.com" class="form-input pb-3 outline-none">
+              </div>
+              <!-- Service Type -->
+          <div class="flex flex-col md:col-span-2">
+  <label class="text-[10px] font-black uppercase tracking-[0.2em] mb-6 opacity-40">
+    Desired Service
+  </label>
+
+  <div class="grid md:grid-cols-2 gap-6">
+
+    <!-- Custom Tattoo -->
+    <label class="group cursor-pointer">
+      <input type="radio" name="service" value="Custom Tattoo" class="hidden peer">
+      <div class="p-6 border border-antiqueGold/20 rounded-2xl 
+                  transition-all duration-300
+                  peer-checked:border-antiqueGold 
+                  peer-checked:bg-antiqueGold/10
+                  hover:border-antiqueGold">
+        <h4 class="font-bold mb-2">Custom Tattoo</h4>
+        <p class="text-xs opacity-50">Bespoke body artwork consultation.</p>
+      </div>
+    </label>
+
+    <!-- Ear Curation -->
+    <label class="group cursor-pointer">
+      <input type="radio" name="service" value="Ear Curation" class="hidden peer">
+      <div class="p-6 border border-antiqueGold/20 rounded-2xl 
+                  transition-all duration-300
+                  peer-checked:border-antiqueGold 
+                  peer-checked:bg-antiqueGold/10
+                  hover:border-antiqueGold">
+        <h4 class="font-bold mb-2">Ear Curation</h4>
+        <p class="text-xs opacity-50">Luxury piercing styling session.</p>
+      </div>
+    </label>
+
+    <!-- Jewelry -->
+    <label class="group cursor-pointer">
+      <input type="radio" name="service" value="Jewelry Consultation" class="hidden peer">
+      <div class="p-6 border border-antiqueGold/20 rounded-2xl 
+                  transition-all duration-300
+                  peer-checked:border-antiqueGold 
+                  peer-checked:bg-antiqueGold/10
+                  hover:border-antiqueGold">
+        <h4 class="font-bold mb-2">Jewelry Consultation</h4>
+        <p class="text-xs opacity-50">Fine jewelry selection & styling.</p>
+      </div>
+    </label>
+
+    <!-- Cover-up -->
+    <label class="group cursor-pointer">
+      <input type="radio" name="service" value="Tattoo Cover-up" class="hidden peer">
+      <div class="p-6 border border-antiqueGold/20 rounded-2xl 
+                  transition-all duration-300
+                  peer-checked:border-antiqueGold 
+                  peer-checked:bg-antiqueGold/10
+                  hover:border-antiqueGold">
+        <h4 class="font-bold mb-2">Tattoo Cover-up</h4>
+        <p class="text-xs opacity-50">Transform existing work into art.</p>
+      </div>
+    </label>
+
+  </div>
+</div>
+              <!-- Artist Preference -->
+             <div class="flex flex-col md:col-span-2 mt-8">
+  <label class="text-[10px] font-black uppercase tracking-[0.2em] mb-6 opacity-40">
+    Preferred Master
+  </label>
+
+  <!-- Responsive Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+    <!-- No Preference -->
+    <label class="cursor-pointer">
+      <input type="radio" name="artist" value="No Preference" class="hidden peer" checked>
+      <div class="w-full text-center px-4 py-3 
+                  border border-antiqueGold/20 
+                  rounded-full text-sm
+                  transition-all duration-300
+                  peer-checked:bg-antiqueGold
+                  peer-checked:text-blackMain
+                  peer-checked:border-antiqueGold
+                  hover:border-antiqueGold">
+        No Preference
+      </div>
+    </label>
+
+    <!-- Soren -->
+    <label class="cursor-pointer">
+      <input type="radio" name="artist" value="Soren Vane" class="hidden peer">
+      <div class="w-full text-center px-4 py-3 
+                  border border-antiqueGold/20 
+                  rounded-full text-sm
+                  transition-all duration-300
+                  peer-checked:bg-antiqueGold
+                  peer-checked:text-blackMain
+                  peer-checked:border-antiqueGold
+                  hover:border-antiqueGold">
+        Soren Vane
+      </div>
+    </label>
+
+    <!-- Elena -->
+    <label class="cursor-pointer">
+      <input type="radio" name="artist" value="Elena Thorne" class="hidden peer">
+      <div class="w-full text-center px-4 py-3 
+                  border border-antiqueGold/20 
+                  rounded-full text-sm
+                  transition-all duration-300
+                  peer-checked:bg-antiqueGold
+                  peer-checked:text-blackMain
+                  peer-checked:border-antiqueGold
+                  hover:border-antiqueGold">
+        Elena Thorne
+      </div>
+    </label>
+
+    <!-- Mikael -->
+    <label class="cursor-pointer">
+      <input type="radio" name="artist" value="Mikael Oro" class="hidden peer">
+      <div class="w-full text-center px-4 py-3 
+                  border border-antiqueGold/20 
+                  rounded-full text-sm
+                  transition-all duration-300
+                  peer-checked:bg-antiqueGold
+                  peer-checked:text-blackMain
+                  peer-checked:border-antiqueGold
+                  hover:border-antiqueGold">
+        Mikael Oro
+      </div>
+    </label>
+
+  </div>
+</div>
+              <!-- Description -->
+              <div class="flex flex-col md:col-span-2">
+                <label class="text-[10px] font-black uppercase tracking-[0.2em] mb-4 opacity-40">Project Concept & Detail</label>
+                <textarea rows="4" placeholder="Describe your vision, placement, and size..." class="form-input pb-3 outline-none resize-none"></textarea>
+              </div>
+              
+              <div class="md:col-span-2 mt-4">
+                <button type="submit" class="w-full py-6 bg-blackMain dark:bg-whiteMain text-whiteMain dark:text-blackMain font-black uppercase tracking-[0.3em] text-xs hover:bg-antiqueGold transition-all shadow-2xl">
+                  Send Consultation Request
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ <!-- SECTION 4: LIVE MAP (ENVIRONMENT) -->
+<section class="h-[500px] bg-blackMain relative overflow-hidden">
+
+  <!-- Google Map Iframe -->
+  <div class="absolute inset-0">
+    <iframe
+      src="https://www.google.com/maps?q=Flatiron%20District%20New%20York&output=embed"
+      class="w-full h-full border-0 grayscale contrast-125 brightness-75 hover:grayscale-0 transition-all duration-700"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-blackMain via-blackMain/70 to-transparent"></div>
+
+  <!-- Content Card -->
+  <div class="relative h-full flex items-center px-4 lg:px-20 z-10">
+    <div class="bg-whiteMain/10 backdrop-blur-xl border border-whiteMain/20 p-12 rounded-3xl max-w-md shadow-2xl">
+      
+      <h4 class="text-whiteMain font-black text-3xl mb-4 tracking-tighter">
+        Manhattan <br>
+        <span class="text-antiqueGold">Flagship</span>
+      </h4>
+
+      <p class="text-whiteMain/70 text-sm leading-relaxed mb-8">
+        Located in the heart of the Flatiron District. Entry via private elevator on Art Avenue.
+      </p>
+
+      <a href="https://www.google.com/maps/place/Flatiron+District,+New+York"
+         target="_blank"
+         class="inline-flex items-center gap-3 text-antiqueGold font-bold uppercase tracking-widest text-[10px] hover:text-whiteMain transition-colors">
+        Open in Google Maps
+        <i class="fas fa-arrow-up-right-from-square"></i>
+      </a>
+
+    </div>
+  </div>
+
+</section>
+
+    <!-- SECTION 5: FREQUENT INQUIRIES (FAQ) -->
+    <section class="py-32 bg-whiteMain dark:bg-blackMain transition-colors duration-300">
+      <div class="max-w-4xl mx-auto px-4 lg:px-8">
+         <div class="text-center mb-20">
+            <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">The Atelier <span class="text-antiqueGold italic">FAQ</span></h2>
+            <div class="h-1.5 w-12 bg-antiqueGold mx-auto"></div>
+         </div>
+         
+         <div class="space-y-10">
+            <div class="group">
+               <h4 class="text-xl font-bold mb-4 flex items-center justify-between cursor-pointer">
+                  <span>How do I book a specific artist?</span>
+                  <i class="fas fa-plus text-xs text-antiqueGold group-hover:rotate-45 transition-transform"></i>
+               </h4>
+               <p class="opacity-60 leading-relaxed text-sm">Most artists book 2-4 months in advance. Use the form above to specify your preference, and we will notify you when their books open or if there is a cancellation.</p>
+            </div>
+            <div class="group">
+               <h4 class="text-xl font-bold mb-4 flex items-center justify-between cursor-pointer">
+                  <span>Do you accept walk-ins?</span>
+                  <i class="fas fa-plus text-xs text-antiqueGold group-hover:rotate-45 transition-transform"></i>
+               </h4>
+               <p class="opacity-60 leading-relaxed text-sm">Tattoos are strictly by appointment only. However, we do accept walk-ins for simple jewelry changes and quick piercing check-ups on weekdays between 1 PM and 5 PM.</p>
+            </div>
+            <div class="group">
+               <h4 class="text-xl font-bold mb-4 flex items-center justify-between cursor-pointer">
+                  <span>What is your cancellation policy?</span>
+                  <i class="fas fa-plus text-xs text-antiqueGold group-hover:rotate-45 transition-transform"></i>
+               </h4>
+               <p class="opacity-60 leading-relaxed text-sm">A non-refundable deposit is required to secure your date. We require at least 48 hours' notice to reschedule your appointment without losing your deposit.</p>
+            </div>
+         </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: SOCIAL INTEGRATION -->
+    <section class="py-24 bg-deepBurgundy text-whiteMain">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center">
+         <h2 class="text-sm font-black uppercase tracking-[0.4em] text-antiqueGold mb-12">Witness the Process</h2>
+         <div class="flex flex-wrap justify-center gap-12 md:gap-24">
+            <a href="#" class="group">
+               <i class="fab fa-instagram text-4xl mb-4 block transition-transform group-hover:-translate-y-2"></i>
+               <span class="text-[10px] font-bold uppercase tracking-widest opacity-40">Instagram</span>
+            </a>
+            <a href="#" class="group">
+               <i class="fab fa-tiktok text-4xl mb-4 block transition-transform group-hover:-translate-y-2"></i>
+               <span class="text-[10px] font-bold uppercase tracking-widest opacity-40">TikTok</span>
+            </a>
+            <a href="#" class="group">
+               <i class="fab fa-vimeo-v text-4xl mb-4 block transition-transform group-hover:-translate-y-2"></i>
+               <span class="text-[10px] font-bold uppercase tracking-widest opacity-40">Studio Vibe</span>
+            </a>
+         </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-blackMain pt-20 pb-10 text-whiteMain border-t border-antiqueGold/20">
+    <div class="mx-auto max-w-7xl px-4 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-whiteMain/10 pb-16">
+        <div>
+          <a href="#" class="flex items-center gap-3 mb-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold border border-antiqueGold/30">
+                <i class="fas fa-pen-nib text-lg"></i>
+            </span>
+            <div class="leading-tight">
+              <span class="block text-xl font-bold tracking-tight text-antiqueGold">Groww</span>
+              <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>
+            </div>
+          </a>
+          <p class="text-whiteMain/70 mb-6">Creating timeless art with precision, integrity, and innovation since 2008.</p>
+          <div class="flex gap-3">
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-antiqueGold font-bold mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="index.html" class="block hover:text-antiqueGold transition-colors">Home</a></li>
+            <li><a href="piercing.html" class="block hover:text-antiqueGold transition-colors">Piercing</a></li>
+            <li><a href="aftercare.html" class="block hover:text-antiqueGold transition-colors">Aftercare</a></li>
+            <li><a href="aboutus.html" class="block hover:text-antiqueGold transition-colors">About Us</a></li>
+            <li><a href="contact.html" class="block hover:text-antiqueGold transition-colors font-bold">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Contact Us</h4>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70 leading-relaxed">
+                123 Art Avenue, Suite 100<br>
+                New York, NY 10001
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-phone text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70">+1 (555) 123-4567</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-envelope text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70">studio@growwpark.com</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Stay Updated</h4>
+          <p class="text-whiteMain/70 mb-4">Subscribe for art drops and studio updates.</p>
+          <form class="space-y-4" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Email address" class="w-full px-4 py-3 rounded-lg bg-deepBurgundy/20 border border-antiqueGold/20 focus:border-antiqueGold focus:outline-none text-whiteMain placeholder:text-whiteMain/40 transition-colors">
+            <button type="submit" class="w-full bg-antiqueGold text-blackMain font-bold py-3 rounded-lg hover:bg-deepBurgundy hover:text-whiteMain transition-all shadow-lg shadow-antiqueGold/10">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-whiteMain/40 text-sm">
+        <div>© 2026 Growwpark Body Art Group. All rights reserved.</div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-antiqueGold transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-antiqueGold transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    hamburger.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      const l1 = document.getElementById('line1');
+      const l2 = document.getElementById('line2');
+      const l3 = document.getElementById('line3');
+      
+      if (!isHidden) {
+        l1.style.transform = 'translateY(8px) rotate(45deg)';
+        l2.style.opacity = '0';
+        l3.style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+        l1.style.transform = 'none';
+        l2.style.opacity = '1';
+        l3.style.transform = 'none';
+      }
+    });
+
+    const themeBtns = [document.getElementById('themeToggleDesktop'), document.getElementById('themeToggleMobile')];
+    function setTheme(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-sun"></i>'; });
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-moon"></i>'; });
+      }
+    }
+    themeBtns.forEach(btn => btn && btn.addEventListener('click', () => setTheme(!htmlEl.classList.contains('dark'))));
+    const savedTheme = localStorage.getItem('theme');
+    setTheme(savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches));
+
+    const rtlBtns = [document.getElementById('rtlToggleDesktop'), document.getElementById('rtlToggleMobile')];
+    rtlBtns.forEach(btn => btn && btn.addEventListener('click', () => {
+      const currentDir = bodyEl.getAttribute('dir') || 'ltr';
+      const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+      bodyEl.setAttribute('dir', newDir);
+    }));
+  </script>
+</body>
+</html>

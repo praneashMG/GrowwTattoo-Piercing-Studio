@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growwpark | Header & Footer</title>
+  <link rel="icon" type="image/jpeg" href="assets/growwpark_logo.jpg" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            blackMain: '#0B0B0B',
+            whiteMain: '#F5F5F5',
+            deepBurgundy: '#4A0E1A', 
+            antiqueGold: '#C6A75E',
+          },
+          fontFamily: {
+            'display': ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    #mobileMenu {
+      transition: all 0.3s ease-in-out;
+    }
+    [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+    
+    /* Custom Scrollbar using new palette */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0B0B;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4A0E1A;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #C6A75E;
+    }
+  </style>
+</head>
+<body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" data-dir="ltr">
+
+  <nav id="navbar" class="sticky top-0 z-50 transition-colors duration-300 bg-whiteMain/90 text-blackMain border-b border-gray-200 dark:bg-blackMain/90 dark:text-whiteMain dark:border-antiqueGold/20 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+      
+      <a href="index.html" class="flex items-center gap-2 shrink-0 group">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold shadow-lg group-hover:scale-110 transition-transform border border-antiqueGold/30">
+         <i class="fas fa-pen-nib text-lg"></i>
+        </span>
+        <div class="leading-tight">
+          <span class="block text-xl font-bold tracking-tight text-antiqueGold dark:text-antiqueGold">Groww</span>
+<span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">
+ Body Art
+</span>     
+ </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <ul class="flex items-center gap-1 text-sm font-semibold">
+          <li class="relative group">
+            <button class="home-trigger flex items-center gap-1 rounded-md px-3 py-2 bg-deepBurgundy text-whiteMain hover:bg-deepBurgundy/90 font-bold shadow-md transition-colors border border-antiqueGold/20">
+              <span>Home</span>
+              <i class="fas fa-chevron-down text-[10px]"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-48 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="index.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 1</a></li>
+              <li><a href="homepage2.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 2</a></li>
+            </ul>
+          </li>
+
+        
+
+<li>
+  <a href="piercing.html" 
+     class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">
+     Piercing
+  </a>
+</li>
+
+<li>
+  <a href="aftercare.html" 
+     class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">
+     Aftercare
+  </a>
+</li>
+
+<li>
+  <a href="aboutus.html" 
+     class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">
+     About
+  </a>
+</li>
+
+<li>
+  <a href="contact.html" 
+     class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">
+     Contact
+  </a>
+</li>
+          <li class="relative group">
+            <button class="flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Dashboard</span>
+              <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-56 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="admin.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Admin Panel</a></li>
+              <li><a href="user.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">User Dashboard</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="ml-4 flex items-center gap-3 border-l border-gray-200 dark:border-whiteMain/10 pl-4">
+          <button id="themeToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button id="rtlToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+          
+          <a href="login.html" class="ml-2 inline-flex items-center gap-2 rounded-md bg-antiqueGold px-5 py-2 text-sm font-bold text-whiteMain hover:bg-deepBurgundy transition-transform active:scale-95 shadow-lg shadow-antiqueGold/20">
+            <i class="fas fa-user-plus text-xs"></i>
+            <span>Register</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 lg:hidden">
+        <button id="themeToggleMobile" class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="hamburger" class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-md bg-deepBurgundy/10 dark:bg-whiteMain/5" aria-label="Toggle Menu">
+          <span id="line1" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line2" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line3" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden border-t border-gray-100 bg-whiteMain dark:bg-blackMain dark:border-antiqueGold/10 lg:hidden overflow-hidden transition-all duration-300">
+      <div class="flex flex-col gap-1 p-4">
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-bold list-none bg-deepBurgundy text-whiteMain shadow-md border border-antiqueGold/30">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-home w-6"></i>
+              <span>Home</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+            <a href="index.html" class="py-2 hover:translate-x-2 transition-transform">Home 1</a>
+            <a href="homepage2.html" class="py-2 hover:translate-x-2 transition-transform">Home 2</a>
+          </div>
+        </details>
+<a href="artists.html" 
+   class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+   <i class="fas fa-user-pen text-deepBurgundy dark:text-antiqueGold w-6"></i> Artists
+</a>
+
+<a href="piercing.html" 
+   class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+   <i class="fas fa-ring text-deepBurgundy dark:text-antiqueGold w-6"></i> Piercing
+</a>
+
+<a href="aftercare.html" 
+   class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+   <i class="fas fa-hand-holding-medical text-deepBurgundy dark:text-antiqueGold w-6"></i> Aftercare
+</a>
+
+<a href="aboutus.html" 
+   class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+   <i class="fas fa-info-circle text-deepBurgundy dark:text-antiqueGold w-6"></i> About
+</a>
+
+<a href="contact.html" 
+   class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+   <i class="fas fa-envelope text-deepBurgundy dark:text-antiqueGold w-6"></i> Contact
+</a>
+<details class="group">
+  <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+    <div class="flex items-center gap-4">
+      <i class="fas fa-gauge text-deepBurgundy dark:text-antiqueGold w-6"></i>
+      <span>Dashboard</span>
+    </div>
+    <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+  </summary>
+
+  <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+    <a href="admin.html" class="py-2 hover:translate-x-2 transition-transform">
+      Admin Dashboard
+    </a>
+    <a href="user.html" class="py-2 hover:translate-x-2 transition-transform">
+      Client Dashboard
+    </a>
+  </div>
+</details>
+
+        <div class="mt-4 pt-4 border-t border-gray-100 dark:border-whiteMain/10">
+          <button id="rtlToggleMobile" class="flex w-full items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <i class="fas fa-exchange-alt text-deepBurgundy dark:text-antiqueGold w-6"></i> Switch Direction (RTL)
+          </button>
+          <a href="login.html" class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-deepBurgundy py-4 text-center text-lg font-bold text-whiteMain active:scale-95 transition-transform border border-antiqueGold">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <footer class="bg-blackMain pt-20 pb-10 text-whiteMain border-t border-antiqueGold/20">
+    <div class="mx-auto max-w-7xl px-4 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-whiteMain/10 pb-16">
+        <div>
+          <a href="#" class="flex items-center gap-3 mb-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold border border-antiqueGold/30">
+<i class="fas fa-pen-nib text-lg"></i>            </span>
+            <div class="leading-tight">
+              <span class="block text-xl font-bold tracking-tight text-antiqueGold">Groww</span>
+<span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">
+ Body Art
+</span>             </div>
+          </a>
+          <p class="text-whiteMain/70 mb-6">Building the future with precision, integrity, and innovation since 2008.</p>
+          <div class="flex gap-3">
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-antiqueGold font-bold mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="index.html" class="block hover:text-antiqueGold transition-colors">Home</a></li>
+            <li><a href="service.html" class="block hover:text-antiqueGold transition-colors">piercing</a></li>
+            <li><a href="blog.html" class="block hover:text-antiqueGold transition-colors">AfterCare</a></li>
+            <li><a href="aboutus.html" class="block hover:text-antiqueGold transition-colors">About Us</a></li>
+            <li><a href="contact.html" class="block hover:text-antiqueGold transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+       <div>
+  <h4 class="text-lg font-bold mb-6 text-antiqueGold">Contact Us</h4>
+
+  <div class="space-y-4">
+
+    <div class="flex items-start gap-3">
+      <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+        <i class="fas fa-map-marker-alt text-antiqueGold"></i>
+      </div>
+      <div class="text-whiteMain/70 leading-relaxed">
+        123 Construction Ave, Suite 100<br>
+        New York, NY 10001
+      </div>
+    </div>
+
+    <div class="flex items-start gap-3">
+      <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+        <i class="fas fa-phone text-antiqueGold"></i>
+      </div>
+      <div class="text-whiteMain/70">
+        +1 (555) 123-4567
+      </div>
+    </div>
+
+    <div class="flex items-start gap-3">
+      <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+        <i class="fas fa-envelope text-antiqueGold"></i>
+      </div>
+      <div class="text-whiteMain/70">
+        info@growwbuilders.com
+      </div>
+    </div>
+
+  </div>
+</div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Stay Updated</h4>
+          <p class="text-whiteMain/70 mb-4">Subscribe for construction insights and project updates.</p>
+          <form class="space-y-4" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Email address" class="w-full px-4 py-3 rounded-lg bg-deepBurgundy/20 border border-antiqueGold/20 focus:border-antiqueGold focus:outline-none text-whiteMain placeholder:text-whiteMain/40 transition-colors">
+            <button type="submit" class="w-full bg-antiqueGold text-blackMain font-bold py-3 rounded-lg hover:bg-deepBurgundy hover:text-whiteMain transition-all shadow-lg shadow-antiqueGold/10">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-whiteMain/40 text-sm">
+        <div>© 2026 Groww Builders Group. All rights reserved.</div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-antiqueGold transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-antiqueGold transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const l1 = document.getElementById('line1');
+    const l2 = document.getElementById('line2');
+    const l3 = document.getElementById('line3');
+
+    // Mobile Menu Toggle
+    hamburger.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.toggle('hidden');
+      if (!isHidden) {
+        l1.style.transform = 'translateY(8px) rotate(45deg)';
+        l2.style.opacity = '0';
+        l3.style.transform = 'translateY(-8px) rotate(-45deg)';
+      } else {
+        l1.style.transform = 'none';
+        l2.style.opacity = '1';
+        l3.style.transform = 'none';
+      }
+    });
+
+    // Theme Toggle Logic
+    const themeBtns = [document.getElementById('themeToggleDesktop'), document.getElementById('themeToggleMobile')];
+    function setTheme(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        themeBtns.forEach(btn => btn.innerHTML = '<i class="fas fa-sun"></i>');
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        themeBtns.forEach(btn => btn.innerHTML = '<i class="fas fa-moon"></i>');
+      }
+    }
+
+    themeBtns.forEach(btn => btn.addEventListener('click', () => setTheme(!htmlEl.classList.contains('dark'))));
+    
+    // Initial Theme Load
+    const savedTheme = localStorage.getItem('theme');
+    const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(savedTheme === 'dark' || (!savedTheme && userPrefersDark));
+
+    // RTL Toggle Logic
+    const rtlBtns = [document.getElementById('rtlToggleDesktop'), document.getElementById('rtlToggleMobile')];
+    rtlBtns.forEach(btn => btn.addEventListener('click', () => {
+      const currentDir = bodyEl.getAttribute('dir') || 'ltr';
+      const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+      bodyEl.setAttribute('dir', newDir);
+    }));
+  </script>
+</body>
+</html>

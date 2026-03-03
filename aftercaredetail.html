@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tattoo Details | Growwpark Body Art Studio</title>
+  <link rel="icon" type="image/jpeg" href="assets/growwpark_logo.jpg" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            blackMain: '#0B0B0B',
+            whiteMain: '#F5F5F5',
+            deepBurgundy: '#4A0E1A', 
+            antiqueGold: '#C6A75E',
+          },
+          fontFamily: {
+            'display': ['Inter', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'fadeIn': 'fadeIn 0.4s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    #mobileMenu { transition: all 0.3s ease-in-out; }
+    [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+    
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0B0B0B; }
+    ::-webkit-scrollbar-thumb { background: #4A0E1A; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C6A75E; }
+
+    .pain-bar {
+      height: 6px;
+      width: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 100px;
+      transition: all 0.3s ease;
+    }
+    .pain-bar.active {
+      background: #C6A75E;
+    }
+    .dark .pain-bar {
+      background: rgba(255,255,255,0.1);
+    }
+    .dark .pain-bar.active {
+      background: #C6A75E;
+    }
+
+    /* Age Verification Popup */
+    .age-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 11, 11, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+    }
+    .age-popup.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .age-popup-content {
+      max-width: 500px;
+      width: 90%;
+      background: #0B0B0B;
+      border: 2px solid rgba(198, 167, 94, 0.3);
+      border-radius: 32px;
+      padding: 48px 32px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-out;
+      box-shadow: 0 25px 50px -12px rgba(198, 167, 94, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
+
+  <!-- ============ AGE VERIFICATION POPUP ============ -->
+  <div id="agePopup" class="age-popup">
+    <div class="age-popup-content">
+      <div class="w-24 h-24 mx-auto mb-8 rounded-full bg-deepBurgundy flex items-center justify-center border-2 border-antiqueGold/30">
+        <i class="fas fa-id-card text-5xl text-antiqueGold"></i>
+      </div>
+      <h2 class="text-3xl font-black mb-4">Age Verification</h2>
+      <p class="opacity-70 mb-8 text-lg">You must be 18 years or older to view tattoo content and book appointments.</p>
+      
+      <div class="space-y-4">
+        <button onclick="verifyAge(true)" class="w-full px-8 py-5 bg-antiqueGold text-blackMain font-black uppercase tracking-widest hover:bg-deepBurgundy hover:text-whiteMain transition-all rounded-full text-sm shadow-xl">
+          <i class="fas fa-check mr-2"></i> I AM 18 OR OLDER
+        </button>
+        <button onclick="verifyAge(false)" class="w-full px-8 py-5 border-2 border-antiqueGold/30 text-antiqueGold font-black uppercase tracking-widest hover:bg-deepBurgundy/20 transition-all rounded-full text-sm">
+          <i class="fas fa-times mr-2"></i> EXIT
+        </button>
+      </div>
+      
+      <p class="text-xs opacity-40 mt-8">By entering, you agree to our Terms of Service and Privacy Policy.</p>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <nav id="navbar" class="sticky top-0 z-50 transition-colors duration-300 bg-whiteMain/90 text-blackMain border-b border-gray-200 dark:bg-blackMain/90 dark:text-whiteMain dark:border-antiqueGold/20 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+      
+      <a href="index.html" class="flex items-center gap-2 shrink-0 group">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold shadow-lg group-hover:scale-110 transition-transform border border-antiqueGold/30">
+         <i class="fas fa-pen-nib text-lg"></i>
+        </span>
+        <div class="leading-tight">
+          <span class="block text-xl font-bold tracking-tight text-antiqueGold dark:text-antiqueGold">Groww</span>
+          <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>     
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <ul class="flex items-center gap-1 text-sm font-semibold">
+          <li class="relative group">
+            <button class="home-trigger flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Home</span>
+              <i class="fas fa-chevron-down text-[10px]"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-48 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="index.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 1</a></li>
+              <li><a href="homepage2.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Home 2</a></li>
+            </ul>
+          </li>
+          <li><a href="piercing.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Piercing</a></li>
+          <li><a href="aftercare.html" class="block rounded-md px-4 py-2 bg-deepBurgundy text-whiteMain font-bold shadow-md transition-colors border border-antiqueGold/20">Aftercare</a></li>
+          <li><a href="aboutus.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">About</a></li>
+          <li><a href="contact.html" class="block rounded-md px-4 py-2 hover:text-deepBurgundy dark:hover:text-antiqueGold transition-colors">Contact</a></li>
+          <li class="relative group">
+            <button class="flex items-center gap-1 rounded-md px-3 py-2 hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+              <span>Dashboard</span>
+              <i class="fas fa-chevron-down text-[10px] group-hover:rotate-180 transition-transform"></i>
+            </button>
+            <ul class="invisible absolute left-0 mt-2 w-56 rounded-lg bg-whiteMain border border-gray-100 dark:bg-deepBurgundy dark:border-antiqueGold/20 p-2 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 z-50">
+              <li><a href="admin.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">Admin Panel</a></li>
+              <li><a href="user.html" class="block rounded-md px-4 py-2 hover:bg-antiqueGold hover:text-whiteMain transition-colors dark:text-whiteMain">User Dashboard</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="ml-4 flex items-center gap-3 border-l border-gray-200 dark:border-whiteMain/10 pl-4">
+          <button id="themeToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button id="rtlToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+          <a href="login.html" class="ml-2 inline-flex items-center gap-2 rounded-md bg-antiqueGold px-5 py-2 text-sm font-bold text-whiteMain hover:bg-deepBurgundy transition-transform active:scale-95 shadow-lg shadow-antiqueGold/20">
+            <i class="fas fa-user-plus text-xs"></i>
+            <span>Register</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 lg:hidden">
+        <button id="themeToggleMobile" class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="hamburger" class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-md bg-deepBurgundy/10 dark:bg-whiteMain/5" aria-label="Toggle Menu">
+          <span id="line1" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line2" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+          <span id="line3" class="h-0.5 w-6 bg-deepBurgundy dark:bg-antiqueGold transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============ MOBILE MENU ============ -->
+    <div id="mobileMenu" class="hidden border-t border-gray-100 bg-whiteMain dark:bg-blackMain dark:border-antiqueGold/10 lg:hidden overflow-hidden transition-all duration-300">
+      <div class="flex flex-col gap-1 p-4">
+        
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-home w-6"></i>
+              <span>Home</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+            <a href="index.html" class="py-2 hover:translate-x-2 transition-transform">Home 1</a>
+            <a href="homepage2.html" class="py-2 hover:translate-x-2 transition-transform">Home 2</a>
+          </div>
+        </details>
+        
+        <a href="piercing.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-ring text-deepBurgundy dark:text-antiqueGold w-6"></i> Piercing
+        </a>
+
+        <a href="aftercare.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-bold bg-deepBurgundy text-whiteMain shadow-md border border-antiqueGold/30">
+          <i class="fas fa-hand-holding-medical text-antiqueGold w-6"></i> Aftercare
+        </a>
+
+        <a href="aboutus.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-info-circle text-deepBurgundy dark:text-antiqueGold w-6"></i> About
+        </a>
+
+        <a href="contact.html" class="flex items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+          <i class="fas fa-envelope text-deepBurgundy dark:text-antiqueGold w-6"></i> Contact
+        </a>
+
+        <details class="group">
+          <summary class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-3 text-lg font-medium list-none hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-gauge text-deepBurgundy dark:text-antiqueGold w-6"></i>
+              <span>Dashboard</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs group-open:rotate-180 transition-transform"></i>
+          </summary>
+          <div class="mt-1 flex flex-col gap-1 pl-14 text-deepBurgundy dark:text-antiqueGold">
+            <a href="admin.html" class="py-2 hover:translate-x-2 transition-transform">Admin Panel</a>
+            <a href="user.html" class="py-2 hover:translate-x-2 transition-transform">User Dashboard</a>
+          </div>
+        </details>
+
+        <div class="mt-4 pt-4 border-t border-gray-100 dark:border-whiteMain/10">
+          <button id="rtlToggleMobile" class="flex w-full items-center gap-4 rounded-lg px-4 py-3 text-lg font-medium hover:bg-deepBurgundy/5 dark:hover:bg-antiqueGold/10 transition-colors">
+            <i class="fas fa-exchange-alt text-deepBurgundy dark:text-antiqueGold w-6"></i> Switch Direction (RTL)
+          </button>
+          <a href="login.html" class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-deepBurgundy py-4 text-center text-lg font-bold text-whiteMain active:scale-95 transition-transform border border-antiqueGold">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="min-h-screen py-12 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      
+      <!-- Dynamic Content Area -->
+      <div id="content-area"></div>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-blackMain pt-20 pb-10 text-whiteMain border-t border-antiqueGold/20">
+    <div class="mx-auto max-w-7xl px-4 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-whiteMain/10 pb-16">
+        <div>
+          <a href="#" class="flex items-center gap-3 mb-6">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold border border-antiqueGold/30">
+                <i class="fas fa-pen-nib text-lg"></i>
+            </span>
+            <div class="leading-tight">
+              <span class="block text-xl font-bold tracking-tight text-antiqueGold">Groww</span>
+              <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>
+            </div>
+          </a>
+          <p class="text-whiteMain/70 mb-6">Creating timeless art with precision, integrity, and innovation since 2008.</p>
+          <div class="flex gap-3">
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold/30 flex items-center justify-center hover:bg-antiqueGold hover:text-blackMain transition-all"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-antiqueGold font-bold mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="index.html" class="block hover:text-antiqueGold transition-colors">Home</a></li>
+            <li><a href="piercing.html" class="block hover:text-antiqueGold transition-colors">Piercing</a></li>
+            <li><a href="aftercare.html" class="block hover:text-antiqueGold transition-colors font-bold">Aftercare</a></li>
+            <li><a href="aboutus.html" class="block hover:text-antiqueGold transition-colors">About Us</a></li>
+            <li><a href="contact.html" class="block hover:text-antiqueGold transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Contact Us</h4>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-map-marker-alt text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70 leading-relaxed">
+                123 Art Avenue, Suite 100<br>
+                New York, NY 10001
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-phone text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70">+1 (555) 123-4567</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="h-10 w-10 shrink-0 rounded-full bg-deepBurgundy border border-antiqueGold/20 flex items-center justify-center">
+                <i class="fas fa-envelope text-antiqueGold"></i>
+              </div>
+              <div class="text-whiteMain/70">studio@growwpark.com</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-lg font-bold mb-6 text-antiqueGold">Stay Updated</h4>
+          <p class="text-whiteMain/70 mb-4">Subscribe for art drops and studio updates.</p>
+          <form class="space-y-4" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Email address" class="w-full px-4 py-3 rounded-lg bg-deepBurgundy/20 border border-antiqueGold/20 focus:border-antiqueGold focus:outline-none text-whiteMain placeholder:text-whiteMain/40 transition-colors">
+            <button type="submit" class="w-full bg-antiqueGold text-blackMain font-bold py-3 rounded-lg hover:bg-deepBurgundy hover:text-whiteMain transition-all shadow-lg shadow-antiqueGold/10">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-whiteMain/40 text-sm">
+        <div>© 2026 Growwpark Body Art Group. All rights reserved.</div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-antiqueGold transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-antiqueGold transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ========== AGE VERIFICATION ==========
+    function verifyAge(isOver18) {
+      const popup = document.getElementById('agePopup');
+      if (isOver18) {
+        popup.classList.add('hidden');
+        localStorage.setItem('ageVerified', 'true');
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+
+    // Check if already verified
+    if (localStorage.getItem('ageVerified') === 'true') {
+      document.getElementById('agePopup').classList.add('hidden');
+    }
+
+    // ========== TATTOO DATA ==========
+    const tattooData = {
+      fineline: {
+        title: "Fine Line Tattoo",
+        image: "/assets/fine line tatto.jpg",
+        description: "Delicate, precise single-needle work that creates ethereal, lightweight designs. Fine line tattoos use minimal shading and thin, consistent strokes for a subtle yet impactful result. Perfect for those seeking elegant, understated body art.",
+        price: "$180",
+        duration: "1-3 hours",
+        healing: "2-3 weeks",
+        pain: "low",
+        idealFor: "First-time clients, botanical illustrations, script, memorial pieces, minimalist aesthetics",
+        aftercare: "Keep clean with mild soap, moisturize lightly, avoid sun exposure for 2 weeks. Touch-ups may be needed as fine lines can settle differently.",
+        sessionInfo: "Single session typically sufficient. Larger pieces may require 2 sessions.",
+        consultation: "30-minute consultation included to sketch and finalize design placement.",
+        artisticDetail: "Fine line tattooing requires exceptional control and precision. Our artists use specialized single-needle configurations to achieve hair-thin lines that age gracefully. The style draws from traditional engraving and sketch techniques, resulting in pieces that resemble pencil drawings on skin."
+      },
+      blackwork: {
+        title: "Blackwork Tattoo",
+        image: "/assets/Blackwork.jpg",
+        description: "Bold, graphic designs using solid black ink. Blackwork encompasses everything from geometric patterns and ornamental fill to heavy saturation pieces. The style emphasizes contrast, negative space, and the raw power of pure black pigment.",
+        price: "$200",
+        duration: "2-4 hours",
+        healing: "3-4 weeks",
+        pain: "medium",
+        idealFor: "Sacred geometry, Celtic knots, pattern work, cover-ups, bold statement pieces",
+        aftercare: "Keep moisturized but not wet. Blackwork requires good hydration to maintain solid saturation. Avoid picking at scabs.",
+        sessionInfo: "Most pieces completed in 1-2 sessions depending on coverage area.",
+        consultation: "Design consultation focuses on flow, symmetry, and how patterns interact with body movement.",
+        artisticDetail: "Blackwork is about the interplay of light and shadow through pure pigment. Our artists master the 'whip shade' and 'dot work' techniques to create dimension within solid black. The style has roots in tribal traditions but has evolved into contemporary geometric and illustrative forms."
+      },
+      realism: {
+        title: "Realism Tattoo",
+        image: "/assets/Realism.jpg",
+        description: "Hyper-realistic portraits, wildlife, and still life captured in ink. Realism tattoos require masterful understanding of light, shadow, and anatomy to create images that appear photographic on skin.",
+        price: "$250",
+        duration: "3-6 hours per session",
+        healing: "3-4 weeks",
+        pain: "medium",
+        idealFor: "Portraits of loved ones, pet memorials, photo-realistic wildlife, religious iconography",
+        aftercare: "Critical to keep moisturized and protected from sun. Realism relies on subtle shading that can blur if not properly cared for.",
+        sessionInfo: "Requires 2-3 sessions for full detail and depth. Shading sessions separate from line work.",
+        consultation: "Extended consultation for reference photo selection and composition planning.",
+        artisticDetail: "Realism demands mastery of value, texture, and proportion. Our artists study the reference intensely, breaking down the image into layered values that translate to skin. The technique requires patience — building up tones gradually to achieve depth without overworking the tissue."
+      },
+      geometric: {
+        title: "Geometric Tattoo",
+        image: "/assets/Geometric.jpg",
+        description: "Precise lines, sacred geometry, and mathematical precision. Geometric tattoos celebrate order, symmetry, and the beauty of mathematical patterns translated to the human form.",
+        price: "$190",
+        duration: "2-4 hours",
+        healing: "2-3 weeks",
+        pain: "medium",
+        idealFor: "Mandala work, sacred geometry, architectural elements, symmetry lovers",
+        aftercare: "Lines must be kept clean to prevent ink spread. Moisturize carefully without rubbing.",
+        sessionInfo: "Typically 1-2 sessions. Complex pieces may require stenciling multiple sessions.",
+        consultation: "Design phase includes digital rendering to ensure perfect symmetry.",
+        artisticDetail: "Geometric work demands absolute precision. Our artists use digital design tools to map out patterns before transferring to skin. The challenge lies in adapting flat geometric designs to the curves and movement of the body — a true test of artistic adaptation."
+      },
+      minimalist: {
+        title: "Minimalist Tattoo",
+        image: "/assets/Minimalist.jpg",
+        description: "Less is more. Tiny symbols, line art, and subtle statements with maximum impact. Minimalist tattoos strip away everything unnecessary, leaving only the essential elements.",
+        price: "$150",
+        duration: "30 min - 2 hours",
+        healing: "2 weeks",
+        pain: "low",
+        idealFor: "Small personal symbols, matching tattoos, first tattoos, discreet placements",
+        aftercare: "Simple care routine. Keep clean, minimal moisturizer, avoid friction.",
+        sessionInfo: "Completed in single session. Touch-ups rarely needed.",
+        consultation: "Brief consultation focused on symbolic meaning and precise placement.",
+        artisticDetail: "Minimalism requires saying more with less. Each line must be intentional, each negative space meaningful. Our artists understand that in simplicity, there is profound depth. The challenge is creating designs that remain recognizable and beautiful at small sizes."
+      },
+      portrait: {
+        title: "Portrait Tattoo",
+        image: "/assets/Portrait.jpg",
+        description: "Capture loved ones, icons, or historical figures with stunning photorealism. Portrait tattoos are the ultimate test of an artist's ability to capture likeness, emotion, and soul.",
+        price: "$300",
+        duration: "4-8 hours per session",
+        healing: "3-4 weeks",
+        pain: "high",
+        idealFor: "Family portraits, celebrity tributes, historical figures, self-portraits",
+        aftercare: "Aggressive sun protection required. Portraits rely on subtle value shifts that UV damage can destroy.",
+        sessionInfo: "Requires 2-4 sessions. First session establishes structure, subsequent sessions add depth and detail.",
+        consultation: "Multi-stage consultation for reference selection, size planning, and placement strategy.",
+        artisticDetail: "Portrait work is the pinnacle of realism. Our portrait specialists study facial anatomy, expression, and the subtle asymmetries that make a face recognizable. The technique involves building value slowly, often working from larger planes down to micro-details like catchlights in eyes and individual hairs."
+      }
+    };
+
+    // ========== DYNAMIC CONTENT RENDERING ==========
+    function renderContent() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const data = tattooData[id];
+      const contentArea = document.getElementById('content-area');
+
+      if (!data) {
+        contentArea.innerHTML = `
+          <div class="text-center py-20">
+            <h1 class="text-4xl md:text-6xl font-black mb-6">Tattoo <span class="text-antiqueGold">Not Found</span></h1>
+            <p class="opacity-60 mb-10 max-w-md mx-auto">The tattoo style you're looking for doesn't exist or may have been moved.</p>
+            <a href="aftercare.html" class="inline-block px-10 py-4 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm hover:bg-deepBurgundy hover:text-whiteMain transition-all rounded-full">← Back to Services</a>
+          </div>
+        `;
+        return;
+      }
+
+      // Pain level mapping
+      const painMap = { low: 1, medium: 2, high: 3 };
+      const painLevel = painMap[data.pain] || 1;
+
+      contentArea.innerHTML = `
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          
+        <!-- LEFT: IMAGE + EXTRA CONTENT -->
+<div class="space-y-8">
+  
+  <!-- Image -->
+  <div class="relative">
+    <div class="h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden bg-gray-100 dark:bg-whiteMain/5 shadow-2xl">
+      <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">
+    </div>
+    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-antiqueGold/10 rounded-full blur-3xl -z-10"></div>
+  </div>
+
+  <!-- Studio Promise Section -->
+  <div class="bg-deepBurgundy text-whiteMain p-8 rounded-3xl border border-antiqueGold/20 shadow-xl">
+    
+    <h3 class="text-antiqueGold font-black uppercase tracking-widest text-sm mb-6">
+      Why Choose Groww
+    </h3>
+
+    <div class="space-y-5">
+
+      <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-full bg-antiqueGold text-blackMain flex items-center justify-center">
+          <i class="fas fa-shield-alt text-sm"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm">100% Hygienic Process</h4>
+          <p class="text-xs opacity-70">Medical-grade sterilization & single-use needles.</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-full bg-antiqueGold text-blackMain flex items-center justify-center">
+          <i class="fas fa-user-check text-sm"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm">Certified Artists</h4>
+          <p class="text-xs opacity-70">Professionally trained with years of experience.</p>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-full bg-antiqueGold text-blackMain flex items-center justify-center">
+          <i class="fas fa-star text-sm"></i>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm">Premium Ink Quality</h4>
+          <p class="text-xs opacity-70">Long-lasting pigments that age beautifully.</p>
+        </div>
+      </div>
+<!-- Studio Experience -->
+<div class="bg-whiteMain dark:bg-blackMain border border-antiqueGold/20 p-8 rounded-3xl shadow-xl">
+  
+  <h3 class="text-antiqueGold font-black uppercase tracking-widest text-sm mb-6">
+    The Studio Experience
+  </h3>
+
+  <p class="text-sm text-blackMain/80 dark:text-whiteMain/70 leading-relaxed mb-6">
+    From consultation to final touch-up, we focus on comfort, creativity,
+    and precision. Every session is designed to make you feel confident,
+    safe, and inspired.
+  </p>
+
+  <div class="grid grid-cols-2 gap-4 text-xs">
+    
+    <div class="p-4 bg-deepBurgundy/5 dark:bg-whiteMain/5 rounded-xl">
+      <div class="font-bold text-antiqueGold">Private Booths</div>
+      <div class="text-blackMain/70 dark:text-whiteMain/60">
+        Discreet & comfortable setup
+      </div>
+    </div>
+
+    <div class="p-4 bg-deepBurgundy/5 dark:bg-whiteMain/5 rounded-xl">
+      <div class="font-bold text-antiqueGold">Top Equipment</div>
+      <div class="text-blackMain/70 dark:text-whiteMain/60">
+        Latest tattoo machines
+      </div>
+    </div>
+
+    <div class="p-4 bg-deepBurgundy/5 dark:bg-whiteMain/5 rounded-xl">
+      <div class="font-bold text-antiqueGold">Aftercare Support</div>
+      <div class="text-blackMain/70 dark:text-whiteMain/60">
+        Guided healing process
+      </div>
+    </div>
+
+    <div class="p-4 bg-deepBurgundy/5 dark:bg-whiteMain/5 rounded-xl">
+      <div class="font-bold text-antiqueGold">Touch-up Policy</div>
+      <div class="text-blackMain/70 dark:text-whiteMain/60">
+        Free minor corrections
+      </div>
+    </div>
+
+  </div>
+</div>
+    </div>
+  </div>
+
+</div>
+
+          <!-- RIGHT: CONTENT -->
+          <div class="space-y-8">
+            
+            <!-- Category & Title -->
+            <div>
+              <span class="text-antiqueGold font-bold tracking-[0.3em] uppercase text-xs mb-3 block">Tattoo Collection</span>
+              <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+                ${data.title.split(' ')[0]} <span class="text-antiqueGold italic font-serif">${data.title.split(' ').slice(1).join(' ')}</span>
+              </h1>
+            </div>
+
+            <!-- Price -->
+            <div class="flex items-baseline gap-3">
+              <span class="text-5xl font-black text-antiqueGold">${data.price}</span>
+              <span class="opacity-40">+</span>
+              <span class="text-sm opacity-60">starting price</span>
+            </div>
+
+            <!-- Description -->
+            <p class="opacity-70 text-lg leading-relaxed">${data.description}</p>
+
+            <!-- Info Grid -->
+            <div class="grid grid-cols-2 gap-6 py-6 border-y border-black/10 dark:border-white/10">
+              
+              <!-- Duration -->
+              <div>
+                <div class="text-xs uppercase tracking-widest opacity-40 mb-1">Session Duration</div>
+                <div class="text-xl font-bold">${data.duration}</div>
+              </div>
+
+              <!-- Healing -->
+              <div>
+                <div class="text-xs uppercase tracking-widest opacity-40 mb-1">Healing</div>
+                <div class="text-xl font-bold">${data.healing}</div>
+              </div>
+
+              <!-- Pain Level -->
+              <div>
+                <div class="text-xs uppercase tracking-widest opacity-40 mb-2">Pain Level</div>
+                <div class="flex items-center gap-2">
+                  ${[1,2,3].map(level => `<div class="pain-bar ${level <= painLevel ? 'active' : ''}"></div>`).join('')}
+                  <span class="text-sm capitalize ml-2 opacity-60">${data.pain}</span>
+                </div>
+              </div>
+
+              <!-- Sessions -->
+              <div>
+                <div class="text-xs uppercase tracking-widest opacity-40 mb-1">Sessions</div>
+                <div class="font-semibold">${data.sessionInfo}</div>
+              </div>
+            </div>
+
+            <!-- Artistic Detail -->
+            <div class="bg-gray-50 dark:bg-whiteMain/5 p-8 rounded-3xl border border-antiqueGold/10">
+              <h3 class="text-sm font-black uppercase tracking-widest text-antiqueGold mb-3">Artistic Approach</h3>
+              <p class="opacity-70 leading-relaxed">${data.artisticDetail}</p>
+            </div>
+
+            <!-- Ideal For -->
+            <div class="flex flex-wrap gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider opacity-40 w-full mb-1">Ideal For</span>
+              ${data.idealFor.split(',').map(item => `
+                <span class="px-4 py-2 bg-deepBurgundy/10 dark:bg-whiteMain/5 rounded-full text-xs font-semibold">${item.trim()}</span>
+              `).join('')}
+            </div>
+
+            <!-- Aftercare & Consultation -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="p-5 bg-gray-50 dark:bg-whiteMain/5 rounded-2xl border border-antiqueGold/10">
+                <i class="fas fa-hand-holding-heart text-antiqueGold mb-2"></i>
+                <h4 class="font-bold text-sm mb-1">Aftercare</h4>
+                <p class="text-xs opacity-60">${data.aftercare}</p>
+              </div>
+              <div class="p-5 bg-gray-50 dark:bg-whiteMain/5 rounded-2xl border border-antiqueGold/10">
+                <i class="fas fa-comments text-antiqueGold mb-2"></i>
+                <h4 class="font-bold text-sm mb-1">Consultation</h4>
+                <p class="text-xs opacity-60">${data.consultation}</p>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+              <a href="contact.html" class="flex-1 text-center px-8 py-5 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm hover:bg-deepBurgundy hover:text-whiteMain transition-all rounded-full shadow-xl shadow-antiqueGold/20">Book Appointment</a>
+              <a href="aftercare.html" class="flex-1 text-center px-8 py-5 border-2 border-black/20 dark:border-white/20 font-black uppercase tracking-widest text-sm hover:border-antiqueGold hover:text-antiqueGold transition-all rounded-full">← Back to Services</a>
+            </div>
+
+          </div>
+        </div>
+      `;
+    }
+
+    // Run on page load
+    renderContent();
+
+    // ========== THEME & RTL TOGGLES ==========
+    const htmlEl = document.documentElement;
+    const bodyEl = document.body;
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (hamburger) {
+      hamburger.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        const l1 = document.getElementById('line1');
+        const l2 = document.getElementById('line2');
+        const l3 = document.getElementById('line3');
+        
+        if (!isHidden) {
+          l1.style.transform = 'translateY(8px) rotate(45deg)';
+          l2.style.opacity = '0';
+          l3.style.transform = 'translateY(-8px) rotate(-45deg)';
+        } else {
+          l1.style.transform = 'none';
+          l2.style.opacity = '1';
+          l3.style.transform = 'none';
+        }
+      });
+    }
+
+    const themeBtns = [document.getElementById('themeToggleDesktop'), document.getElementById('themeToggleMobile')];
+    function setTheme(isDark) {
+      if (isDark) {
+        htmlEl.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-sun"></i>'; });
+      } else {
+        htmlEl.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-moon"></i>'; });
+      }
+    }
+    themeBtns.forEach(btn => btn && btn.addEventListener('click', () => setTheme(!htmlEl.classList.contains('dark'))));
+    const savedTheme = localStorage.getItem('theme');
+    setTheme(savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches));
+
+    const rtlBtns = [document.getElementById('rtlToggleDesktop'), document.getElementById('rtlToggleMobile')];
+    rtlBtns.forEach(btn => btn && btn.addEventListener('click', () => {
+      const currentDir = bodyEl.getAttribute('dir') || 'ltr';
+      const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+      bodyEl.setAttribute('dir', newDir);
+    }));
+  </script>
+</body>
+</html>
