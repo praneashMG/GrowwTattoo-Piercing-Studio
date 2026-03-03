@@ -253,10 +253,13 @@
                             <i class="fas fa-id-card w-5"></i>
                             <span>Profile Management</span>
                         </a>
-                        <a href="#" onclick="activateSection('orders')" data-section="orders" class="sidebar-link">
-                            <i class="fas fa-calendar-alt w-5"></i>
-                            <span>Order / Appointment history</span>
-                        </a>
+                        <a href="#" 
+   onclick="activateSection('orders')" 
+   data-section="orders" 
+   class="sidebar-link whitespace-nowrap overflow-hidden text-ellipsis">
+    <i class="fas fa-calendar-alt w-5"></i>
+    <span class="truncate">Order / Appointment</span>
+</a>
                         <a href="#" onclick="activateSection('saved')" data-section="saved" class="sidebar-link">
                             <i class="fas fa-bookmark w-5"></i>
                             <span>Saved Items (Flash)</span>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 · Growwpark</title>
+  <link rel="icon" type="image/jpeg" href="assets/growwpark_logo.jpg" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            blackMain: '#0B0B0B',
+            whiteMain: '#F5F5F5',
+            deepBurgundy: '#4A0E1A', 
+            antiqueGold: '#C6A75E',
+          },
+          fontFamily: {
+            'display': ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    /* RTL adjustments */
+    [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+    [dir="rtl"] .text-left { text-align: right; }
+    [dir="rtl"] .text-right { text-align: left; }
+    [dir="rtl"] .ml-auto { margin-left: 0; margin-right: auto; }
+    [dir="rtl"] .mr-auto { margin-right: 0; margin-left: auto; }
+
+    /* fade in */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
+
+  <!-- ========== minimal header (same style but simplified) ========== -->
+  <nav class="sticky top-0 z-50 bg-whiteMain/90 text-blackMain border-b border-gray-200 dark:bg-blackMain/90 dark:text-whiteMain dark:border-antiqueGold/20 backdrop-blur-md">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
+      
+      <!-- logo (same as main site) -->
+      <a href="index.html" class="flex items-center gap-2 shrink-0 group">
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold shadow-lg group-hover:scale-110 transition-transform border border-antiqueGold/30">
+         <i class="fas fa-pen-nib text-lg"></i>
+        </span>
+        <div class="leading-tight">
+          <span class="block text-xl font-bold tracking-tight text-antiqueGold dark:text-antiqueGold">Groww</span>
+          <span class="block text-[10px] font-semibold text-antiqueGold uppercase tracking-widest">Body Art</span>     
+        </div>
+      </a>
+
+      <!-- right side: theme + rtl (only icons, no register) -->
+      <div class="flex items-center gap-3">
+        <button id="themeToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button id="rtlToggleDesktop" class="flex h-9 w-9 items-center justify-center rounded-full border border-gray-300 dark:border-antiqueGold/30 hover:bg-deepBurgundy hover:text-whiteMain transition-all">
+          <i class="fas fa-exchange-alt"></i>
+        </button>
+        <!-- mobile menu is not needed for 404, but we keep theme/rtl toggles consistent -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== 404 HERO – BOLD & CONSISTENT ========== -->
+  <main class="relative overflow-hidden">
+    <!-- background texture (subtle) -->
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMTBhMjAgMjAgMCAwIDEgMCA0MCAyMCAyMCAwIDAgMSAwLTQweiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzZBNzVFIiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4xIi8+PC9zdmc+')] opacity-10 dark:opacity-20"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 lg:px-8 py-24 md:py-32">
+      <div class="flex flex-col items-center text-center">
+        
+        <!-- small top label with decorative line -->
+        <div class="flex items-center gap-4 mb-6">
+          <span class="h-px w-8 bg-antiqueGold"></span>
+          <span class="text-antiqueGold font-bold uppercase tracking-[0.25em] text-xs">error 404</span>
+          <span class="h-px w-8 bg-antiqueGold"></span>
+        </div>
+
+        <!-- main 404 numeral – big & bold -->
+        <h1 class="text-8xl md:text-9xl font-black text-deepBurgundy dark:text-antiqueGold leading-none tracking-tighter select-none">
+          4<span class="text-antiqueGold dark:text-whiteMain">0</span>4
+        </h1>
+
+        <!-- title -->
+        <h2 class="text-3xl md:text-5xl font-bold mt-6 mb-4 text-blackMain dark:text-whiteMain">
+          Page not found
+        </h2>
+
+        <!-- description (dual: ink / piercing vibe) -->
+        <p class="max-w-lg text-blackMain/60 dark:text-whiteMain/60 text-lg md:text-xl leading-relaxed">
+          Looks like the ink ran dry — this page doesn’t exist. 
+          But your next masterpiece is still waiting.
+        </p>
+
+        <!-- decorative divider (needle inspired) -->
+        <div class="w-24 h-1 bg-gradient-to-r from-transparent via-antiqueGold to-transparent my-10"></div>
+
+        <!-- comfort / redirection options with strong CTA style -->
+        <div class="flex flex-col sm:flex-row gap-5 w-full sm:w-auto justify-center">
+          <a href="index.html" 
+             class="group relative px-10 py-5 bg-deepBurgundy text-whiteMain font-bold uppercase tracking-widest text-sm 
+                    overflow-hidden transition-all duration-300 hover:bg-antiqueGold hover:text-blackMain
+                    shadow-xl shadow-deepBurgundy/20 hover:shadow-antiqueGold/30
+                    border border-antiqueGold/20">
+            <span class="relative z-10 flex items-center justify-center gap-3">
+              <i class="fas fa-pen-nib"></i> 
+              <span>back to studio</span>
+            </span>
+          </a>
+          
+          <a href="contact.html" 
+             class="group px-10 py-5 border-2 border-deepBurgundy dark:border-antiqueGold text-deepBurgundy dark:text-antiqueGold 
+                    font-bold uppercase tracking-widest text-sm
+                    hover:bg-deepBurgundy hover:text-whiteMain dark:hover:bg-antiqueGold dark:hover:text-blackMain
+                    transition-all duration-300 flex items-center justify-center gap-3">
+            <i class="fas fa-map-pin"></i> contact artist
+          </a>
+        </div>
+
+        <!-- additional helpful links (like aftercare / piercing) with subtle style -->
+        <div class="mt-16 flex flex-wrap justify-center gap-6 text-xs font-semibold uppercase tracking-wider">
+          <a href="piercing.html" class="text-antiqueGold hover:text-deepBurgundy dark:hover:text-whiteMain transition-colors flex items-center gap-2">
+            <i class="fas fa-ring"></i> piercing studio
+          </a>
+          <span class="text-gray-300 dark:text-gray-700">|</span>
+          <a href="aftercare.html" class="text-antiqueGold hover:text-deepBurgundy dark:hover:text-whiteMain transition-colors flex items-center gap-2">
+            <i class="fas fa-hand-holding-medical"></i> aftercare
+          </a>
+          <span class="text-gray-300 dark:text-gray-700">|</span>
+          <a href="aboutus.html" class="text-antiqueGold hover:text-deepBurgundy dark:hover:text-whiteMain transition-colors flex items-center gap-2">
+            <i class="fas fa-images"></i> About
+          </a>
+        </div>
+
+        <!-- small "lost? we got you" with gold accent -->
+        <div class="mt-20 p-6 bg-gray-100 dark:bg-deepBurgundy/10 border border-gray-200 dark:border-antiqueGold/10 rounded-xl max-w-xl">
+          <div class="flex items-start gap-4 text-left">
+            <div class="text-antiqueGold text-2xl"><i class="fas fa-compass"></i></div>
+            <div>
+              <p class="font-bold text-sm mb-1 text-blackMain dark:text-whiteMain">Even the best tattoos need a guide</p>
+              <p class="text-blackMain/60 dark:text-whiteMain/60 text-sm">
+                Try our <a href="index.html" class="text-deepBurgundy dark:text-antiqueGold underline decoration-antiqueGold/30">homepage</a> or explore the navigation above. 
+                If you believe something’s missing, <a href="contact.html" class="text-deepBurgundy dark:text-antiqueGold underline decoration-antiqueGold/30">reach out</a> — we’ll draw it for you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- bottom decorative bloodline (just for drama) -->
+    <div class="relative h-2 w-full overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-deepBurgundy to-transparent dark:via-antiqueGold opacity-30"></div>
+    </div>
+  </main>
+
+  <!-- ========== minimal footer (compact, same style) ========== -->
+  <footer class="bg-blackMain py-12 text-whiteMain border-t border-antiqueGold/20">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-deepBurgundy text-antiqueGold border border-antiqueGold/30">
+            <i class="fas fa-pen-nib text-lg"></i>
+          </span>
+          <span class="text-xs text-whiteMain/50">© 2026 Growwpark — ink & gold</span>
+        </div>
+        <div class="flex gap-8 text-xs uppercase tracking-wider">
+          <a href="index.html" class="hover:text-antiqueGold transition">home</a>
+          <a href="privacy.html" class="hover:text-antiqueGold transition">privacy</a>
+          <a href="terms.html" class="hover:text-antiqueGold transition">terms</a>
+        </div>
+        <!-- tiny theme/rtl hint for mobile, but already in header -->
+        <div class="flex gap-2 text-antiqueGold/60">
+          <i class="fas fa-moon text-xs"></i>
+          <i class="fas fa-exchange-alt text-xs"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- scripts: exactly the same theme/rtl logic as main (no slider needed) -->
+  <script>
+    (function() {
+      const htmlEl = document.documentElement;
+      const bodyEl = document.body;
+
+      // theme toggles
+      const themeBtns = [document.getElementById('themeToggleDesktop')];
+      function setTheme(isDark) {
+        if (isDark) {
+          htmlEl.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+          themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-sun"></i>'; });
+        } else {
+          htmlEl.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+          themeBtns.forEach(btn => { if(btn) btn.innerHTML = '<i class="fas fa-moon"></i>'; });
+        }
+      }
+      if (themeBtns[0]) {
+        themeBtns[0].addEventListener('click', () => setTheme(!htmlEl.classList.contains('dark')));
+      }
+
+      // initial theme load
+      const savedTheme = localStorage.getItem('theme');
+      const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(savedTheme === 'dark' || (!savedTheme && userPrefersDark));
+
+      // RTL toggle (same as main)
+      const rtlBtns = [document.getElementById('rtlToggleDesktop')];
+      rtlBtns.forEach(btn => btn && btn.addEventListener('click', () => {
+        const currentDir = bodyEl.getAttribute('dir') || 'ltr';
+        const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+        bodyEl.setAttribute('dir', newDir);
+      }));
+    })();
+  </script>
+  <!-- optional: small fix for RTL on icons that need flipping (already class rtl-flip present if needed) -->
+</body>
+</html>
