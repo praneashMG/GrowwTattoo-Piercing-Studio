@@ -618,13 +618,28 @@
   <script>
     const htmlEl = document.documentElement;
     const bodyEl = document.body;
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+   const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
 
+const l1 = document.getElementById('line1');
+const l2 = document.getElementById('line2');
+const l3 = document.getElementById('line3');
+
+hamburger.addEventListener('click', () => {
+
+  const isHidden = mobileMenu.classList.toggle('hidden');
+
+  if (!isHidden) {
+    l1.style.transform = "translateY(8px) rotate(45deg)";
+    l2.style.opacity = "0";
+    l3.style.transform = "translateY(-8px) rotate(-45deg)";
+  } else {
+    l1.style.transform = "none";
+    l2.style.opacity = "1";
+    l3.style.transform = "none";
+  }
+
+});
     const themeBtns = [document.getElementById('themeToggleDesktop'), document.getElementById('themeToggleMobile')];
     function setTheme(isDark) {
       if (isDark) {

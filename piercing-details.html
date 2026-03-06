@@ -179,6 +179,9 @@
     .portfolio-item:hover .portfolio-overlay {
       opacity: 1;
     }
+    #hamburger span{
+transition: all 0.3s ease;
+}
   </style>
 </head>
 <body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
@@ -917,11 +920,28 @@
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     
-    if (hamburger) {
-      hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
+   const l1 = document.getElementById('line1');
+const l2 = document.getElementById('line2');
+const l3 = document.getElementById('line3');
+
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+
+    const isHidden = mobileMenu.classList.toggle('hidden');
+
+    if (!isHidden) {
+      l1.style.transform = "translateY(6px) rotate(45deg)";
+      l2.style.opacity = "0";
+      l3.style.transform = "translateY(-6px) rotate(-45deg)";
+    } 
+    else {
+      l1.style.transform = "none";
+      l2.style.opacity = "1";
+      l3.style.transform = "none";
     }
+
+  });
+}
 
     const themeBtns = [document.getElementById('themeToggleDesktop'), document.getElementById('themeToggleMobile')];
     function setTheme(isDark) {
