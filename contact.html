@@ -19,16 +19,15 @@
             deepBurgundy: '#4A0E1A', 
             antiqueGold: '#C6A75E',
           },
-          fontFamily: {
-            'display': ['Inter', 'system-ui', 'sans-serif'],
-          }
+        fontFamily: {
+  sans: ['Inter', 'system-ui', 'sans-serif'],
+  luxury: ['Playfair Display', 'serif'],
+}
         }
       }
     };
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * { font-family: 'Inter', sans-serif; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">  <style>
     #mobileMenu { transition: all 0.3s ease-in-out; }
     [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
     
@@ -514,39 +513,66 @@
 
 </section>
 
-    <!-- SECTION 5: FREQUENT INQUIRIES (FAQ) -->
-    <section class="py-32 bg-whiteMain dark:bg-blackMain transition-colors duration-300">
-      <div class="max-w-4xl mx-auto px-4 lg:px-8">
-         <div class="text-center mb-20">
-            <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4">The Atelier <span class="text-antiqueGold italic">FAQ</span></h2>
-            <div class="h-1.5 w-12 bg-antiqueGold mx-auto"></div>
-         </div>
-         
-         <div class="space-y-10">
-            <div class="group">
-               <h4 class="text-xl font-bold mb-4 flex items-center justify-between cursor-pointer">
-                  <span>How do I book a specific artist?</span>
-                  <i class="fas fa-plus text-xs text-antiqueGold group-hover:rotate-45 transition-transform"></i>
-               </h4>
-               <p class="opacity-60 leading-relaxed text-sm">Most artists book 2-4 months in advance. Use the form above to specify your preference, and we will notify you when their books open or if there is a cancellation.</p>
-            </div>
-            <div class="group">
-               <h4 class="text-xl font-bold mb-4 flex items-center justify-between cursor-pointer">
-                  <span>Do you accept walk-ins?</span>
-                  <i class="fas fa-plus text-xs text-antiqueGold group-hover:rotate-45 transition-transform"></i>
-               </h4>
-               <p class="opacity-60 leading-relaxed text-sm">Tattoos are strictly by appointment only. However, we do accept walk-ins for simple jewelry changes and quick piercing check-ups on weekdays between 1 PM and 5 PM.</p>
-            </div>
-            <div class="group">
-               <h4 class="text-xl font-bold mb-4 flex items-center justify-between cursor-pointer">
-                  <span>What is your cancellation policy?</span>
-                  <i class="fas fa-plus text-xs text-antiqueGold group-hover:rotate-45 transition-transform"></i>
-               </h4>
-               <p class="opacity-60 leading-relaxed text-sm">A non-refundable deposit is required to secure your date. We require at least 48 hours' notice to reschedule your appointment without losing your deposit.</p>
-            </div>
-         </div>
-      </div>
-    </section>
+  <section class="py-32 bg-whiteMain dark:bg-blackMain transition-colors duration-300">
+  <div class="max-w-4xl mx-auto px-4 lg:px-8">
+    <div class="text-center mb-20">
+      <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4 uppercase">
+        <span class="text-antiqueGold">FAQ</span>
+      </h2>
+      <div class="h-1.5 w-12 bg-antiqueGold mx-auto"></div>
+    </div>
+    
+    <div class="space-y-4">
+      <details class="group border-b border-antiqueGold/20 pb-4" open>
+        <summary class="flex items-center justify-between cursor-pointer list-none py-4">
+          <h4 class="text-xl font-bold group-open:text-antiqueGold transition-colors">
+            How do I book a specific artist?
+          </h4>
+          <span class="text-antiqueGold transition-transform duration-300 group-open:rotate-45">
+            <i class="fas fa-plus text-sm"></i>
+          </span>
+        </summary>
+        <div class="overflow-hidden">
+          <p class="opacity-60 leading-relaxed text-sm animate-in fade-in slide-in-from-top-1 duration-300">
+            Most artists book 2-4 months in advance. Use the form above to specify your preference, and we will notify you when their books open or if there is a cancellation.
+          </p>
+        </div>
+      </details>
+
+      <details class="group border-b border-antiqueGold/20 pb-4">
+        <summary class="flex items-center justify-between cursor-pointer list-none py-4">
+          <h4 class="text-xl font-bold group-open:text-antiqueGold transition-colors">
+            Do you accept walk-ins?
+          </h4>
+          <span class="text-antiqueGold transition-transform duration-300 group-open:rotate-45">
+            <i class="fas fa-plus text-sm"></i>
+          </span>
+        </summary>
+        <div class="overflow-hidden">
+          <p class="opacity-60 leading-relaxed text-sm animate-in fade-in slide-in-from-top-1 duration-300">
+            Tattoos are strictly by appointment only. However, we do accept walk-ins for simple jewelry changes and quick piercing check-ups on weekdays between 1 PM and 5 PM.
+          </p>
+        </div>
+      </details>
+
+      <details class="group border-b border-antiqueGold/20 pb-4">
+        <summary class="flex items-center justify-between cursor-pointer list-none py-4">
+          <h4 class="text-xl font-bold group-open:text-antiqueGold transition-colors">
+            What is your cancellation policy?
+          </h4>
+          <span class="text-antiqueGold transition-transform duration-300 group-open:rotate-45">
+            <i class="fas fa-plus text-sm"></i>
+          </span>
+        </summary>
+        <div class="overflow-hidden">
+          <p class="opacity-60 leading-relaxed text-sm animate-in fade-in slide-in-from-top-1 duration-300">
+            A non-refundable deposit is required to secure your date. We require at least 48 hours' notice to reschedule your appointment without losing your deposit.
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
 
     <!-- SECTION 6: SOCIAL INTEGRATION -->
     <section class="py-24 bg-deepBurgundy text-whiteMain">

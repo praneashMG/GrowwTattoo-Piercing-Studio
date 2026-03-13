@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Growwpark | Tattoo & Piercing Studio</title>
   <link rel="icon" type="image/jpeg" href="assets/growwpark_logo.jpg" />
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -20,17 +20,16 @@
             antiqueGold: '#C6A75E',
           },
           fontFamily: {
-            'display': ['Inter', 'system-ui', 'sans-serif'],
-          }
+  sans: ['Inter', 'system-ui', 'sans-serif'],
+  luxury: ['Playfair Display', 'serif'],
+}
         }
       }
     };
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      font-family: 'Inter', sans-serif;
-    }
+  
     #mobileMenu {
       transition: all 0.3s ease-in-out;
     }
@@ -66,8 +65,7 @@
     }
   </style>
 </head>
-<body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
-
+<body class="font-sans bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
   <!-- ============ HEADER (AS PROVIDED) ============ -->
   <nav id="navbar" class="sticky top-0 z-50 transition-colors duration-300 bg-whiteMain/90 text-blackMain border-b border-gray-200 dark:bg-blackMain/90 dark:text-whiteMain dark:border-antiqueGold/20 backdrop-blur-md">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
@@ -206,7 +204,7 @@
         <div class="relative z-20 h-full flex items-center justify-center px-6">
           <div class="max-w-4xl text-center">
             <span class="inline-block text-antiqueGold font-medium tracking-[0.3em] uppercase mb-4 text-xs md:text-sm animate-fadeInUp">Established Excellence</span>
-            <h1 class="text-5xl md:text-8xl font-bold text-whiteMain mb-6 tracking-tight">Ink Your <span class="text-antiqueGold">Legacy</span></h1>
+            <h1 class="font-luxury text-5xl md:text-8xl font-bold text-whiteMain mb-6 tracking-tight">Ink Your <span class="text-antiqueGold">Legacy</span></h1>
             <p class="text-whiteMain/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">Premium artistry meets clinical safety. Transform your vision into a masterpiece with our award-winning tattoo artists.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-5">
               <a href="#booking" class="px-10 py-4 bg-antiqueGold text-blackMain font-bold uppercase tracking-wider rounded-sm hover:bg-whiteMain transition-colors duration-300">Book Consultation</a>
@@ -329,7 +327,7 @@ flex flex-col h-full">            <div class="text-antiqueGold text-4xl mb-6"><i
         <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-6 leading-tight">
           The 
           <span class="text-deepBurgundy dark:text-whiteMain">Groww</span> 
-          <span class="text-antiqueGold italic font-serif">Aesthetic</span>
+          <span class="text-antiqueGold italic font-luxury">Aesthetic</span>
         </h2>
 
         <p class="text-blackMain/60 dark:text-whiteMain/60 text-lg leading-relaxed">
@@ -519,7 +517,7 @@ flex flex-col h-full">            <div class="text-antiqueGold text-4xl mb-6"><i
         </div>
         
         <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
-          The <span class="text-antiqueGold italic font-serif">Golden Standard</span> <br>
+          The <span class="text-antiqueGold italic font-luxury">Golden Standard</span> <br>
           of Sterile Artistry
         </h2>
         

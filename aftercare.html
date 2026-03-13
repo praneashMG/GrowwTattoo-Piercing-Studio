@@ -20,15 +20,14 @@
             antiqueGold: '#C6A75E',
           },
           fontFamily: {
-            'display': ['Inter', 'system-ui', 'sans-serif'],
-          }
+  sans: ['Inter', 'system-ui', 'sans-serif'],
+  luxury: ['Playfair Display', 'serif'],
+}
         }
       }
     };
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * { font-family: 'Inter', sans-serif; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">  <style>
     #mobileMenu { transition: all 0.3s ease-in-out; }
     [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
     
@@ -46,8 +45,7 @@
     .tattoo-image { transition: transform 0.6s ease; }
   </style>
 </head>
-<body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
-
+<body class="font-sans bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
   <!-- ============ HEADER ============ -->
   <nav id="navbar" class="sticky top-0 z-50 transition-colors duration-300 bg-whiteMain/90 text-blackMain border-b border-gray-200 dark:bg-blackMain/90 dark:text-whiteMain dark:border-antiqueGold/20 backdrop-blur-md">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
@@ -191,7 +189,7 @@
       </div>
       <div class="relative z-10 text-center px-4">
         <span class="inline-block text-antiqueGold font-bold tracking-[0.4em] uppercase text-xs mb-4">Curated Healing Protocols</span>
-        <h1 class="text-5xl md:text-7xl font-black text-whiteMain mb-6 tracking-tighter">Longevity <span class="text-antiqueGold italic font-serif">& care</span></h1>
+        <h1 class="font-luxury text-5xl md:text-7xl font-black text-whiteMain mb-6 tracking-tighter">Longevity <span class="text-antiqueGold italic font-luxury">care</span></h1>
         <p class="text-whiteMain/70 max-w-2xl mx-auto text-lg md:text-xl">Our responsibility ends when you leave the chair. Yours begins. Treat your body art as an investment in permanent beauty.</p>
         <div class="mt-10">
           <a href="#pricing" class="px-10 py-4 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm hover:bg-whiteMain transition-all shadow-2xl">View Price List</a>
@@ -205,7 +203,7 @@
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
           <div class="max-w-2xl">
             <h2 class="text-antiqueGold font-black uppercase tracking-widest text-sm mb-4">Phase 01: Pigment Fixation</h2>
-            <h3 class="text-4xl md:text-5xl font-black tracking-tight">Tattoo Aftercare <span class="text-deepBurgundy dark:text-antiqueGold italic font-serif">Ritual</span></h3>
+            <h3 class="font-luxury text-4xl md:text-5xl font-black tracking-tight">Tattoo Aftercare <span class="text-deepBurgundy dark:text-antiqueGold italic font-luxury">Ritual</span></h3>
           </div>
           <div class="h-px flex-1 bg-gray-200 dark:bg-whiteMain/10 mx-8 hidden md:block"></div>
           <p class="text-sm font-bold opacity-40 uppercase tracking-[0.2em]">Healing: 2-4 Weeks</p>
@@ -251,8 +249,8 @@
       <span class="text-antiqueGold font-black uppercase tracking-[0.3em] text-xs mb-4 block">
         The Collection
       </span>
-      <h2 class="text-4xl md:text-6xl font-black mb-6">
-        Tattoo <span class="text-antiqueGold italic font-serif">Services</span>
+      <h2 class="font-luxury text-4xl md:text-6xl font-black mb-6">
+        Tattoo <span class="text-antiqueGold italic font-luxury">Services</span>
       </h2>
       <div class="w-20 h-1 bg-antiqueGold mx-auto mb-6"></div>
       <p class="opacity-60 max-w-2xl mx-auto text-lg">
@@ -456,7 +454,7 @@
         Phase 02
       </span>
 
-      <h2 class="text-5xl md:text-6xl font-black tracking-tight mb-6">
+      <h2 class="font-luxury text-5xl md:text-6xl font-black tracking-tight mb-6">
         The L.I.T.H.A Method
       </h2>
 
@@ -533,8 +531,9 @@
     <section class="py-32 bg-whiteMain dark:bg-blackMain transition-colors duration-300">
       <div class="max-w-4xl mx-auto px-4 lg:px-8">
         <div class="text-center mb-20">
-          <h2 class="text-3xl md:text-5xl font-black mb-6">Healing <span class="text-antiqueGold italic font-serif text-4xl md:text-6xl">Milestones</span></h2>
-          <div class="w-12 h-1.5 bg-antiqueGold mx-auto"></div>
+<h2 class="font-luxury text-3xl md:text-5xl font-black mb-6">
+Healing <span class="text-antiqueGold italic font-luxury text-4xl md:text-6xl">Milestones</span>
+</h2>          <div class="w-12 h-1.5 bg-antiqueGold mx-auto"></div>
         </div>
 
         <div class="relative border-l border-gray-200 dark:border-whiteMain/10 ml-4 md:ml-0 pl-10 space-y-24">
@@ -573,8 +572,10 @@
           <div class="grid lg:grid-cols-2 gap-20 items-center">
             <div>
               <i class="fas fa-hand-holding-medical text-5xl text-antiqueGold mb-10"></i>
-              <h2 class="text-4xl md:text-6xl font-black mb-8 leading-none">Diagnostic <br> <span class="text-antiqueGold italic font-serif">Red Flags</span></h2>
-              <p class="text-whiteMain/60 text-xl leading-relaxed">Most issues are simple irritations, but we take infections seriously. If you identify these symptoms, immediate action is required.</p>
+<h2 class="font-luxury text-4xl md:text-6xl font-black mb-8 leading-none">
+Diagnostic <br>
+<span class="text-antiqueGold italic font-luxury">Red Flags</span>
+</h2>              <p class="text-whiteMain/60 text-xl leading-relaxed">Most issues are simple irritations, but we take infections seriously. If you identify these symptoms, immediate action is required.</p>
             </div>
             <div class="grid gap-6">
               <div class="flex items-center gap-6 p-6 bg-whiteMain/5 rounded-2xl border border-whiteMain/10">

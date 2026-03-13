@@ -19,16 +19,15 @@
             deepBurgundy: '#4A0E1A', 
             antiqueGold: '#C6A75E',
           },
-          fontFamily: {
-            'display': ['Inter', 'system-ui', 'sans-serif'],
-          }
+         fontFamily: {
+  sans: ['Inter', 'system-ui', 'sans-serif'],
+  luxury: ['Playfair Display', 'serif'],
+}
         }
       }
     };
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * { font-family: 'Inter', sans-serif; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">  <style>
     #mobileMenu { transition: all 0.3s ease-in-out; }
     [dir="rtl"] .rtl-flip { transform: scaleX(-1); }
     
@@ -42,8 +41,7 @@
     .founder-card:hover .founder-image { filter: grayscale(0%); transform: scale(1.05); }
   </style>
 </head>
-<body class="bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
-
+<body class="font-sans bg-whiteMain text-blackMain dark:bg-blackMain dark:text-whiteMain transition-colors duration-300" dir="ltr">
   <!-- ============ HEADER ============ -->
   <nav id="navbar" class="sticky top-0 z-50 transition-colors duration-300 bg-whiteMain/90 text-blackMain border-b border-gray-200 dark:bg-blackMain/90 dark:text-whiteMain dark:border-antiqueGold/20 backdrop-blur-md">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
@@ -179,7 +177,7 @@
       </div>
       <div class="relative z-10 text-center px-4">
         <span class="inline-block text-antiqueGold font-bold tracking-[0.4em] uppercase text-xs mb-4">Est. Manhattan 2008</span>
-        <h1 class="text-5xl md:text-7xl font-black text-whiteMain mb-6 tracking-tighter">The Groww <span class="text-antiqueGold italic font-serif">Atelier</span></h1>
+        <h1 class="font-luxury text-5xl md:text-7xl font-black text-whiteMain mb-6 tracking-tighter">The Groww <span class="text-antiqueGold italic font-luxury">Atelier</span></h1>
         <p class="text-whiteMain/70 max-w-2xl mx-auto text-lg md:text-xl">A sanctuary where high-fashion aesthetics meets clinical discipline. We don't just decorate skin; we architect identity.</p>
         <div class="mt-10">
           <a href="#pricing" class="px-10 py-4 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm hover:bg-whiteMain transition-all shadow-2xl">View Price List</a>
@@ -193,7 +191,7 @@
         <div class="grid lg:grid-cols-2 gap-20 items-center">
           <div>
             <h2 class="text-antiqueGold font-black uppercase tracking-widest text-sm mb-6">The Chronicle</h2>
-            <h3 class="text-4xl md:text-6xl font-black mb-10 tracking-tighter leading-tight">Decades of <br> <span class="text-deepBurgundy dark:text-antiqueGold italic font-serif">Technical Purity</span></h3>
+            <h3 class="font-luxury text-4xl md:text-6xl font-black mb-10 tracking-tighter leading-tight">Decades of <br> <span class="text-deepBurgundy dark:text-antiqueGold italic font-luxury">Technical Purity</span></h3>
             <p class="text-lg opacity-60 leading-relaxed mb-10">
               Founded in 2008 by a collective of master tattooers and medical-grade piercers, Growwpark was born from a singular obsession: to strip away the "back-alley" stigma of body art and replace it with a world-class atelier experience.
             </p>
@@ -228,7 +226,7 @@
       <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center">
         <div class="max-w-3xl mx-auto mb-20">
           <h2 class="text-antiqueGold font-bold tracking-widest uppercase text-xs mb-6">The Ethos</h2>
-          <h3 class="text-4xl md:text-5xl font-black mb-8 tracking-tighter leading-none">Anatomical <span class="text-deepBurgundy dark:text-antiqueGold">Precision</span></h3>
+          <h3 class="font-luxury text-4xl md:text-5xl font-black mb-8 tracking-tighter leading-none">Anatomical <span class="text-deepBurgundy dark:text-antiqueGold">Precision</span></h3>
           <p class="text-lg opacity-60">We view the human body as a living canvas. Every needle stroke and jewelry placement is calculated to complement your natural anatomy, movement, and aging process.</p>
         </div>
         
@@ -262,8 +260,8 @@
         <h2 class="text-antiqueGold font-black uppercase tracking-widest text-xs mb-4">
           Our Studio Experience
         </h2>
-        <h3 class="text-4xl md:text-5xl font-black tracking-tighter">
-          Where Art Meets <span class="italic font-serif text-antiqueGold">Precision</span>
+        <h3 class="font-luxury text-4xl md:text-5xl font-black tracking-tighter">
+          Where Art Meets <span class="italic font-luxury text-antiqueGold">Precision</span>
         </h3>
       </div>
       <a href="contact.html"
@@ -329,7 +327,7 @@
         The Collective
       </h2>
 
-      <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight">
+      <h3 class="font-luxury text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight">
         Crafted by Visionaries
       </h3>
 
@@ -434,7 +432,7 @@
        </div>
        <div class="relative z-10 max-w-4xl mx-auto px-4">
           <h2 class="text-antiqueGold font-black uppercase tracking-[0.4em] text-[10px] mb-10">Start Your Journey</h2>
-          <h3 class="text-4xl md:text-7xl font-black text-whiteMain leading-tight mb-12 tracking-tighter">Become part of our <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-antiqueGold via-whiteMain to-antiqueGold">Living Portfolio</span></h3>
+          <h3 class="font-luxury text-4xl md:text-7xl font-black text-whiteMain leading-tight mb-12 tracking-tighter">Become part of our <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-antiqueGold via-whiteMain to-antiqueGold">Living Portfolio</span></h3>
           <div class="flex flex-col sm:flex-row justify-center gap-6">
              <a href="contact.html" class="px-12 py-5 bg-antiqueGold text-blackMain font-black uppercase tracking-widest text-sm rounded-sm hover:bg-whiteMain transition-all shadow-2xl">Book Consultation</a>
              <a href="index.html" class="px-12 py-5 border border-whiteMain/30 text-whiteMain font-bold uppercase tracking-widest text-sm rounded-sm hover:bg-whiteMain hover:text-blackMain transition-all">View Our Work</a>
