@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Growwpark Body Art Studio</title>
+    <title>Body Art | login</title>
     <link rel="icon" href="assets/growwpark_logo.jpg" type="image/jpeg">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -29,25 +28,15 @@
             --color-surface: #FFFFFF;
             --color-primary-text: #0B0B0B;
             --color-accent: #C6A75E; 
-            --color-accent-dark: #4A0E1A; 
             --color-border: #E5E7EB;
         }
-
         .dark {
             --color-background: #0B0B0B;
             --color-surface: #141414;
             --color-primary-text: #F5F5F5;
             --color-border: #2A2A2A;
         }
-
-        /* Strict No-Scroll Policy */
-        html, body {
-            overflow: hidden;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
+        html, body { height: 100%; margin: 0; overflow-x: hidden; }
         body {
             background-color: var(--color-background);
             color: var(--color-primary-text);
@@ -56,399 +45,173 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 1rem;
         }
-
         .auth-card {
             background-color: var(--color-surface);
             border: 1px solid var(--color-border);
-            overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 10;
             width: 100%;
             max-width: 1000px;
-            height: auto;
-            max-height: 85vh; /* Reduced height to ensure fit */
+            border-radius: 1.5rem;
+            overflow: hidden;
         }
-
-        .external-controls {
-            position: absolute;
-            top: -3rem;
-            right: 0.5rem;
-            z-index: 50;
-            display: flex;
-            gap: 0.5rem;
-        }
-        html[dir='rtl'] .external-controls { right: auto; left: 0.5rem; }
-
         .control-bubble {
             background-color: var(--color-surface);
             border: 1px solid var(--color-border);
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            transition: all 0.2s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             cursor: pointer;
+            color: var(--color-primary-text);
+            transition: 0.2s;
         }
-        .control-bubble:hover {
-            transform: scale(1.1);
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-        }
-
         .input-field {
             background-color: transparent;
             border: 1px solid var(--color-border);
             color: var(--color-primary-text);
-            transition: all 0.2s;
-            padding: 0.75rem 1rem; /* Tighter padding */
+            padding: 0.75rem 1rem;
+            width: 100%;
+            border-radius: 0.5rem;
         }
-        .input-field:focus {
-            border-color: var(--color-accent);
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(198, 167, 94, 0.1);
-        }
-
+        .input-field:focus { border-color: var(--color-accent); outline: none; }
         .btn-primary {
             background: linear-gradient(135deg, #4A0E1A 0%, #C6A75E 100%);
-            transition: all 0.3s;
-            padding: 1rem; /* Tighter padding */
+            color: white;
+            padding: 0.85rem;
+            width: 100%;
+            border-radius: 0.75rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
         }
-        .btn-primary:hover {
-            transform: scale(1.01);
-            filter: brightness(1.1);
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem;
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            transition: 0.2s;
         }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-        .tab-content.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        #toast-container {
-            position: fixed;
-            top: 1rem;
-            z-index: 9999;
-        }
-        html[dir='ltr'] #toast-container { right: 1rem; }
-        html[dir='rtl'] #toast-container { left: 1rem; }
-
-        .toast {
-            animation: fadeIn 0.3s ease-out forwards;
-            background: var(--color-surface);
-            border-left: 4px solid var(--color-accent);
-        }
-
-        .form-panel {
-            overflow-y: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        .form-panel::-webkit-scrollbar { display: none; }
-
-        /* Tighter Spacing for Content */
-        .tight-stack > * + * {
-            margin-top: 0.75rem;
-        }
+        .social-btn:hover { background-color: rgba(198, 167, 94, 0.05); border-color: var(--color-accent); }
+        
+        /* RTL Logic */
+        html[dir="rtl"] .md\:flex-row { flex-direction: row-reverse; }
+        html[dir="rtl"] .text-left { text-align: right; }
+        html[dir="rtl"] .text-right { text-align: left; }
+        html[dir="rtl"] .pr-10 { padding-right: 0.75rem; padding-left: 2.5rem; }
+        html[dir="rtl"] .absolute.right-3 { right: auto; left: 0.75rem; }
     </style>
 </head>
-<body>  
+<body>
 
-    <div class="relative w-full max-w-5xl px-4">
-        
-        <!-- Controls -->
-        <div class="external-controls">
-            <button id="rtl-toggle" class="control-bubble" title="Switch Language">
-                <i class="fas fa-exchange-alt"></i>
-            </button>
-            <button id="theme-toggle" class="control-bubble" title="Toggle Theme">
-                <i class="fas fa-moon light-icon"></i>
-                <i class="fas fa-sun dark-icon hidden"></i>
-            </button>
-        </div>
-
-        <!-- Main Auth Container -->
-        <div class="auth-card w-full flex flex-col md:flex-row rounded-2xl min-h-[500px]">
-            
-            <!-- Left Panel -->
-            <div class="hidden md:flex md:w-5/12 relative overflow-hidden bg-black flex-shrink-0">
-                <img src="/assets/vel.jpeg" alt="Atelier" class="absolute inset-0 w-full h-full object-cover opacity-50 grayscale group-hover:grayscale-0 transition-all duration-1000">
-                <div class="relative z-10 p-8 flex flex-col justify-between text-white w-full h-full bg-gradient-to-t from-blackMain via-transparent to-transparent">
-                    <div>
-                        <div class="mb-8">
-                            <a href="index.html" class="flex items-center gap-2 group">
-                                <span class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold flex items-center justify-center text-antiqueGold">
-                                    <i class="fas fa-pen-nib"></i>
-                                </span>
-                                <div class="leading-none">
-                                    <span class="block text-xl font-black tracking-tighter text-antiqueGold">Groww</span>
-          <span class="block text-[10px] font-bold text-antiqueGold uppercase tracking-widest">Body Art</span>     
-                                </div>
-                            </a>
-                        </div>
-                        <h2 class="text-3xl lg:text-4xl font-black leading-tight mb-3">Etch Your <br><span class="text-antiqueGold italic font-serif">Legacy</span></h2>
-                        <p class="text-sm text-gray-300 max-w-xs">Manage your tattoo healing and studio sessions in one dashboard.</p>
-                    </div>
-                    
-                    <div class="bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10">
-                        <p class="italic text-gray-200 mb-2 text-xs">"The easiest way to track my sleeve progress."</p>
-                        <div class="flex items-center space-x-2 rtl:space-x-reverse">
-                            <div class="w-8 h-8 rounded-full border border-antiqueGold overflow-hidden">
-                                <img src="https://i.pravatar.cc/100?u=art" class="w-full h-full object-cover">
-                            </div>
-                            <div>
-                                <p class="font-bold text-[10px]">Julian Thorne</p>
-                                <p class="text-[8px] text-antiqueGold uppercase">Legacy Client</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Panel -->
-            <div class="w-full md:w-7/12 p-6 lg:p-10 flex flex-col form-panel">
-                
-                <!-- MOBILE LOGO -->
-                <div class="md:hidden mb-6 flex justify-center">
-                    <a href="index.html" class="flex items-center gap-2">
-                        <span class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold flex items-center justify-center text-antiqueGold text-lg">
-                            <i class="fas fa-pen-nib"></i>
-                        </span>
-                        <div class="leading-none text-left rtl:text-right">
-                            <span class="block text-xl font-black tracking-tighter text-antiqueGold">Groww</span>
-                            <span class="text-[8px] uppercase font-bold tracking-[0.3em] text-antiqueGold">Body Art</span>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="flex border-b border-gray-200 dark:border-white/10 w-full mb-6">
-                    <button onclick="switchTab('login')" id="tab-login"class="pb-2 px-4 text-[10px] font-black uppercase tracking-[0.2em] border-b-2 transition-all border-gold text-gold">Login</button>
-                    <button onclick="switchTab('register')" id="tab-register" class="pb-2 px-4 text-[10px] font-black uppercase tracking-[0.2em] border-b-2 transition-all border-transparent text-gray-400">Register</button>
-                </div>
-
-                <!-- LOGIN FORM -->
-                <div id="login-form" class="tab-content active">
-                   <div class="mb-6 text-center flex flex-col items-center">
-    <h3 class="text-2xl font-black mb-1">Welcome Back</h3>
-    <p class="text-xs opacity-50 max-w-xs">
-        Sign in to your studio dashboard.
-    </p>
-</div>
-                    <form onsubmit="handleAuth(event, 'login')" class="tight-stack">
-                        <div>
-                            <label class="block text-[9px] font-black uppercase tracking-widest opacity-40 mb-1">Artist / Client Email</label>
-                            <input type="email" required class="input-field w-full rounded-lg text-xs" placeholder="identity@growwpark.com">
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-1">
-                                <label class="block text-[9px] font-black uppercase tracking-widest opacity-40">Passcode</label>
-                                <a href="#" class="text-[9px] font-bold text-antiqueGold hover:underline">Recovery</a>
-                            </div>
-                            <div class="relative">
-                                <input type="password" required class="password-input input-field w-full rounded-lg text-xs pr-10" placeholder="••••••••">
-                                <button type="button" onclick="togglePassword(this)" class="absolute right-3 top-1/2 -translate-y-1/2 opacity-40 hover:text-antiqueGold transition-all">
-                                    <i class="fas fa-eye text-xs"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <input type="checkbox" id="remember" class="w-3 h-3 rounded border-gray-300 text-deepBurgundy focus:ring-antiqueGold">
-                            <label for="remember" class="ml-2 text-[10px] opacity-50">Stay signed in</label>
-                        </div>
-                        <button type="submit" class="btn-primary w-full rounded-xl text-whiteMain font-black uppercase tracking-[0.2em] text-[10px] mt-2 shadow-md">Enter Atelier</button>
-                    </form>
-                </div>
-
-                <!-- REGISTER FORM -->
-                <div id="register-form" class="tab-content">
-                   <div class="mb-6 text-center flex flex-col items-center">
-    <h3 class="text-2xl font-black mb-1">New Identity</h3>
-    <p class="text-xs opacity-50 max-w-xs">
-        Join the Growwpark collective.
-    </p>
-</div>
-                    <form onsubmit="handleAuth(event, 'register')" class="tight-stack">
-                        <div class="grid grid-cols-2 gap-3">
-                            <div>
-                                <label class="block text-[9px] font-black uppercase tracking-widest opacity-40 mb-1">First Name</label>
-                                <input type="text" required class="input-field w-full rounded-lg text-xs" placeholder="Julian">
-                            </div>
-                            <div>
-                                <label class="block text-[9px] font-black uppercase tracking-widest opacity-40 mb-1">Last Name</label>
-                                <input type="text" required class="input-field w-full rounded-lg text-xs" placeholder="Thorne">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-[9px] font-black uppercase tracking-widest opacity-40 mb-1">Email Identity</label>
-                            <input type="email" required class="input-field w-full rounded-lg text-xs" placeholder="name@example.com">
-                        </div>
-                        <div>
-                            <label class="block text-[9px] font-black uppercase tracking-widest opacity-40 mb-1">Create Passcode</label>
-                            <div class="relative">
-                                <input type="password" id="reg-password" required class="password-input input-field w-full rounded-lg text-xs pr-10" placeholder="••••••••">
-                                <button type="button" onclick="togglePassword(this)" class="absolute right-3 top-1/2 -translate-y-1/2 opacity-40 hover:text-antiqueGold transition-all">
-                                    <i class="fas fa-eye text-xs"></i>
-                                </button>
-                            </div>
-                          <div class="mt-4 mb-4">
-    <div class="w-full bg-gray-200 dark:bg-white/10 h-1.5 rounded-full overflow-hidden">
-        <div id="strength-bar"
-             class="h-full bg-red-500 transition-all duration-300"
-             style="width: 20%;">
-        </div>
+    <div class="fixed top-4 right-4 z-50 flex gap-2">
+        <button onclick="toggleRTL()" class="control-bubble" title="Translate"><i class="fas fa-language"></i></button>
+        <button onclick="toggleTheme()" class="control-bubble" title="Theme"><i class="fas fa-moon"></i></button>
     </div>
 
-    <p id="strength-text"
-       class="text-[9px] mt-2 opacity-50 font-black uppercase tracking-wider">
-        Passcode Strength: Weak
-    </p>
-</div>
-                        </div>
-                        <button type="submit" class="btn-primary w-full rounded-xl text-whiteMain font-black uppercase tracking-[0.2em] text-[10px] shadow-md">Create Identity</button>
-                    </form>
-                </div>
+    <div class="auth-card flex flex-col md:flex-row">
+        <div class="hidden md:flex md:w-5/12 relative bg-black min-h-[550px]">
+            <img src="/assets/vel.jpeg" class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale">
+            <div class="relative z-10 p-10 flex flex-col justify-between h-full w-full bg-gradient-to-t from-blackMain">
+                <a href="index.html" class="flex items-center gap-3 group">
+    
+    <span class="h-12 w-12 rounded-full bg-deepBurgundy border border-antiqueGold flex items-center justify-center text-antiqueGold text-xl transition-transform group-hover:scale-110">
+        <i class="fas fa-pen-nib"></i>
+    </span>
 
-                <!-- Social Entry -->
-                <div class="mt-auto pt-6 border-t border-gray-200 dark:border-white/10">
-                    <div class="text-center mb-4">
-                        <span class="text-[8px] font-black text-gray-400 uppercase tracking-[0.2em]">Third-Party Entry</span>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button class="flex items-center justify-center gap-2 py-3 border border-gray-200 dark:border-white/10 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-[10px] font-bold">
-                            <i class="fab fa-google text-red-500"></i>
-                            <span>Google</span>
-                        </button>
-                        <button class="flex items-center justify-center gap-2 py-3 border border-gray-200 dark:border-white/10 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-[10px] font-bold">
-                            <i class="fab fa-facebook text-blue-600"></i>
-                            <span>Facebook</span>
-                        </button>
-                    </div>
+    <div class="text-left">
+        <span class="block text-2xl font-black tracking-tighter text-antiqueGold">Inkro</span>
+        <span class="block text-[10px] font-bold text-antiqueGold uppercase tracking-widest">Body Art</span>
+    </div>
+
+</a>
+                <div>
+                    <h2 class="text-4xl font-black text-white leading-tight mb-4">Etch Your <br><span class="text-antiqueGold italic font-serif">Legacy</span></h2>
+                    <p class="text-sm text-gray-400">Sign in to track your ink and book master sessions.</p>
                 </div>
             </div>
         </div>
-    </div>
+<div class="w-full md:w-7/12 p-8 lg:p-12 flex flex-col justify-center">
 
-    <div id="toast-container"></div>
+    <a href="index.html" class="md:hidden flex items-center gap-3 mb-8 justify-center group">
+
+        <span class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold flex items-center justify-center text-antiqueGold transition-transform group-hover:scale-110">
+            <i class="fas fa-pen-nib"></i>
+        </span>
+
+        <div class="text-left">
+            <span class="block text-xl font-black tracking-tighter text-antiqueGold">Inkro</span>
+            <span class="block text-[8px] font-bold text-antiqueGold uppercase">Body Art</span>
+        </div>
+
+    </a>
+
+            <div class="mb-6 text-center">
+    <h3 class="text-2xl font-black">Login</h3>
+    <p class="text-[10px] opacity-50 uppercase tracking-[0.2em] mt-1">
+        Authorized Access Only
+    </p>
+</div>
+
+            <form onsubmit="handleAuth(event)" class="space-y-4">
+                <div>
+                    <label class="block text-[9px] font-black uppercase tracking-widest opacity-50 mb-1">Email Identity</label>
+                    <input type="email" required class="input-field text-sm" placeholder="identity@growwpark.com">
+                </div>
+                <div>
+                    <label class="block text-[9px] font-black uppercase tracking-widest opacity-50 mb-1">Passcode</label>
+                    <div class="relative">
+                        <input type="password" required class="input-field text-sm pr-10" placeholder="••••••••">
+                        <button type="button" onclick="togglePass(this)" class="absolute right-3 top-1/2 -translate-y-1/2 opacity-40 hover:text-antiqueGold transition-all"><i class="fas fa-eye text-xs"></i></button>
+                    </div>
+                    <div class="mt-2 text-right">
+                        <a href="#" class="text-[9px] font-bold text-antiqueGold hover:underline uppercase tracking-widest">Forgot Password?</a>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary shadow-lg hover:scale-[1.01] transition-transform mt-2">Login</button>
+            </form>
+
+            <div class="relative my-8">
+                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200 dark:border-white/10"></div></div>
+                <div class="relative flex justify-center text-[8px] uppercase font-black tracking-widest"><span class="bg-white dark:bg-[#141414] px-4 text-gray-400">Third-Party Entry</span></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3">
+                <button class="social-btn"><i class="fab fa-google text-red-500"></i><span>Google</span></button>
+                <button class="social-btn"><i class="fab fa-facebook text-blue-600"></i><span>Facebook</span></button>
+                <button class="social-btn"><i class="fab fa-apple text-current"></i><span>Apple</span></button>
+            </div>
+
+            <p class="mt-8 text-center text-[10px] opacity-60 uppercase tracking-widest">New Collective Member? <a href="signup.html" class="text-antiqueGold font-black hover:underline">Register</a></p>
+        </div>
+    </div>
 
     <script>
-        function switchTab(tab) {
-            const loginForm = document.getElementById('login-form');
-            const registerForm = document.getElementById('register-form');
-            const tabLoginBtn = document.getElementById('tab-login');
-            const tabRegisterBtn = document.getElementById('tab-register');
-
-            if (tab === 'login') {
-                loginForm.classList.add('active');
-                registerForm.classList.remove('active');
-tabLoginBtn.classList.add('border-gold', 'text-gold');                tabLoginBtn.classList.remove('border-transparent', 'text-gray-400');
-                tabRegisterBtn.classList.remove('border-antiqueGold', 'text-antiqueGold');
-                tabRegisterBtn.classList.add('border-transparent', 'text-gray-400');
-            } else {
-                loginForm.classList.remove('active');
-                registerForm.classList.add('active');
-                tabRegisterBtn.classList.add('border-antiqueGold', 'text-antiqueGold');
-                tabRegisterBtn.classList.remove('border-transparent', 'text-gray-400');
-                tabLoginBtn.classList.remove('border-antiqueGold', 'text-antiqueGold');
-                tabLoginBtn.classList.add('border-transparent', 'text-gray-400');
-            }
+        function toggleRTL() {
+            const h = document.documentElement;
+            const current = h.getAttribute('dir');
+            h.setAttribute('dir', current === 'ltr' ? 'rtl' : 'ltr');
         }
-
-        const themeToggle = document.getElementById('theme-toggle');
-        const rtlToggle = document.getElementById('rtl-toggle');
-        const html = document.documentElement;
-
-        const applyTheme = (theme) => {
-            if (theme === 'dark') {
-                html.classList.add('dark');
-            } else {
-                html.classList.remove('dark');
-            }
-            document.querySelector('.light-icon').classList.toggle('hidden', theme === 'dark');
-            document.querySelector('.dark-icon').classList.toggle('hidden', theme === 'light');
-        };
-
-        themeToggle.addEventListener('click', () => {
-            const isDark = html.classList.contains('dark');
-            const next = isDark ? 'light' : 'dark';
-            localStorage.setItem('theme', next);
-            applyTheme(next);
-        });
-        applyTheme(localStorage.getItem('theme') || 'light');
-
-        rtlToggle.addEventListener('click', () => {
-            const currentDir = html.getAttribute('dir');
-            html.setAttribute('dir', currentDir === 'ltr' ? 'rtl' : 'ltr');
-        });
-
-        function togglePassword(btn) {
+        function toggleTheme() { document.documentElement.classList.toggle('dark'); }
+        function togglePass(btn) {
             const input = btn.parentElement.querySelector('input');
-            const isPass = input.type === 'password';
-            input.type = isPass ? 'text' : 'password';
-            btn.innerHTML = isPass ? '<i class="fas fa-eye-slash text-xs"></i>' : '<i class="fas fa-eye text-xs"></i>';
+            input.type = input.type === 'password' ? 'text' : 'password';
+            btn.innerHTML = input.type === 'password' ? '<i class="fas fa-eye text-xs"></i>' : '<i class="fas fa-eye-slash text-xs"></i>';
         }
-
-        const regPass = document.getElementById('reg-password');
-        const strengthBar = document.getElementById('strength-bar');
-        const strengthText = document.getElementById('strength-text');
-
-        regPass.addEventListener('input', () => {
-            const val = regPass.value;
-            let score = 0;
-            if (val.length > 5) score++;
-            if (val.length > 8) score++;
-            if (/[0-9]/.test(val)) score++;
-            if (/[A-Z]/.test(val)) score++;
-            if (/[^A-Za-z0-9]/.test(val)) score++;
-
-            const colors = ['bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-blue-500', 'bg-antiqueGold'];
-            const labels = ['Weak', 'Moderate', 'Safe', 'Strong', 'Master-Grade'];
-
-strengthBar.classList.remove(
-    'bg-red-500',
-    'bg-orange-500',
-    'bg-yellow-500',
-    'bg-blue-500',
-    'bg-antiqueGold'
-);
-
-strengthBar.classList.add(colors[score-1] || 'bg-red-500');            strengthBar.style.width = (score * 20) + '%';
-            strengthText.innerText = `Passcode Strength: ${labels[score-1] || 'Weak'}`;
-        });
-
-        function showToast(message) {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = 'toast p-4 mb-4 rounded-xl shadow-2xl flex items-center space-x-3 min-w-[240px]';
-            toast.innerHTML = `
-                <div class="bg-antiqueGold/10 p-2 rounded-lg text-antiqueGold"><i class="fas fa-check-circle text-xs"></i></div>
-                <div class="text-[10px] font-black uppercase tracking-widest">${message}</div>
-            `;
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
-        }
-
-        function handleAuth(e, type) {
+        function handleAuth(e) {
             e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
-            btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i>`;
-            btn.disabled = true;
-
-            setTimeout(() => {
-                showToast(type === 'login' ? "Access Granted" : "Identity Established");
-                setTimeout(() => window.location.href = 'index.html', 800);
-            }, 1200);
+            const b = e.target.querySelector('button[type="submit"]');
+            b.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+            setTimeout(() => window.location.href = 'index.html', 1000);
         }
     </script>
 </body>
