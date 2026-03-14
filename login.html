@@ -164,18 +164,31 @@
 
             <form onsubmit="handleAuth(event)" class="space-y-4">
                 <div>
-                    <label class="block text-[9px] font-black uppercase tracking-widest opacity-50 mb-1">Email Identity</label>
+                    <label class="block text-[9px] font-black uppercase tracking-widest opacity-50 mb-1">Email</label>
                     <input type="email" required class="input-field text-sm" placeholder="identity@growwpark.com">
                 </div>
                 <div>
-                    <label class="block text-[9px] font-black uppercase tracking-widest opacity-50 mb-1">Passcode</label>
+                    <label class="block text-[9px] font-black uppercase tracking-widest opacity-50 mb-1">Password</label>
                     <div class="relative">
                         <input type="password" required class="input-field text-sm pr-10" placeholder="••••••••">
                         <button type="button" onclick="togglePass(this)" class="absolute right-3 top-1/2 -translate-y-1/2 opacity-40 hover:text-antiqueGold transition-all"><i class="fas fa-eye text-xs"></i></button>
                     </div>
-                    <div class="mt-2 text-right">
-                        <a href="#" class="text-[9px] font-bold text-antiqueGold hover:underline uppercase tracking-widest">Forgot Password?</a>
-                    </div>
+                    <div class="flex items-center justify-between mt-3">
+
+    <!-- Remember Me -->
+    <label class="flex items-center gap-2 cursor-pointer select-none">
+        <input type="checkbox" class="w-4 h-4 accent-antiqueGold">
+        <span class="text-[10px] font-bold opacity-70 uppercase tracking-widest">
+            Remember Me
+        </span>
+    </label>
+
+    <!-- Forgot Password -->
+    <a href="#" class="text-[10px] font-bold text-antiqueGold hover:underline uppercase tracking-widest">
+        Forgot Password
+    </a>
+
+</div>
                 </div>
                 <button type="submit" class="btn-primary shadow-lg hover:scale-[1.01] transition-transform mt-2">Login</button>
             </form>
