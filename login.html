@@ -128,8 +128,7 @@
         <i class="fas fa-pen-nib"></i>
     </span>
 
-    <div class="text-left">
-        <span class="block text-2xl font-black tracking-tighter text-antiqueGold">Inkro</span>
+<div class="flex flex-col items-start md:items-start items-center">        <span class="block text-2xl font-black tracking-tighter text-antiqueGold">Inkro</span>
         <span class="block text-[10px] font-bold text-antiqueGold uppercase tracking-widest">Body Art</span>
     </div>
 
@@ -140,59 +139,90 @@
                 </div>
             </div>
         </div>
-<div class="w-full md:w-7/12 p-8 lg:p-12 flex flex-col justify-center">
-
-    <a href="index.html" class="md:hidden flex items-center gap-3 mb-8 justify-center group">
+<div class="w-full md:w-7/12 p-8 lg:p-12 flex flex-col justify-center items-center text-center md:items-start md:text-left">    <a href="index.html" class="md:hidden flex items-center gap-3 mb-8 justify-center group">
 
         <span class="h-10 w-10 rounded-full bg-deepBurgundy border border-antiqueGold flex items-center justify-center text-antiqueGold transition-transform group-hover:scale-110">
             <i class="fas fa-pen-nib"></i>
         </span>
 
         <div class="text-left">
-            <span class="block text-xl font-black tracking-tighter text-antiqueGold">Inkro</span>
+            <span class="block text-2xl font-black tracking-tighter text-antiqueGold">Inkro</span>
             <span class="block text-[8px] font-bold text-antiqueGold uppercase">Body Art</span>
         </div>
 
     </a>
 
-            <div class="mb-6 text-center">
-    <h3 class="text-2xl font-black">Login</h3>
+<div class="mb-6 w-full flex flex-col items-center justify-center text-center">
+    <h3 class="text-2xl font-black">Member  Login</h3>
     <p class="text-[10px] opacity-50 uppercase tracking-[0.2em] mt-1">
-        Authorized Access Only
+        Continue Your Ink Journey
     </p>
 </div>
+<form onsubmit="handleAuth(event)" class="w-full max-w-sm space-y-5">
 
-            <form onsubmit="handleAuth(event)" class="space-y-4">
-                <div>
-                    <label class="block text-[9px] font-black uppercase tracking-widest opacity-50 mb-1">Email</label>
-                    <input type="email" required class="input-field text-sm" placeholder="identity@growwpark.com">
-                </div>
-                <div>
-                    <label class="block text-[9px] font-black uppercase tracking-widest opacity-50 mb-1">Password</label>
-                    <div class="relative">
-                        <input type="password" required class="input-field text-sm pr-10" placeholder="••••••••">
-                        <button type="button" onclick="togglePass(this)" class="absolute right-3 top-1/2 -translate-y-1/2 opacity-40 hover:text-antiqueGold transition-all"><i class="fas fa-eye text-xs"></i></button>
-                    </div>
-                    <div class="flex items-center justify-between mt-3">
+    <!-- Email -->
+    <div class="text-left w-full">
+        <label class="block text-[10px] font-black uppercase tracking-widest opacity-50 mb-2">
+            Email Address
+        </label>
+        <input 
+            type="email"
+            required
+            class="input-field text-sm"
+            placeholder="identity@growwpark.com"
+        >
+    </div>
 
-    <!-- Remember Me -->
-    <label class="flex items-center gap-2 cursor-pointer select-none">
-        <input type="checkbox" class="w-4 h-4 accent-antiqueGold">
-        <span class="text-[10px] font-bold opacity-70 uppercase tracking-widest">
-            Remember Me
-        </span>
-    </label>
+    <!-- Password -->
+    <div class="text-left w-full">
+        <label class="block text-[10px] font-black uppercase tracking-widest opacity-50 mb-2">
+            Password
+        </label>
 
-    <!-- Forgot Password -->
-    <a href="#" class="text-[10px] font-bold text-antiqueGold hover:underline uppercase tracking-widest">
-        Forgot Password
-    </a>
+        <div class="relative">
+            <input 
+                type="password"
+                required
+                class="input-field text-sm pr-10"
+                placeholder="••••••••"
+            >
 
-</div>
-                </div>
-                <button type="submit" class="btn-primary shadow-lg hover:scale-[1.01] transition-transform mt-2">Login</button>
-            </form>
+            <button 
+                type="button"
+                onclick="togglePass(this)"
+                class="absolute right-3 top-1/2 -translate-y-1/2 opacity-40 hover:text-antiqueGold transition"
+            >
+                <i class="fas fa-eye text-xs"></i>
+            </button>
+        </div>
 
+        <!-- Options -->
+        <div class="flex items-center justify-between mt-3">
+
+            <label class="flex items-center gap-2 cursor-pointer select-none">
+                <input type="checkbox" class="w-4 h-4 accent-antiqueGold">
+                <span class="text-[10px] font-bold opacity-70 uppercase tracking-widest">
+                    Remember Me
+                </span>
+            </label>
+
+            <a href="#" class="text-[10px] font-bold text-antiqueGold hover:underline uppercase tracking-widest">
+                Forgot Password
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Login Button -->
+    <button 
+        type="submit"
+        class="btn-primary shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+    >
+        Login
+    </button>
+
+</form>
             <div class="relative my-8">
                 <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-200 dark:border-white/10"></div></div>
                 <div class="relative flex justify-center text-[8px] uppercase font-black tracking-widest"><span class="bg-white dark:bg-[#141414] px-4 text-gray-400">Third-Party Entry</span></div>
